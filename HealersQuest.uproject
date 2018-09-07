@@ -12,10 +12,6 @@
 	],
 	"TargetPlatforms": [
 		"Android",
-		"HTML5",
-		"IOS",
-		"LinuxNoEditor",
-		"MacNoEditor",
 		"WindowsNoEditor"
 	]
 }
