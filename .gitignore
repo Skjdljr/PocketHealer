@@ -43,3 +43,9 @@ Temporary Items
 .apdisk
 Intermediate
 Saved
+
+Binaries/
+
+\.vs/
+
+HealersQuest\.sln

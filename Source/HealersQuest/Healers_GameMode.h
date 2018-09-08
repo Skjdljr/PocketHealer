@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "Healers_GameMode.generated.h"
 
 /**
  * 
@@ -19,6 +20,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 	UUserWidget* MainMenu;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+	TSubclassOf<class UUserWidget> MainMenuClass;
+
 	// Override BeginPlay()
 	virtual void BeginPlay() override;
+	virtual void StartMatch() override;
+
 };

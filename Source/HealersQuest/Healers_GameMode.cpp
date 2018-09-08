@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "HealersQuest.h"
 #include "Healers_GameMode.h"
+#include "HealersQuest.h"
 #include "Engine/World.h"
 
 //UMG
@@ -39,4 +39,17 @@ void AHealers_GameMode::BeginPlay()
 			StartMatch();
 		}
 	}
+}
+
+void AHealers_GameMode::StartMatch()
+{
+	if (MainMenu)
+	{
+		MainMenu->RemoveFromViewport();
+		MainMenu->Destruct();
+	}
+
+	// Display World Map / Tavern / whatever UI
+	
+	Super::StartMatch();
 }
