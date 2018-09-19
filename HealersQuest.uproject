@@ -4,11 +4,15 @@
 	"Category": "",
 	"Description": "",
 	"Modules": [
-		{
-			"Name": "HealersQuest",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		}
+    {
+      "Name": "HealersQuest",
+      "Type": "Runtime",
+      "LoadingPhase": "Default",
+      "AdditionalDependencies": [
+        "Engine",
+        "UMG"
+      ]
+    }
 	],
 	"TargetPlatforms": [
 		"Android",
