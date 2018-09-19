@@ -13,6 +13,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.suo
+
 
 # Windows shortcuts
 *.lnk
@@ -44,8 +46,12 @@ Temporary Items
 Intermediate
 Saved
 
+HealersQuest.VC.db
+Content/MobileStarterContent/
+Saved/
+DerivedDataCache/
 Binaries/
-
-\.vs/
-
+Intermediate/
+Build/
+.vs/
 HealersQuest\.sln
