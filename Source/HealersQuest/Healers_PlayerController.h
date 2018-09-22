@@ -12,12 +12,12 @@
 UCLASS()
 class HEALERSQUEST_API AHealers_PlayerController : public APlayerController
 {
-	GENERATED_UCLASS_BODY()
+    GENERATED_UCLASS_BODY()
 
 public:
 
-	// Override BeginPlay()
-	virtual void BeginPlay() override;
+    // Override BeginPlay()
+    virtual void BeginPlay() override;
 
     // Character reference, Party reference ?
 };

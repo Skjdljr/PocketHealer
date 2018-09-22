@@ -12,7 +12,9 @@
 UCLASS()
 class HEALERSQUEST_API AHealers_GameMode : public AGameMode
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
+
+	AHealers_GameMode(const class FObjectInitializer& ObjectInitializer);
 
 public:
 
