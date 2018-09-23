@@ -27,9 +27,12 @@ class HEALERSQUEST_API AHealers_PlayerState : public APlayerState
 public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|Party")
-	int32 BattlesWon;
+	int32 Gold;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|Party")
+	UFUNCTION(BlueprintPure, meta = (Keywords = "Character Sheet"), Category = "CharacterSheet")
+	AHealers_CharacterSheet* GetHealersCharacterSheet() const;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (Keywords = "Party Sheet"), Category = "Healers|Party")
 	AHealers_PartySheet* PartySheet;
 	
 };

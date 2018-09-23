@@ -19,4 +19,18 @@ AHealers_PlayerState::AHealers_PlayerState()
 	}
 }
 
+AHealers_CharacterSheet * AHealers_PlayerState::GetHealersCharacterSheet() const
+{
+	AHealers_CharacterSheet* Sheet = nullptr;
+	if (PartySheet)
+	{
+		if (PartySheet->PartyMembers.Num() > 0)
+		{
+			// Player Character should always be Party Member at Index 0
+			Sheet = PartySheet->PartyMembers[0];
+		}
+	}
+	return nullptr;
+}
+
 
