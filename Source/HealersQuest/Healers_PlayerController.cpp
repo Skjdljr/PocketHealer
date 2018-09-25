@@ -12,13 +12,42 @@
 #include "Runtime/UMG/Public/IUMGModule.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 
-AHealers_PlayerController::AHealers_PlayerController(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
-{
+#include "Components/AudioComponent.h"
 
+AHealers_PlayerController::AHealers_PlayerController()
+{
+	MusicVolumeScalar = 1.0;
+	MusicComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
+	MusicComponent->SetupAttachment(RootComponent);
 }
 
 void AHealers_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void AHealers_PlayerController::PlayMusic(USoundBase * Music, float FadeInDuration)
+{
+	if (MusicComponent)
+	{
+		MusicComponent->SetSound(Music);
+		MusicComponent->FadeIn(FadeInDuration, MusicVolumeScalar);
+	}
+}
+
+void AHealers_PlayerController::StopMusic(float FadeOutDuration)
+{
+	if (MusicComponent)
+	{
+		MusicComponent->FadeOut(FadeOutDuration, 0.f);
+	}
+}
+
+void AHealers_PlayerController::SetMusicVolume(float MusicVolume)
+{
+	MusicVolumeScalar = MusicVolume;
+	if (MusicComponent)
+	{
+		MusicComponent->AdjustVolume(0.f, MusicVolumeScalar);
+	}
 }
