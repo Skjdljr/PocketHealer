@@ -71,8 +71,17 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	float ManaMax;
 
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+    float Shield;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+    float ShieldMax;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	float ArmorValue;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+    float AttackRate;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	TArray<FDamageResistance> Resistances;
