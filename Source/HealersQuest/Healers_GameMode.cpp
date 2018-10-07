@@ -12,44 +12,49 @@
 #include "Runtime/UMG/Public/IUMGModule.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 
-AHealers_GameMode::AHealers_GameMode(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+AHealers_GameMode::AHealers_GameMode()
 {
     // Set to true via MainMenu to start the game
-	bDelayedStart = true;
+    bDelayedStart = true;
 }
 
 void AHealers_GameMode::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
 
-	if (auto world = GetWorld())
-	{
-		UE_LOG(Game, Log, TEXT("Simple Log"));
+    if (auto world = GetWorld())
+    {
+        UE_LOG(Game, Log, TEXT("Simple Log"));
 
-	    MainMenu = CreateWidget<UUserWidget>(world, MainMenuClass);
+        MainMenu = CreateWidget<UUserWidget>(world, MainMenuClass);
         if (MainMenu)
         {
             auto pc = world->GetFirstPlayerController();
 
             MainMenu->AddToViewport();
         }
-		else if (ReadyToStartMatch())
-		{
-			StartMatch();
-		}
-	}
+        else if (ReadyToStartMatch())
+        {
+            StartMatch();
+        }
+    }
 }
 
 void AHealers_GameMode::StartMatch()
 {
-	if (MainMenu)
-	{
-		MainMenu->RemoveFromViewport();
-		MainMenu->Destruct();
-	}
+    if (MainMenu)
+    {
+        MainMenu->RemoveFromViewport();
+        MainMenu->Destruct();
+    }
 
-	// Display World Map / Tavern / whatever UI
-	
-	Super::StartMatch();
+    // Display World Map / Tavern / whatever UI
+    
+    Super::StartMatch();
+}
+
+void AHealers_GameMode::BP_StartMatch()
+{
+	// AGameMode.Tick detects this and begins the match
+    bDelayedStart = false;
 }
