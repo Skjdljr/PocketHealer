@@ -22,18 +22,21 @@ struct FDamageResistance
 };
 
 USTRUCT(BlueprintType, Blueprintable)
-struct FCharacterProfession
+struct FCharacterProfession : public FTableRowBase
 {
 	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+	int32 Level;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
 	FString ProfessionName;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	float HealthPerLevel;
+	float Health;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	float ManaPerLevel;
+	float Mana;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
 	float ManaRegenerationPerSecondValue;

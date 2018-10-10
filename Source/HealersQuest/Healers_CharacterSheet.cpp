@@ -24,7 +24,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	Health = HealthBase;
 	for (auto Profession : ProfessionData)
 	{
-		Health += Profession.Profession.HealthPerLevel * Profession.Count;
+		Health += Profession.Profession.Health;
 	}
 	HealthMax = Health;
 
@@ -32,7 +32,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	Mana = ManaBase;
 	for (auto Profession : ProfessionData)
 	{
-		Mana += Profession.Profession.ManaPerLevel * Profession.Count;
+		Mana += Profession.Profession.Mana;
 	}
 	ManaMax = Mana;
 
