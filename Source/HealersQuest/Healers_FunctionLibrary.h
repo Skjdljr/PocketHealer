@@ -6,6 +6,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Healers_FunctionLibrary.generated.h"
 
+class AHealers_CharacterSheet;
+
 /**
  * 
  */
@@ -22,6 +24,9 @@ public:
 	static float PseudoRandomChance(const float BaseChance, const int32 Counter);
 	
 	// Passing a simple 
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Healers|Random")
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Healers|Random") //Keywords = "Random Success",
 	static bool IsRandomSuccess(const float BaseChance, const int32 Counter);
+
+	UFUNCTION(BlueprintPure, Category = "Healers|Party") //Keywords = "PartySheet", 
+	static AHealers_PartySheet* GetPartySheet(APlayerController* PC);
 };
