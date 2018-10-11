@@ -1,0 +1,42 @@
+[
+	{
+		"Name": "1",
+		"Level": 1,
+		"ProfessionName": "Sage",
+		"Health": 15,
+		"Mana": 20,
+		"ManaRegenerationPerSecondValue": 1
+	},
+	{
+		"Name": "2",
+		"Level": 2,
+		"ProfessionName": "Sage",
+		"Health": 30,
+		"Mana": 40,
+		"ManaRegenerationPerSecondValue": 1.25
+	},
+	{
+		"Name": "3",
+		"Level": 3,
+		"ProfessionName": "Expert Sage",
+		"Health": 45,
+		"Mana": 60,
+		"ManaRegenerationPerSecondValue": 1.5
+	},
+	{
+		"Name": "4",
+		"Level": 4,
+		"ProfessionName": "Expert Sage",
+		"Health": 60,
+		"Mana": 80,
+		"ManaRegenerationPerSecondValue": 1.75
+	},
+	{
+		"Name": "5",
+		"Level": 5,
+		"ProfessionName": "Master Sage",
+		"Health": 75,
+		"Mana": 100,
+		"ManaRegenerationPerSecondValue": 2
+	}
+]

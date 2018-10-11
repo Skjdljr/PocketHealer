@@ -1,0 +1,42 @@
+[
+	{
+		"Name": "1",
+		"Level": 1,
+		"ProfessionName": "Druid",
+		"Health": 30,
+		"Mana": 10,
+		"ManaRegenerationPerSecondValue": 2
+	},
+	{
+		"Name": "2",
+		"Level": 2,
+		"ProfessionName": "Druid",
+		"Health": 60,
+		"Mana": 20,
+		"ManaRegenerationPerSecondValue": 2.25
+	},
+	{
+		"Name": "3",
+		"Level": 3,
+		"ProfessionName": "Expert Druid",
+		"Health": 90,
+		"Mana": 60,
+		"ManaRegenerationPerSecondValue": 2.5
+	},
+	{
+		"Name": "4",
+		"Level": 4,
+		"ProfessionName": "Expert Druid",
+		"Health": 120,
+		"Mana": 65,
+		"ManaRegenerationPerSecondValue": 2.75
+	},
+	{
+		"Name": "5",
+		"Level": 5,
+		"ProfessionName": "Master Druid",
+		"Health": 150,
+		"Mana": 70,
+		"ManaRegenerationPerSecondValue": 3
+	}
+]
