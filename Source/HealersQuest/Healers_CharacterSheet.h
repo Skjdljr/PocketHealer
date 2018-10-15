@@ -84,4 +84,10 @@ public:
 
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	//TArray<AHealers_Ability*> Abilities;
+
+	/**
+	 * Convenience function to find a character sheet associated with a pawn.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Healers")
+	static AHealers_CharacterSheet* GetCharacterSheet (APawn* sheetOwner);
 };
