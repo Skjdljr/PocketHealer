@@ -4,13 +4,9 @@
 #include "HealersQuest.h"
 #include "Engine/World.h"
 
-AHealers_GameState::AHealers_GameState(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+void AHealers_GameState::OnRep_MatchState()
 {
-
+	OnMatchStateChanged.Broadcast();
+	
+	Super::OnRep_MatchState();
 }
-
-//void AHealers_GameState::BeginPlay()
-//{
-//	Super::BeginPlay();
-//}
