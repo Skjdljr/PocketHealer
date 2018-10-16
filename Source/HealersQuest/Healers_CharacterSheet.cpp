@@ -2,6 +2,8 @@
 
 #include "Healers_CharacterSheet.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
+#include "Healers_PlayerState.h"
+#include "GameFramework/Pawn.h"
 
 
 AHealers_CharacterSheet::AHealers_CharacterSheet()
@@ -11,6 +13,17 @@ AHealers_CharacterSheet::AHealers_CharacterSheet()
 
 	ConstructorHelpers::FObjectFinder<UDataTable> BP_RaceTable(TEXT("DataTable'/Game/Data/DT_CharacterRaces.DT_CharacterRaces'"));
 	RaceTable = BP_RaceTable.Object;
+}
+
+AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet (APawn* sheetOwner)
+{
+	AHealers_PlayerState* healerState = Cast<AHealers_PlayerState>(sheetOwner->PlayerState);
+	if (healerState == nullptr)
+	{
+		return nullptr;
+	}
+
+	return healerState->GetHealersCharacterSheet();
 }
 
 void AHealers_CharacterSheet::BeginPlay()
