@@ -9,16 +9,80 @@
 #include "Healers_CharacterSheet.generated.h"
 
 
+
 USTRUCT(BlueprintType)
 struct FDamageResistance
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|DamageResistance")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")
 	TEnumAsByte<EDamageResistance> DamageType;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|DamageResistance")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")
 	float DamageResistanceValue;
+};
+
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterAttributes
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float Health;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float Mana;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float ManaRegenerationPerSecond;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float InitiativePerSecond;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float AttackAccuracy;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float AttackDamage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float CriticalDamageChance;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float CriticalDamageValue;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float EvasionValue;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float ArmorValue;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	float LuckValue;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+	TArray<FDamageResistance> Resistances;
+};
+
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterRace : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterRace")
+	FCharacterAttributes RaceAttributes;
+};
+
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterRaceData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterRace")
+	UDataTable* RaceTable;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "CharacterRace")
+	TEnumAsByte<ECharacterRace> Race;
 };
 
 USTRUCT(BlueprintType, Blueprintable)
@@ -48,11 +112,32 @@ struct FCharacterProfessionData
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	FCharacterProfession Profession;
+	UDataTable* Profession;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	int32 Count;
+	int32 Level;
 };
+
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterSheetData : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+	FString CharacterName;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+	FCharacterRaceData Race;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+	FCharacterProfessionData Profession;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+	float Experience;
+
+	
+};
+
 
 /**
  * 
@@ -80,7 +165,7 @@ public:
 
 	// Array of ProfessionData. Each level add an entry for each profession taken. Done this way to allow multiclassing Fighter 5/Wizard 1, etc.
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
-	TArray<FCharacterProfessionData> ProfessionData;
+	FCharacterProfession Profession;
 
 	//UFUNCTION(BlueprintCallable, Category = "Healers|CharacterSheet")
 	//FORCEINLINE int32 GetCharacterLevel() const { return Classes.Num(); };
@@ -131,6 +216,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	float BaseEvasionValue;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+	float BaseLuckValue;
 
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")

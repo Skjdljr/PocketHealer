@@ -22,21 +22,24 @@ void AHealers_CharacterSheet::InitializeCharacter()
 
 	// Initialize Health. Linear growth by Profession per-level value.
 	Health = HealthBase;
-	for (auto Profession : ProfessionData)
-	{
-		Health += Profession.Profession.Health;
-	}
+	//for (auto Profession : ProfessionData)
+	//{
+	//	Health += Profession.Profession.Health;
+	//}
+	Health += Profession.Health;
 	HealthMax = Health;
 
 	// Initialize Mana. Linear growth by Profession per-level value.
 	Mana = ManaBase;
-	for (auto Profession : ProfessionData)
-	{
-		Mana += Profession.Profession.Mana;
-	}
+	//for (auto Profession : ProfessionData)
+	//{
+	//	Mana += Profession.Profession.Mana;
+	//}
+	Mana += Profession.Mana;
 	ManaMax = Mana;
 
 	// Average by Profession.
+	/*
 	int32 TotalLevels = 0;
 	for (auto Profession : ProfessionData)
 	{
@@ -45,5 +48,8 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	}
 	ManaRegenerationPerSecond /= TotalLevels;
 	ManaRegenerationPerSecond += ManaRegenerationPerSecondBase;
+	*/
+
+	ManaRegenerationPerSecond += Profession.ManaRegenerationPerSecondValue;
 
 }
