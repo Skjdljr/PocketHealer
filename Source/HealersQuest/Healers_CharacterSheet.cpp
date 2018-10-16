@@ -1,6 +1,7 @@
 
 
 #include "Healers_CharacterSheet.h"
+#include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 
 
 AHealers_CharacterSheet::AHealers_CharacterSheet()
@@ -8,6 +9,8 @@ AHealers_CharacterSheet::AHealers_CharacterSheet()
 	CharacterName = FString("Uninitialized");
 	Race = ECharacterRace::RACE_None;
 
+	ConstructorHelpers::FObjectFinder<UDataTable> BP_RaceTable(TEXT("DataTable'/Game/Data/DT_CharacterRaces.DT_CharacterRaces'"));
+	RaceTable = BP_RaceTable.Object;
 }
 
 void AHealers_CharacterSheet::BeginPlay()
@@ -19,9 +22,15 @@ void AHealers_CharacterSheet::BeginPlay()
 
 void AHealers_CharacterSheet::InitializeCharacter()
 {
+	// Using CharacterRace Enum, get string value
+	// RaceTable->FindRow() using string value
+	// If we found a row, then our race attributes can be assigned to our base attributes
 
 	// Initialize Health. Linear growth by Profession per-level value.
+	
 	Health = HealthBase;
+	
+	
 	//for (auto Profession : ProfessionData)
 	//{
 	//	Health += Profession.Profession.Health;

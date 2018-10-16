@@ -127,15 +127,20 @@ struct FCharacterSheetData : public FTableRowBase
 	FString CharacterName;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-	FCharacterRaceData Race;
+	TEnumAsByte<ECharacterRace> Race;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
 	FCharacterProfessionData Profession;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+	FCharacterAttributes Data;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
 	float Experience;
 
-	
+	// Skills / Abilities
+
+	// Inventory
 };
 
 
@@ -162,6 +167,9 @@ public:
 	// Placeholder for Now
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
 	TEnumAsByte<ECharacterRace> Race;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterSheet")
+	UDataTable* RaceTable;
 
 	// Array of ProfessionData. Each level add an entry for each profession taken. Done this way to allow multiclassing Fighter 5/Wizard 1, etc.
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
