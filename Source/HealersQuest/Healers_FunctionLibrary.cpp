@@ -1,6 +1,8 @@
 
-
 #include "Healers_FunctionLibrary.h"
+#include "Healers_PlayerController.h"
+#include "Healers_PlayerState.h"
+#include "Healers_PartySheet.h"
 
 float UHealers_FunctionLibrary::PseudoRandomChance(float BaseChance, int32 Counter)
 {
@@ -25,4 +27,17 @@ bool UHealers_FunctionLibrary::IsRandomSuccess(const float BaseChance, const int
 	}
 	
 	return IsSuccess;
+}
+
+AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* PC)
+{
+	AHealers_PartySheet* PartySheet = nullptr;
+	if (PC)
+	{
+		if (auto PS = Cast<AHealers_PlayerState>(PC->PlayerState))
+		{
+			PartySheet = PS->PartySheet;
+		}
+	}
+	return PartySheet;
 }

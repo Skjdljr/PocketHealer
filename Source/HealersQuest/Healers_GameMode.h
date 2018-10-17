@@ -14,9 +14,9 @@ class HEALERSQUEST_API AHealers_GameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-	AHealers_GameMode(const class FObjectInitializer& ObjectInitializer);
-
 public:
+
+	AHealers_GameMode();
 
 	// Reference UMG Asset in the Editor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
@@ -29,4 +29,6 @@ public:
 	virtual void BeginPlay() override;
 	virtual void StartMatch() override;
 
+	UFUNCTION(BlueprintCallable, Category = "GameMode")
+	void BP_StartMatch();
 };

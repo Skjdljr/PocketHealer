@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "GameFramework/Info.h"
 #include "Healers_QuestContract.generated.h"
 
@@ -11,28 +12,29 @@ class AHealers_CharacterSheet;
 /**
  * 
  */
-UCLASS()
-class HEALERSQUEST_API AHealers_QuestContract : public AInfo
+USTRUCT(Blueprintable)
+struct HEALERSQUEST_API FHealers_QuestContract : public FTableRowBase
 {
 	GENERATED_BODY()
 	
 public:
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "QuestContract")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	int32 ID;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "QuestContract")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	FString ContractDescription;
 	
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "QuestContract")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	FString ContractOwnerName;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	UTexture2D* ContractImage;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "QuestContract")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	int32 ChallengeRating;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "QuestContract")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
 	TArray<AHealers_CharacterSheet*> ContractMembers;
 
 

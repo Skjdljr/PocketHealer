@@ -4,7 +4,7 @@ malle99 - Freesound.org - https://freesound.org/people/malle99/sounds/384187/ - 
 lzmraul - Freesound.org - https://freesound.org/people/lzmraul/sounds/389458/ - Button Rolloff
 szalonegacie - FreeSound.org - https://freesound.org/people/szalonegacie/sounds/232175/ - Pub Ambience
 batuhan - Freesound.org - https://freesound.org/people/Batuhan/sounds/17733/ - Fire Ambience
-
+dsp9000 - Freesound.org - https://freesound.org/people/dsp9000/sounds/76405/ - Old Church Bell
 
 Music
 
@@ -16,4 +16,6 @@ http://creativecommons.org/licenses/by/3.0/
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
 
-
+"Gregorian Chant" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
