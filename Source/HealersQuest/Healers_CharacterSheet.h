@@ -1,13 +1,11 @@
-
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "HealersQuest.h"
+#include "Healers_Spell.h"
 #include "Engine/DataTable.h"
 #include "GameFramework/Info.h"
 #include "Healers_CharacterSheet.generated.h"
-
 
 
 USTRUCT(BlueprintType)
@@ -96,14 +94,17 @@ struct FCharacterProfession : public FTableRowBase
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
 	FString ProfessionName;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	float Health;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+    FCharacterAttributes Attributes;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	float Mana;
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+	//float Health;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-	float ManaRegenerationPerSecondValue;
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+	//float Mana;
+
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+	//float ManaRegenerationPerSecondValue;
 };
 
 USTRUCT(BlueprintType, Blueprintable)
@@ -237,6 +238,8 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	float BaseLuckValue;
 
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+    FCharacterSheetData Data;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	TArray<FDamageResistance> Resistances;
@@ -248,6 +251,7 @@ public:
 
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	//TArray<AHealers_Ability*> Abilities;
+    TArray<TSubclassOf<AHealers_Spell>> Abilities;
 
 	/**
 	 * Convenience function to find a character sheet associated with a pawn.

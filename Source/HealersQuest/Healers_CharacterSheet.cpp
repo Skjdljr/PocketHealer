@@ -48,7 +48,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	//{
 	//	Health += Profession.Profession.Health;
 	//}
-	Health += Profession.Health;
+	Health += Profession.Attributes.Health;
 	HealthMax = Health;
 
 	// Initialize Mana. Linear growth by Profession per-level value.
@@ -57,7 +57,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	//{
 	//	Mana += Profession.Profession.Mana;
 	//}
-	Mana += Profession.Mana;
+	Mana += Profession.Attributes.Health;
 	ManaMax = Mana;
 
 	// Average by Profession.
@@ -72,6 +72,6 @@ void AHealers_CharacterSheet::InitializeCharacter()
 	ManaRegenerationPerSecond += ManaRegenerationPerSecondBase;
 	*/
 
-	ManaRegenerationPerSecond += Profession.ManaRegenerationPerSecondValue;
+	ManaRegenerationPerSecond += Profession.Attributes.ManaRegenerationPerSecond;
 
 }
