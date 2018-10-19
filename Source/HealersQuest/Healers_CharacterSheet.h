@@ -60,6 +60,9 @@ struct FCharacterAttributes
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
 	TArray<FDamageResistance> Resistances;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    TArray<TSubclassOf<AHealers_Spell>> Abilities;
 };
 
 USTRUCT(BlueprintType, Blueprintable)
@@ -248,10 +251,6 @@ public:
 	// @! TODO : If using gameplay tags, how do we define what items can exist on a character? (e.g. if we had 'Tail' armor slot available only to enemies with 'Tail' tag, how do we define valid tags for each character? List of tags per CharacterSheet?)
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
 	//TArray<AHealers_Inventory*> CharacterInventory;
-
-	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-	//TArray<AHealers_Ability*> Abilities;
-    TArray<TSubclassOf<AHealers_Spell>> Abilities;
 
 	/**
 	 * Convenience function to find a character sheet associated with a pawn.
