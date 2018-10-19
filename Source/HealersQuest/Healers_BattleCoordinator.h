@@ -2,12 +2,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Actor.h"
+#include "GameFramework/Actor.h"
 #include "Healers_BattleCoordinator.generated.h"
 
 class AHealers_CharacterSheet;
 
-USTRUCT()
+USTRUCT(Blueprintable)
 struct FBattleData
 {
     GENERATED_BODY();

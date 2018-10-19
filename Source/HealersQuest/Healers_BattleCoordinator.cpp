@@ -17,7 +17,7 @@ void AHealers_BattleCoordinator::Tick(float dt)
     {
         case BS_PRE_BATTLE:
         {
-            if (/*IsBattleReadyToStart()*/)
+            if (true/*IsBattleReadyToStart()*/)
             {
                 SetBattleState(BS_BATTLE_IN_PROGRESS);
                 //OnBattleBeginDelegate
@@ -42,7 +42,7 @@ void AHealers_BattleCoordinator::Tick(float dt)
         case BS_POST_BATTLE:
         {
             //
-            if (/*IsBattleComplete()*/)
+            if (true/*IsBattleComplete()*/)
             {
                 SetBattleState(BS_BATTLE_COMPLETE);
                 //OnBattleCompleted
