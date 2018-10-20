@@ -122,13 +122,60 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;
 
-    // @! TODO : Need a good way of defining item properties. Suggested: Use GameplayTags. Tags: Weapon, Armor, Accessory, Consumable, etc.
-    // @! TODO : If using gameplay tags, how do we define what items can exist on a character? (e.g. if we had 'Tail' armor slot available only to enemies with 'Tail' tag, how do we define valid tags for each character? List of tags per CharacterSheet?)
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    //TArray<AHealers_Inventory*> CharacterInventory;
+    /**
+    * Getter and Setters
+    */
+
+    // Race
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    TEnumAsByte<ECharacterRace> GetCharacterRace() { return CharacterSheet.Race; }
+
+    // Profession
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    TEnumAsByte<ECharacterProfession> GetCharacterProfession() { return CharacterSheet.Profession; }
+
+    // Attributes
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    FCharacterAttributes& GetCharacterAttributes() { return CharacterSheet.Attributes; }
+
+
+    // Level
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    int32 GetLevel() { return CharacterSheet.Level; }
 
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    void SetLevel(int32 InLevel) { CharacterSheet.Level = InLevel; }
+
+
+    // Experience
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float GetExperience() { return CharacterSheet.Experience; }
+
+    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    void SetExperience(float InExperience) { CharacterSheet.Experience = InExperience; }
+
+
+    // Health
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float GetHealth() { return CharacterSheet.Attributes.Health; }
+
+    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    void SetHealth(float InHealth) { CharacterSheet.Attributes.Health = InHealth; }
+
+
+    // Mana
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float GetMana() { return CharacterSheet.Attributes.Mana; }
+
+    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    void SetMana(float InMana) { CharacterSheet.Attributes.Mana = InMana; }
+
+
+    // Resistances
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
+
+
 
     /**
      * Convenience function to find a character sheet associated with a pawn.
@@ -136,3 +183,10 @@ public:
     UFUNCTION(BlueprintCallable, Category="Healers")
     static AHealers_CharacterSheet* GetCharacterSheet (APawn* sheetOwner);
 };
+
+
+
+// @! TODO : Need a good way of defining item properties. Suggested: Use GameplayTags. Tags: Weapon, Armor, Accessory, Consumable, etc.
+// @! TODO : If using gameplay tags, how do we define what items can exist on a character? (e.g. if we had 'Tail' armor slot available only to enemies with 'Tail' tag, how do we define valid tags for each character? List of tags per CharacterSheet?)
+//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
+//TArray<AHealers_Inventory*> CharacterInventory;

@@ -30,7 +30,8 @@ void UHealers_SpellManaRequirement::SpellExecuted(APawn* caster)
     AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
     if (charSheet != nullptr)
     {
-        // @! TODO FIX
-        //charSheet->Mana -= ManaCost;
+        auto Mana = charSheet->GetMana();
+        Mana -= ManaCost;
+        charSheet->SetMana(Mana);
     }
 }
