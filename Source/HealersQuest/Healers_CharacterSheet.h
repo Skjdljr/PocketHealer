@@ -48,6 +48,25 @@ struct FCharacterProfessionDefinition : public FTableRowBase
 
 
 /**
+* FCharacterProfessionLibrary : Character Profession Library. Define DataTables used by each Profession.
+*
+*/
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterProfessionLibrary : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+    TEnumAsByte<ECharacterProfession> Profession;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+    UDataTable* DataTable;
+};
+
+
+
+
+/**
 * Obsolete - Only needed for Multiclass support.
 * FCharacterProfessionLevel : Character Profession-Level. BP-Exposed structure storing set of Profession and Level.
 *
