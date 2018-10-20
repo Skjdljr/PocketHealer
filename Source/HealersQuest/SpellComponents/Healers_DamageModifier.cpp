@@ -43,12 +43,14 @@ void UHealers_DamageModifier::GiveDamageModifierToTarget (AActor* newTarget)
 
             for (int dmgIdx = 0; dmgIdx < DamageModifiers.Num(); ++dmgIdx)
             {
-                // TODO : Use a Getter in the CharacterSheet instead of directly accessing these values
-                for (int charIdx = 0; charIdx < characterSheet->CharacterSheet.Attributes.Resistances.Num(); ++charIdx)
+                // Get reference to Resistances
+                auto& Resistances = characterSheet->GetResistances();
+                for (int charIdx = 0; charIdx < Resistances.Num(); ++charIdx)
                 {
-                    if (characterSheet->CharacterSheet.Attributes.Resistances[charIdx].DamageType == DamageModifiers[dmgIdx].DamageType)
+                    if (Resistances[charIdx].DamageType == DamageModifiers[dmgIdx].DamageType)
                     {
-                        characterSheet->CharacterSheet.Attributes.Resistances[charIdx].DamageResistanceValue += DamageModifiers[dmgIdx].DamageResistanceValue;
+                        Resistances[charIdx].DamageResistanceValue += DamageModifiers[dmgIdx].DamageResistanceValue;
+                        Resistances[charIdx].DamageResistancePercentValue += DamageModifiers[dmgIdx].DamageResistancePercentValue;
                         break;
                     }
                 }
@@ -63,13 +65,15 @@ void UHealers_DamageModifier::RemoveDamageModifiers ()
     {
         for (int dmgIdx = 0; dmgIdx < DamageModifiers.Num(); ++dmgIdx)
         {
-            // TODO : Use a Getter in the CharacterSheet instead of directly accessing these values
-            for (int charIdx = 0; charIdx < Targets[targetIdx]->CharacterSheet.Attributes.Resistances.Num(); ++charIdx)
+            // Get reference to Resistances
+            auto& Resistances = Targets[targetIdx]->GetResistances();
+            for (int charIdx = 0; charIdx < Resistances.Num(); ++charIdx)
             {
-                if (Targets[targetIdx]->CharacterSheet.Attributes.Resistances[charIdx].DamageType == DamageModifiers[dmgIdx].DamageType)
+                if (Resistances[charIdx].DamageType == DamageModifiers[dmgIdx].DamageType)
                 {
                     //Undo the damage modifier
-                    Targets[targetIdx]->CharacterSheet.Attributes.Resistances[charIdx].DamageResistanceValue -= DamageModifiers[dmgIdx].DamageResistanceValue;
+                    Resistances[charIdx].DamageResistanceValue -= DamageModifiers[dmgIdx].DamageResistanceValue;
+                    Resistances[charIdx].DamageResistancePercentValue -= DamageModifiers[dmgIdx].DamageResistancePercentValue;
                     break; //Go to next DamageModifier
                 }
             }

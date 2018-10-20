@@ -127,6 +127,9 @@ public:
     //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
     //TArray<AHealers_Inventory*> CharacterInventory;
 
+    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
+
     /**
      * Convenience function to find a character sheet associated with a pawn.
      */
