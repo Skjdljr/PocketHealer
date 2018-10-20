@@ -1,0 +1,211 @@
+[
+	{
+		"Name": "Human",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Elf",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Dwarf",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Orc",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Monster",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Beast",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Plant",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Dragon",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Undead",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Elemental",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	},
+	{
+		"Name": "Construct",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 50,
+			"ManaRegenerationPerSecond": 1,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackDamage": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
+			"EvasionValue": 10,
+			"ArmorValue": 1,
+			"LuckValue": 1,
+			"Resistances": [],
+			"Abilities": []
+		}
+	}
+]
