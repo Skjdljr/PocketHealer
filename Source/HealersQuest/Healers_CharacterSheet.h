@@ -19,7 +19,32 @@ struct FCharacterRaceDefinition : public FTableRowBase
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterRace")
+    int32 Level;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterRace")
+    FString RaceName;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterRace")
     FCharacterAttributes Attributes;
+};
+
+
+
+
+/**
+* FCharacterRaceLibrary : Character Race Library. Define DataTables used by each Race.
+*
+*/
+USTRUCT(BlueprintType, Blueprintable)
+struct FCharacterRaceLibrary : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+    TEnumAsByte<ECharacterRace> Race;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+    UDataTable* DataTable;
 };
 
 
@@ -137,6 +162,9 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void InitializeCharacter();
+
+    void InitializeRaceAttributes(UDataTable* CharacterRaceDataTable);
+    void InitializeProfessionAttributes(UDataTable* CharacterProfessionDataTable);
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;

@@ -1,0 +1,52 @@
+[
+	{
+		"Name": "Commoner",
+		"Profession": "PROFESSION_Commoner",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Commoner.DT_Profession_Commoner'"
+	},
+	{
+		"Name": "Healer",
+		"Profession": "PROFESSION_Healer",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Healer.DT_Profession_Healer'"
+	},
+	{
+		"Name": "Sage",
+		"Profession": "PROFESSION_Sage",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Sage.DT_Profession_Sage'"
+	},
+	{
+		"Name": "Druid",
+		"Profession": "PROFESSION_Druid",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Druid.DT_Profession_Druid'"
+	},
+	{
+		"Name": "Defender",
+		"Profession": "PROFESSION_Defender",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Defender.DT_Profession_Defender'"
+	},
+	{
+		"Name": "Barbarian",
+		"Profession": "PROFESSION_Barbarian",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Barbarian.DT_Profession_Barbarian'"
+	},
+	{
+		"Name": "Knight",
+		"Profession": "PROFESSION_Knight",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Knight.DT_Profession_Knight'"
+	},
+	{
+		"Name": "Rogue",
+		"Profession": "PROFESSION_Rogue",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Rogue.DT_Profession_Rogue'"
+	},
+	{
+		"Name": "Ranger",
+		"Profession": "PROFESSION_Ranger",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Ranger.DT_Profession_Ranger'"
+	},
+	{
+		"Name": "Wizard",
+		"Profession": "PROFESSION_Wizard",
+		"DataTable": "DataTable'/Game/Data/Professions/DT_Profession_Wizard.DT_Profession_Wizard'"
+	}
+]

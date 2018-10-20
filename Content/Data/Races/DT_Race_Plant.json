@@ -1,0 +1,25 @@
+[
+	{
+		"Name": "1",
+		"Level": 1,
+		"RaceName": "Plant",
+		"Attributes":
+		{
+			"Health": 100,
+			"Mana": 0,
+			"ManaRegenerationPerSecond": 0,
+			"InitiativePerSecond": 0.2,
+			"AttackAccuracy": 0,
+			"AttackPower": 0,
+			"MagicAccuracy": 0,
+			"MagicPower": 0,
+			"CriticalDamageChance": 0,
+			"CriticalDamageValue": 0,
+			"EvasionValue": 0,
+			"ArmorValue": 0,
+			"LuckValue": 0,
+			"Resistances": [],
+			"Abilities": []
+		}
+	}
+]

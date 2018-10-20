@@ -1,0 +1,57 @@
+[
+	{
+		"Name": "Human",
+		"Race": "RACE_Human",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Human.DT_Race_Human'"
+	},
+	{
+		"Name": "Elf",
+		"Race": "RACE_Elf",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Elf.DT_Race_Elf'"
+	},
+	{
+		"Name": "Dwarf",
+		"Race": "RACE_Dwarf",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Dwarf.DT_Race_Dwarf'"
+	},
+	{
+		"Name": "Orc",
+		"Race": "RACE_Orc",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Orc.DT_Race_Orc'"
+	},
+	{
+		"Name": "Monster",
+		"Race": "RACE_Monster",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Monster.DT_Race_Monster'"
+	},
+	{
+		"Name": "Beast",
+		"Race": "RACE_Beast",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Beast.DT_Race_Beast'"
+	},
+	{
+		"Name": "Plant",
+		"Race": "RACE_Plant",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Plant.DT_Race_Plant'"
+	},
+	{
+		"Name": "Dragon",
+		"Race": "RACE_Dragon",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Dragon.DT_Race_Dragon'"
+	},
+	{
+		"Name": "Undead",
+		"Race": "RACE_Undead",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Undead.DT_Race_Undead'"
+	},
+	{
+		"Name": "Elemental",
+		"Race": "RACE_Elemental",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Elemental.DT_Race_Elemental'"
+	},
+	{
+		"Name": "Construct",
+		"Race": "RACE_Construct",
+		"DataTable": "DataTable'/Game/Data/Races/DT_Race_Construct.DT_Race_Construct'"
+	}
+]
