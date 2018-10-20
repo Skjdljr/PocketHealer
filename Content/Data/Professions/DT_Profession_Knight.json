@@ -2,7 +2,7 @@
 	{
 		"Name": "1",
 		"Level": 1,
-		"ProfessionName": "Defender",
+		"ProfessionName": "Healer",
 		"Attributes":
 		{
 			"Health": 0,
@@ -23,7 +23,7 @@
 	{
 		"Name": "2",
 		"Level": 2,
-		"ProfessionName": "Defender",
+		"ProfessionName": "Healer",
 		"Attributes":
 		{
 			"Health": 0,
@@ -44,7 +44,7 @@
 	{
 		"Name": "3",
 		"Level": 3,
-		"ProfessionName": "Expert Defender",
+		"ProfessionName": "Healer",
 		"Attributes":
 		{
 			"Health": 0,
@@ -65,7 +65,7 @@
 	{
 		"Name": "4",
 		"Level": 4,
-		"ProfessionName": "Expert Defender",
+		"ProfessionName": "Healer",
 		"Attributes":
 		{
 			"Health": 0,
@@ -86,7 +86,7 @@
 	{
 		"Name": "5",
 		"Level": 5,
-		"ProfessionName": "Master Defender",
+		"ProfessionName": "Healer",
 		"Attributes":
 		{
 			"Health": 0,
