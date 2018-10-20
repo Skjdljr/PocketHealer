@@ -165,6 +165,7 @@ public:
 
     void InitializeRaceAttributes(UDataTable* CharacterRaceDataTable);
     void InitializeProfessionAttributes(UDataTable* CharacterProfessionDataTable);
+    void AddAttributes(const FCharacterAttributes& InAttributes);
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;

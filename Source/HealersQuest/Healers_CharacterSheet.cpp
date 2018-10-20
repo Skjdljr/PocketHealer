@@ -63,8 +63,7 @@ void AHealers_CharacterSheet::InitializeRaceAttributes(UDataTable* CharacterRace
                 // @! NOTE For now, get the race data no matter what. In the future we might care about Race levels. 
                 if (true || CharacterSheet.Level == CurrentRow->Level)
                 {
-                    // @! TODO : Add to base attributes instead of assign/copy...
-                    CharacterSheet.Attributes = CurrentRow->Attributes;
+                    AddAttributes(CurrentRow->Attributes);
                     break;
                 }
             }
@@ -85,11 +84,74 @@ void AHealers_CharacterSheet::InitializeProfessionAttributes(UDataTable* Charact
                 // Get the entry for our Level
                 if (CharacterSheet.Level == CurrentRow->Level)
                 {
-                    // @! TODO : Add to base attributes
-                    // AddAttributes(CurrentRow->Attributes);
+                    AddAttributes(CurrentRow->Attributes);
                     break;
                 }
             }
         }
     }
+}
+
+void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes & InAttributes)
+{
+    CharacterSheet.Attributes.Health += InAttributes.Health;
+    CharacterSheet.Attributes.Mana += InAttributes.Mana;
+    CharacterSheet.Attributes.ManaRegenerationPerSecond += InAttributes.ManaRegenerationPerSecond;
+    CharacterSheet.Attributes.InitiativePerSecond += InAttributes.InitiativePerSecond;
+
+    CharacterSheet.Attributes.AttackAccuracy += InAttributes.AttackAccuracy;
+    CharacterSheet.Attributes.AttackPower += InAttributes.AttackPower;
+    CharacterSheet.Attributes.MagicAccuracy += InAttributes.MagicAccuracy;
+    CharacterSheet.Attributes.MagicPower += InAttributes.MagicPower;
+
+    CharacterSheet.Attributes.CriticalDamageChance += InAttributes.CriticalDamageChance;
+    CharacterSheet.Attributes.CriticalDamageValue += InAttributes.CriticalDamageValue;
+
+    CharacterSheet.Attributes.EvasionValue += InAttributes.EvasionValue;
+    CharacterSheet.Attributes.ArmorValue += InAttributes.ArmorValue;
+
+    CharacterSheet.Attributes.LuckValue += InAttributes.LuckValue;
+
+    for (auto InResistanceEntry : InAttributes.Resistances)
+    {   
+        bool IsPresent = false;
+        for (auto& ResistanceEntry : CharacterSheet.Attributes.Resistances)
+        {
+            if ((int32)ResistanceEntry.DamageType == (int32)InResistanceEntry.DamageType)
+            {
+                IsPresent = true;
+                ResistanceEntry.DamageResistancePercentValue += InResistanceEntry.DamageResistancePercentValue;
+                ResistanceEntry.DamageResistanceValue += InResistanceEntry.DamageResistanceValue;
+                break;
+            }
+        }
+
+        if (!IsPresent)
+        {
+            // @! TODO : Use AddUnique, but need to define FDamageResistance equals operator
+            CharacterSheet.Attributes.Resistances.Add(InResistanceEntry);
+        }
+    }
+
+    for (auto InAbilityEntry : InAttributes.Abilities)
+    {
+        bool IsPresent = false;
+        for (auto& AbilityEntry : CharacterSheet.Attributes.Abilities)
+        {
+            // @! TODO Need a Name property for Abilities/Spells
+            if (false) //if (AbilityEntry.Name == InAbilityEntry.Name)
+            {
+                IsPresent = true;
+                //
+                break;
+            }
+        }
+
+        if (!IsPresent)
+        {
+            CharacterSheet.Attributes.Abilities.AddUnique(InAbilityEntry);
+        }
+    }
+
+    CharacterSheet.Attributes.MagicPower += InAttributes.MagicPower;
 }
