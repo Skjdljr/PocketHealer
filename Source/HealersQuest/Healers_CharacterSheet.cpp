@@ -52,7 +52,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
             {
                 if (auto GameModeDefaultObject = Cast<AHealers_GameMode>(GameModeClass->GetDefaultObject()))
                 {
-                    if (auto RaceDataTable = GameModeDefaultObject->RaceTable)
+                    if (auto RaceDataTable = GameModeDefaultObject->CharacterRaceLibrary)
                     {
                         // Find the Row in the DataTable whose RowName(Key) matches our Race Enum value
                         if (auto RaceDefinition = RaceDataTable->FindRow<FCharacterRaceDefinition>(*CharacterRaceString, TEXT("Human")))
