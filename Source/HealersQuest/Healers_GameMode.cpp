@@ -55,6 +55,6 @@ void AHealers_GameMode::StartMatch()
 
 void AHealers_GameMode::BP_StartMatch()
 {
-	// AGameMode.Tick detects this and begins the match
+    // AGameMode.Tick detects this and begins the match
     bDelayedStart = false;
 }

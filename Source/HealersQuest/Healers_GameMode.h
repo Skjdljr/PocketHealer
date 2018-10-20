@@ -6,6 +6,8 @@
 #include "GameFramework/GameMode.h"
 #include "Healers_GameMode.generated.h"
 
+class UDataTable;
+
 /**
  * 
  */
@@ -19,7 +21,7 @@ public:
 	AHealers_GameMode();
 
 	// Reference UMG Asset in the Editor
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+	UPROPERTY(BlueprintReadOnly, Category = "GameMode")
 	UUserWidget* MainMenu;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
@@ -31,4 +33,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 	void BP_StartMatch();
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameMode")
+	UDataTable* RaceTable;
 };

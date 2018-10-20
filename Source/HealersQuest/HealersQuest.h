@@ -30,7 +30,7 @@ enum ECharacterRace
 UENUM(BlueprintType)
 enum ECharacterProfession
 {
-	PROFESSION_None			UMETA(Hidden),
+	PROFESSION_Null			UMETA(Hidden),
 	PROFESSION_Commoner		UMETA(DisplayName = "Commoner"),
 	PROFESSION_Healer		UMETA(DisplayName = "Healer"),
 	PROFESSION_Sage			UMETA(DisplayName = "Sage"),
@@ -47,7 +47,7 @@ enum ECharacterProfession
 UENUM(BlueprintType)
 enum EDamageResistance
 {
-	DR_None			UMETA(Hidden),
+	DR_Null			UMETA(Hidden),
 	DR_Physical		UMETA(DisplayName = "Physical"),
 	DR_Fire			UMETA(DisplayName = "Fire"),
 	DR_Cold			UMETA(DisplayName = "Cold"),
