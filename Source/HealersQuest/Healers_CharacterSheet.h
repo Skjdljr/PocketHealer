@@ -10,7 +10,7 @@
 
 
 /**
-* FCharacterRace : Character Race Definition. Design-time structure stored in  DataTable for 
+* FCharacterRace : Character Race Definition. Design-time structure stored in DataTable. 
 *
 */
 USTRUCT(BlueprintType, Blueprintable)
@@ -26,11 +26,11 @@ struct FCharacterRaceDefinition : public FTableRowBase
 
 
 /**
-* FCharacterProfession : Character Profession
+* FCharacterProfessionDefinition : Character Profession Definition. Design-time structure stored in DataTable.
 *
 */
 USTRUCT(BlueprintType, Blueprintable)
-struct FCharacterProfession : public FTableRowBase
+struct FCharacterProfessionDefinition : public FTableRowBase
 {
     GENERATED_BODY()
 
@@ -44,20 +44,35 @@ struct FCharacterProfession : public FTableRowBase
     FCharacterAttributes Attributes;
 };
 
+
+
+
+/**
+* Obsolete - Only needed for Multiclass support.
+* FCharacterProfessionLevel : Character Profession-Level. BP-Exposed structure storing set of Profession and Level.
+*
+*/
 USTRUCT(BlueprintType, Blueprintable)
-struct FCharacterProfessionData
+struct FCharacterProfessionLevel
 {
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-    UDataTable* Profession;
+    TEnumAsByte<ECharacterProfession> Profession;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
     int32 Level;
 };
 
+
+
+
+/**
+* FCharacterSheet : Character Sheet. Design-time structure stored in DataTable.
+*
+*/
 USTRUCT(BlueprintType, Blueprintable)
-struct FCharacterSheetData : public FTableRowBase
+struct FCharacterSheet : public FTableRowBase
 {
     GENERATED_BODY()
 
@@ -65,28 +80,33 @@ struct FCharacterSheetData : public FTableRowBase
     FString CharacterName;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-    TEnumAsByte<ECharacterRace> Race;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-    FCharacterProfessionData Profession;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-    FCharacterAttributes Data;
+    int32 Level;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     float Experience;
 
-    // Skills / Abilities
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    TEnumAsByte<ECharacterRace> Race;
 
-    // Inventory
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    TEnumAsByte<ECharacterProfession> Profession;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    FCharacterAttributes Attributes;
+
+    // @! TODO: 
+    // FCharacterInventory Inventory;
 };
 
 
+
+
 /**
- * 
- */
-UCLASS(Blueprintable) //Blueprintable
-class HEALERSQUEST_API AHealers_CharacterSheet : public AActor //AInfo
+* AHealers_CharacterSheet : Character Sheet Actor. Run-time instance of a CharacterSheet.
+*
+*/
+UCLASS(Blueprintable)
+class HEALERSQUEST_API AHealers_CharacterSheet : public AInfo
 {
     GENERATED_BODY()
 
@@ -100,82 +120,7 @@ public:
     void InitializeCharacter();
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-    FCharacterSheetData CharacterSheetData;
-
-    // Array of ProfessionData. Each level add an entry for each profession taken. Done this way to allow multiclassing Fighter 5/Wizard 1, etc.
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
-    FCharacterProfession Profession;
-
-
-
-
-
-
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
-    float Experience;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Healers|CharacterSheet")
-    float HealthBase = 150;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float Health;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float HealthMax;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
-    float ManaBase = 50;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float Mana;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float ManaMax;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float Shield;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float ShieldMax;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Meta = (ExposeOnSpawn = true), Category = "Healers|CharacterSheet")
-    float ManaRegenerationPerSecondBase = 1.0;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float ManaRegenerationPerSecond;
-
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float ArmorValue;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float AttackRate;
-
-    // Initiative Gained per Second
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseInitiativePerSecond;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseAttackAccuracy;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseCriticalDamageChance;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseCriticalDamageValue;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseEvasionValue;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    float BaseLuckValue;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    FCharacterSheetData Data;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|CharacterSheet")
-    TArray<FDamageResistance> Resistances;
+    FCharacterSheet CharacterSheet;
 
     // @! TODO : Need a good way of defining item properties. Suggested: Use GameplayTags. Tags: Weapon, Armor, Accessory, Consumable, etc.
     // @! TODO : If using gameplay tags, how do we define what items can exist on a character? (e.g. if we had 'Tail' armor slot available only to enemies with 'Tail' tag, how do we define valid tags for each character? List of tags per CharacterSheet?)

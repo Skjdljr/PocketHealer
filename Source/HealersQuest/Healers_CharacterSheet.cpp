@@ -9,12 +9,8 @@
 #include "Healers_GameMode.h"
 
 
-AHealers_CharacterSheet::AHealers_CharacterSheet() :
-Experience(0.f)
+AHealers_CharacterSheet::AHealers_CharacterSheet()
 {
-    CharacterSheetData.CharacterName = FString("");
-    CharacterSheetData.Race = ECharacterRace::RACE_Human;
-
     // ConstructorHelpers::FObjectFinder<UDataTable> BP_RaceTable(TEXT("DataTable'/Game/Data/DT_CharacterRaces.DT_CharacterRaces'"));
     // RaceTable = BP_RaceTable.Object;
 }
@@ -41,7 +37,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
 {
     // Using CharacterRace Enum, look up the String value for our character's Race
     const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ECharacterRace"), true);
-    auto CharacterRaceString = EnumPtr->GetNameStringByIndex(CharacterSheetData.Race.GetValue());
+    auto CharacterRaceString = EnumPtr->GetNameStringByIndex(CharacterSheet.Race.GetValue());
     
     // Use our GameMode's RaceTable and our CharacterRaceString as keys to retrieve FCharacterRaceDefinition values
     if (auto World = GetWorld())
@@ -58,7 +54,7 @@ void AHealers_CharacterSheet::InitializeCharacter()
                         if (auto RaceDefinition = RaceDataTable->FindRow<FCharacterRaceDefinition>(*CharacterRaceString, TEXT("Human")))
                         {
                             // Copy out our Race Data
-                            CharacterSheetData.Data = RaceDefinition->Attributes;
+                            //CharacterSheetData.Data = RaceDefinition->Attributes;
                         }
                         else
                         {
@@ -73,9 +69,10 @@ void AHealers_CharacterSheet::InitializeCharacter()
     }
 
     // Initialize Health. Linear growth by Profession per-level value.
-    auto LevelString = FString::FromInt(CharacterSheetData.Profession.Level);
+    
+    //auto LevelString = FString::FromInt(CharacterSheetData.Level);
     //if (CharacterSheetData.Profession.Profession->FindRow<FCharacterProfession>(*))
-    if (auto ProfessionRow = CharacterSheetData.Profession.Profession->FindRow<FCharacterProfession>(*LevelString, TEXT("1")))
+    //if (auto ProfessionRow = CharacterSheetData.Profession.Profession->FindRow<FCharacterProfession>(*LevelString, TEXT("1")))
     {
         //CharacterSheetData.Data.Health += ProfessionRow->Health;
         //CharacterSheetData.Data.Health +=
@@ -86,17 +83,17 @@ void AHealers_CharacterSheet::InitializeCharacter()
     //{
     //	Health += Profession.Profession.Health;
     //}
-    Health += Profession.Attributes.Health;
-    HealthMax = Health;
+    //Health += Profession.Attributes.Health;
+    //HealthMax = Health;
 
     // Initialize Mana. Linear growth by Profession per-level value.
-    Mana = ManaBase;
+
     //for (auto Profession : ProfessionData)
     //{
     //	Mana += Profession.Profession.Mana;
     //}
-    Mana += Profession.Attributes.Health;
-    ManaMax = Mana;
+    //Mana += Profession.Attributes.Health;
+    //ManaMax = Mana;
 
     // Average by Profession.
     /*
@@ -110,6 +107,5 @@ void AHealers_CharacterSheet::InitializeCharacter()
     ManaRegenerationPerSecond += ManaRegenerationPerSecondBase;
     */
 
-    ManaRegenerationPerSecond += Profession.Attributes.ManaRegenerationPerSecond;
-
+    //ManaRegenerationPerSecond += Profession.Attributes.ManaRegenerationPerSecond;
 }

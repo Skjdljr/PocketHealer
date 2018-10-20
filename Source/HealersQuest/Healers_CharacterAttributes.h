@@ -64,7 +64,13 @@ struct FCharacterAttributes
     float AttackAccuracy;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
-    float AttackDamage;
+    float AttackPower;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    float MagicAccuracy;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    float MagicPower;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
     float CriticalDamageChance;

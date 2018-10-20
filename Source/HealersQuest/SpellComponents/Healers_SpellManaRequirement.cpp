@@ -4,30 +4,33 @@
 #include "Healers_CharacterSheet.h"
 
 UHealers_SpellManaRequirement::UHealers_SpellManaRequirement(const FObjectInitializer& ObjectInitializer) :
-	Super(ObjectInitializer)
+    Super(ObjectInitializer)
 {
 
 }
 
 bool UHealers_SpellManaRequirement::CanCastSpell(APawn* caster) const
 {
-	if (!Super::CanCastSpell(caster))
-	{
-		return false;
-	}
+    if (!Super::CanCastSpell(caster))
+    {
+        return false;
+    }
 
-	AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
+    AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
 
-	return (charSheet == nullptr || charSheet->Mana >= ManaCost);
+    // @! TODO FIX
+    //return (charSheet == nullptr || charSheet->Mana >= ManaCost);
+    return false;
 }
 
 void UHealers_SpellManaRequirement::SpellExecuted(APawn* caster)
 {
-	Super::SpellExecuted(caster);
+    Super::SpellExecuted(caster);
 
-	AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
-	if (charSheet != nullptr)
-	{
-		charSheet->Mana -= ManaCost;
-	}
+    AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
+    if (charSheet != nullptr)
+    {
+        // @! TODO FIX
+        //charSheet->Mana -= ManaCost;
+    }
 }
