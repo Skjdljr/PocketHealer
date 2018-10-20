@@ -12,7 +12,7 @@ DECLARE_LOG_CATEGORY_EXTERN(GameUI, Log, All);
 UENUM(BlueprintType)
 enum ECharacterRace
 {
-	RACE_None		UMETA(Hidden),
+	RACE_Null		UMETA(Hidden),
 	RACE_Human		UMETA(DisplayName = "Human"),
 	RACE_Elf		UMETA(DisplayName = "Elf"),
 	RACE_Dwarf		UMETA(DisplayName = "Dwarf"),
