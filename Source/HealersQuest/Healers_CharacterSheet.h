@@ -96,17 +96,17 @@ struct FCharacterProfessionLibrary : public FTableRowBase
 * FCharacterProfessionLevel : Character Profession-Level. BP-Exposed structure storing set of Profession and Level.
 *
 */
-USTRUCT(BlueprintType, Blueprintable)
-struct FCharacterProfessionLevel
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-    TEnumAsByte<ECharacterProfession> Profession;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-    int32 Level;
-};
+//USTRUCT(BlueprintType, Blueprintable)
+//struct FCharacterProfessionLevel
+//{
+//    GENERATED_BODY()
+//
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+//    TEnumAsByte<ECharacterProfession> Profession;
+//
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
+//    int32 Level;
+//};
 
 
 

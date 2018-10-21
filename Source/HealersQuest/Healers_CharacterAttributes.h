@@ -40,7 +40,7 @@ struct FDamageResistance
 #pragma region FCharacterAttributes
 
 /**
-* FCharacterAttributes : Core structure for Character Data.
+* FCharacterAttributes : Core structure for Character Data. Used by Race, Profession, and Character data structures.
 *
 */
 USTRUCT(BlueprintType, Blueprintable)
@@ -92,6 +92,8 @@ struct FCharacterAttributes
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
     TArray<TSubclassOf<AHealers_Spell>> Abilities;
+
+    FCharacterAttributes();
 };
 
 #pragma endregion FCharacterAttributes
