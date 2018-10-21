@@ -120,22 +120,22 @@ struct FCharacterSheet : public FTableRowBase
 {
     GENERATED_BODY()
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FString CharacterName;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     int32 Level;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     float Experience;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     TEnumAsByte<ECharacterRace> Race;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     TEnumAsByte<ECharacterProfession> Profession;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FCharacterAttributes Attributes;
 
     // @! TODO: 
@@ -167,7 +167,7 @@ public:
     void InitializeProfessionAttributes(UDataTable* CharacterProfessionDataTable);
     void AddAttributes(const FCharacterAttributes& InAttributes);
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;
 
     /**
