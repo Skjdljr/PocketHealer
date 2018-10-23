@@ -97,13 +97,13 @@ UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UO
 
     if (auto GameModeDefaultObject = GetGameModeDefaultObject(WorldContextObject))
     {
-        if (auto RaceLibrary = GameModeDefaultObject->CharacterRaceLibrary)
+        if (auto ProfessionLibrary = GameModeDefaultObject->CharacterProfessionLibrary)
         {
-            auto RaceRowNames = RaceLibrary->GetRowNames();
+            auto RaceRowNames = ProfessionLibrary->GetRowNames();
             for (auto& CurrentRowName : RaceRowNames)
             {
                 FString OutErrorMessage;
-                if (auto CurrentRow = RaceLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
+                if (auto CurrentRow = ProfessionLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
                 {
                     // If our Race Enums Match
                     if (InProfession == CurrentRow->Profession)
