@@ -13,10 +13,10 @@ struct FBattleData
     GENERATED_BODY();
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-    TArray<AHealers_CharacterSheet*> PartyMembers;
+        TArray<AHealers_CharacterSheet*> PartyMembers;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-    TArray<AHealers_CharacterSheet*> EnemyMembers;
+        TArray<AHealers_CharacterSheet*> EnemyMembers;
 
     //TODO:
     //Add some representation of waves/level
@@ -32,13 +32,17 @@ enum EBattleState
 };
 
 UCLASS()
-class HEALERSQUEST_API AHealers_BattleCoordinator  : public AActor
+class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 {
     GENERATED_BODY()
 
     FBattleData BattleData;
 
     EBattleState BattleState;
+
+    bool bIsBattleComplete;
+
+    bool bIsBattleReadyToStart;
 
     AHealers_BattleCoordinator();
 
@@ -48,10 +52,16 @@ class HEALERSQUEST_API AHealers_BattleCoordinator  : public AActor
     virtual void Tick(float dt) override;
 
     UFUNCTION()
-    bool IsPartyDefeated();
+        bool IsPartyDefeated();
 
     UFUNCTION()
-    bool IsEnemyDefeated();
+        bool IsEnemyDefeated();
+
+    UFUNCTION()
+        bool IsBattleComplete();
+
+    UFUNCTION()
+        bool IsBattleReadyToStart();
 
     //Ours
     void SetBattleState(EBattleState newState);
