@@ -186,14 +186,12 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     FCharacterAttributes& GetCharacterAttributes() { return CharacterSheet.Attributes; }
 
-
     // Level
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     int32 GetLevel() { return CharacterSheet.Level; }
 
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void SetLevel(int32 InLevel) { CharacterSheet.Level = InLevel; }
-
 
     // Experience
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
@@ -202,6 +200,15 @@ public:
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void SetExperience(float InExperience) { CharacterSheet.Experience = InExperience; }
 
+    //Initiative
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float GetInitiative() { return CharacterSheet.Attributes.Initiative; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float SetInitiative(float inInit) { CharacterSheet.Attributes.Initiative = inInit; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    float GetInitiativePerSecond() { return CharacterSheet.Attributes.InitiativePerSecond; }
 
     // Health
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
@@ -210,14 +217,12 @@ public:
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void SetHealth(float InHealth) { CharacterSheet.Attributes.Health = InHealth; }
 
-
     // Mana
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     float GetMana() { return CharacterSheet.Attributes.Mana; }
 
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void SetMana(float InMana) { CharacterSheet.Attributes.Mana = InMana; }
-
 
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")

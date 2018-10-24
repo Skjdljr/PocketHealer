@@ -28,14 +28,8 @@ void AHealers_BattleCoordinator::Tick(float dt)
     }
     case BS_BATTLE_IN_PROGRESS:
     {
-        //TickAllCharacters(); 
-            //for each character update initiative based on charactersheet init.
-                //once we reach threshhold of 100 do action
-                    //Action will be a selection of (1) ability from char sheet
-                    //need to be able to select target with function below
-        //CharSheet* GetRandomTarget( pass in self)
-        //fire spell
-
+        TickAllCharacters(dt); 
+            
         // Victory or Defeat Conditions
         if (IsPartyDefeated() || IsEnemyDefeated())
         {
@@ -66,6 +60,30 @@ void AHealers_BattleCoordinator::Tick(float dt)
     //noop
     }
 
+}
+
+void AHealers_BattleCoordinator::TickAllCharacters(float dt)
+{
+    for (auto member : BattleData.PartyMembers)
+    {
+        member->SetInitiative(member->GetInitiativePerSecond() * dt);
+
+        if (member->GetInitiative() > MAX_INITIATIVE)
+        {
+            //member.DoAction();
+        }
+    }
+    //for each character update initiative based on charactersheet init.
+                //once we reach threshhold of 100 do action
+                    //Action will be a selection of (1) ability from char sheet
+                    //need to be able to select target with function below
+       //GetRandomTarget( pass in self)
+        //fire spell
+}
+
+AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomTarget()
+{
+    return nullptr;
 }
 
 bool AHealers_BattleCoordinator::IsPartyDefeated()

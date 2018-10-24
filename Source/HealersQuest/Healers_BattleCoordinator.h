@@ -36,13 +36,20 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 {
     GENERATED_BODY()
 
+    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
     FBattleData BattleData;
 
+    //UPROPERTY()
     EBattleState BattleState;
 
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
     bool bIsBattleComplete;
 
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
     bool bIsBattleReadyToStart;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    int MAX_INITIATIVE = 100;
 
     AHealers_BattleCoordinator();
 
@@ -51,20 +58,24 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 
     virtual void Tick(float dt) override;
 
-    UFUNCTION()
-        bool IsPartyDefeated();
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    bool IsPartyDefeated();
 
-    UFUNCTION()
-        bool IsEnemyDefeated();
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    bool IsEnemyDefeated();
 
-    UFUNCTION()
-        bool IsBattleComplete();
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    bool IsBattleComplete();
 
-    UFUNCTION()
-        bool IsBattleReadyToStart();
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    bool IsBattleReadyToStart();
 
     //Ours
     void SetBattleState(EBattleState newState);
+
+    void TickAllCharacters(float dt);
+    
+    AHealers_CharacterSheet* GetRandomTarget();
 
     //todo: duration?
 };
