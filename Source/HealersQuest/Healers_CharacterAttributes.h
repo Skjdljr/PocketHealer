@@ -48,13 +48,13 @@ struct FCharacterAttributes
 {
     GENERATED_BODY()
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    UPROPERTY(BlueprintReadWrite, EditInstanceOnly, Category = "CharacterAttributes")
     float Health;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
     float HealthMax;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    UPROPERTY(BlueprintReadWrite, EditInstanceOnly, Category = "CharacterAttributes")
     float Mana;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
@@ -63,7 +63,7 @@ struct FCharacterAttributes
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
     float ManaRegenerationPerSecond;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")
+    UPROPERTY(BlueprintReadWrite, EditInstanceOnly, Category = "CharacterAttributes")
     float Initiative;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterAttributes")

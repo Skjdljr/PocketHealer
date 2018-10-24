@@ -5,19 +5,32 @@
 		"ProfessionName": "Druid",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 35,
+			"HealthMax": 35,
+			"Mana": 30,
+			"ManaMax": 30,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 105,
+			"AttackPower": 20,
+			"MagicAccuracy": 105,
+			"MagicPower": 25,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -26,82 +39,134 @@
 		"ProfessionName": "Druid",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 70,
+			"HealthMax": 70,
+			"Mana": 40,
+			"ManaMax": 40,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 105,
+			"AttackPower": 20,
+			"MagicAccuracy": 105,
+			"MagicPower": 30,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "3",
 		"Level": 3,
-		"ProfessionName": "Expert Druid",
+		"ProfessionName": "Druid",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 105,
+			"HealthMax": 105,
+			"Mana": 50,
+			"ManaMax": 50,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 105,
+			"AttackPower": 20,
+			"MagicAccuracy": 105,
+			"MagicPower": 35,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "4",
 		"Level": 4,
-		"ProfessionName": "Expert Druid",
+		"ProfessionName": "Druid",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 140,
+			"HealthMax": 140,
+			"Mana": 60,
+			"ManaMax": 60,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 105,
+			"AttackPower": 20,
+			"MagicAccuracy": 105,
+			"MagicPower": 40,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "5",
 		"Level": 5,
-		"ProfessionName": "Master Druid",
+		"ProfessionName": "Druid",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 175,
+			"HealthMax": 175,
+			"Mana": 70,
+			"ManaMax": 70,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 105,
+			"AttackPower": 25,
+			"MagicAccuracy": 105,
+			"MagicPower": 45,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	}
 ]

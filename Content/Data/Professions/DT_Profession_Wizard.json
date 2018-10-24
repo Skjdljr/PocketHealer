@@ -5,19 +5,32 @@
 		"ProfessionName": "Wizard",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 15,
+			"HealthMax": 15,
+			"Mana": 75,
+			"ManaMax": 75,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackPower": 10,
+			"MagicAccuracy": 110,
+			"MagicPower": 30,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -26,19 +39,32 @@
 		"ProfessionName": "Wizard",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 30,
+			"HealthMax": 30,
+			"Mana": 90,
+			"ManaMax": 90,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackPower": 10,
+			"MagicAccuracy": 110,
+			"MagicPower": 35,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -47,19 +73,32 @@
 		"ProfessionName": "Wizard",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 45,
+			"HealthMax": 45,
+			"Mana": 105,
+			"ManaMax": 105,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackPower": 10,
+			"MagicAccuracy": 110,
+			"MagicPower": 40,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -68,19 +107,32 @@
 		"ProfessionName": "Wizard",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 60,
+			"HealthMax": 60,
+			"Mana": 120,
+			"ManaMax": 120,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackPower": 10,
+			"MagicAccuracy": 110,
+			"MagicPower": 45,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -89,19 +141,32 @@
 		"ProfessionName": "Wizard",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 75,
+			"HealthMax": 75,
+			"Mana": 135,
+			"ManaMax": 135,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 100,
+			"AttackPower": 10,
+			"MagicAccuracy": 110,
+			"MagicPower": 50,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	}
 ]

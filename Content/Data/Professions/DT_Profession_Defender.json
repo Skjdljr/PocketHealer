@@ -5,19 +5,32 @@
 		"ProfessionName": "Defender",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 60,
+			"HealthMax": 60,
+			"Mana": 25,
+			"ManaMax": 25,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 110,
+			"AttackPower": 30,
+			"MagicAccuracy": 100,
+			"MagicPower": 12,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
-			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"ArmorValue": 2,
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
@@ -26,82 +39,134 @@
 		"ProfessionName": "Defender",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 110,
+			"HealthMax": 110,
+			"Mana": 30,
+			"ManaMax": 30,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 110,
+			"AttackPower": 35,
+			"MagicAccuracy": 100,
+			"MagicPower": 14,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
-			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"ArmorValue": 4,
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "3",
 		"Level": 3,
-		"ProfessionName": "Expert Defender",
+		"ProfessionName": "Defender",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 160,
+			"HealthMax": 160,
+			"Mana": 35,
+			"ManaMax": 35,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 110,
+			"AttackPower": 40,
+			"MagicAccuracy": 100,
+			"MagicPower": 16,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
-			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"ArmorValue": 6,
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "4",
 		"Level": 4,
-		"ProfessionName": "Expert Defender",
+		"ProfessionName": "Defender",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 210,
+			"HealthMax": 210,
+			"Mana": 40,
+			"ManaMax": 40,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 110,
+			"AttackPower": 45,
+			"MagicAccuracy": 100,
+			"MagicPower": 18,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
-			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"ArmorValue": 8,
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	},
 	{
 		"Name": "5",
 		"Level": 5,
-		"ProfessionName": "Master Defender",
+		"ProfessionName": "Defender",
 		"Attributes":
 		{
-			"Health": 0,
-			"Mana": 0,
-			"ManaRegenerationPerSecond": 0,
-			"InitiativePerSecond": 0,
-			"AttackAccuracy": 0,
-			"AttackDamage": 0,
-			"CriticalDamageChance": 0,
-			"CriticalDamageValue": 0,
+			"Health": 250,
+			"HealthMax": 250,
+			"Mana": 45,
+			"ManaMax": 45,
+			"ManaRegenerationPerSecond": 1,
+			"Initiative": 0,
+			"InitiativePerSecond": 1,
+			"AttackAccuracy": 110,
+			"AttackPower": 50,
+			"MagicAccuracy": 100,
+			"MagicPower": 20,
+			"CriticalDamageChance": 1,
+			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
-			"ArmorValue": 0,
-			"LuckValue": 0,
-			"Resistances": [],
-			"Abilities": []
+			"ArmorValue": 10,
+			"LuckValue": 1,
+			"Resistances": [
+				{
+					"DamageType": "DR_Null",
+					"DamageResistancePercentValue": 0,
+					"DamageResistanceValue": 0
+				}
+			],
+			"Abilities": [
+				"None"
+			]
 		}
 	}
 ]
