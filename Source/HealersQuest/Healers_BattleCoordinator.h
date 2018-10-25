@@ -75,6 +75,9 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
     void SetBattleState(EBattleState newState);
 
     void TickAllCharacters(float dt);
+
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy);
     
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     AHealers_CharacterSheet* GetRandomEnemyTarget();

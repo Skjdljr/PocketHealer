@@ -36,8 +36,6 @@ void AHealers_BattleCoordinator::Tick(float dt)
                 //OnBattleEndedDelegate
             }
 
-            //
-
             break;
         }
         case BS_POST_BATTLE:
@@ -59,20 +57,31 @@ void AHealers_BattleCoordinator::Tick(float dt)
     }
 }
 
-void AHealers_BattleCoordinator::TickAllCharacters(float dt)
+void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy)
 {
-    for (auto member : BattleData.PartyMembers)
+    auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
+
+    for (auto member : sheet)
     {
         member->SetInitiative(member->GetInitiativePerSecond() * dt);
-
+        
         if (member->GetInitiative() > MAX_INITIATIVE)
         {
-            if (auto enemy = GetRandomEnemyTarget())
+            if (target != nullptr)
             {
-                Take_Damage(enemy, member);
+                member->SetInitiative(0);
+
+                Take_Damage(target, member);
             }
         }
     }
+}
+
+void AHealers_BattleCoordinator::TickAllCharacters(float dt)
+{
+    //Need a better name, this also does dmg.... Confusing I know leave me alone
+    AddInitiative(dt, BattleData.EnemyMembers, true);
+    AddInitiative(dt, BattleData.PartyMembers, false);
 }
 
 void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* attacker)
@@ -84,7 +93,9 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
     {
         //TODO: actually write the CalculateDamage function
         auto newHealth = CalculateDamage(defender->GetCharacterAttributes(), attacker->GetCharacterAttributes());
-        
+
+        UE_LOG(LogTemp, Warning, TEXT("newHealth = %d"), newHealth);
+
         if (newHealth >= 0)
             defender->SetHealth(newHealth);
         else
@@ -96,7 +107,7 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
     }
     else
     {
-        //LOG Something done goofed
+        UE_LOG(LogTemp, Warning, TEXT("Defender or Attack null!"));
     }
 }
 

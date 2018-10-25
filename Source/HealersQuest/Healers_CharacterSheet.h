@@ -88,9 +88,6 @@ struct FCharacterProfessionLibrary : public FTableRowBase
     UDataTable* DataTable;
 };
 
-
-
-
 /**
 * Obsolete - Only needed for Multiclass support.
 * FCharacterProfessionLevel : Character Profession-Level. BP-Exposed structure storing set of Profession and Level.
@@ -107,9 +104,6 @@ struct FCharacterProfessionLibrary : public FTableRowBase
 //    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
 //    int32 Level;
 //};
-
-
-
 
 /**
 * FCharacterSheet : Character Sheet. Design-time structure stored in DataTable.
@@ -228,15 +222,12 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
 
-
-
     /**
      * Convenience function to find a character sheet associated with a pawn.
      */
     UFUNCTION(BlueprintCallable, Category="Healers")
     static AHealers_CharacterSheet* GetCharacterSheet (APawn* sheetOwner);
 };
-
 
 
 // @! TODO : Need a good way of defining item properties. Suggested: Use GameplayTags. Tags: Weapon, Armor, Accessory, Consumable, etc.
