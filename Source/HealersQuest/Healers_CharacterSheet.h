@@ -204,8 +204,8 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     float GetInitiative() { return CharacterSheet.Attributes.Initiative; }
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float SetInitiative(float inInit) { CharacterSheet.Attributes.Initiative = inInit; }
+    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    void SetInitiative(float inInit) { CharacterSheet.Attributes.Initiative = inInit; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
     float GetInitiativePerSecond() { return CharacterSheet.Attributes.InitiativePerSecond; }

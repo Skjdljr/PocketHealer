@@ -42,13 +42,13 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
     //UPROPERTY()
     EBattleState BattleState;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
     bool bIsBattleComplete;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
     bool bIsBattleReadyToStart;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
     int MAX_INITIATIVE = 100;
 
     AHealers_BattleCoordinator();
