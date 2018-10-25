@@ -3,8 +3,10 @@
 
 AHealers_BattleCoordinator::AHealers_BattleCoordinator(): bIsBattleComplete(false), bIsBattleReadyToStart(true)
 {
-
+    SetActorTickEnabled(true);
     PrimaryActorTick.bCanEverTick = true;
+    PrimaryActorTick.SetTickFunctionEnable(true);
+    PrimaryActorTick.bStartWithTickEnabled = true;
 }
 
 void AHealers_BattleCoordinator::BeginPlay()
