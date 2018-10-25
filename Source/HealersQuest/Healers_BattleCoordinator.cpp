@@ -70,8 +70,13 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
             if (target != nullptr)
             {
                 member->SetInitiative(0);
-
+                
+                UE_LOG(Game, Log, TEXT("Character attacked - "));
                 Take_Damage(target, member);
+            }
+            else
+            {
+                UE_LOG(Game, Log, TEXT("You dun goofed, target is null"));
             }
         }
     }
@@ -94,20 +99,21 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
         //TODO: actually write the CalculateDamage function
         auto newHealth = CalculateDamage(defender->GetCharacterAttributes(), attacker->GetCharacterAttributes());
 
-        UE_LOG(LogTemp, Warning, TEXT("newHealth = %d"), newHealth);
+        UE_LOG(Game, Log, TEXT("newHealth = %d"), newHealth);
 
         if (newHealth >= 0)
             defender->SetHealth(newHealth);
         else
         {
             defender->SetHealth(0);
+            UE_LOG(Game, Log, TEXT("Health or Attacker null!"));
 
             //Remove them from the list?
         }
     }
     else
     {
-        UE_LOG(LogTemp, Warning, TEXT("Defender or Attack null!"));
+        UE_LOG(Game, Log, TEXT("Defender or Attacker null!"));
     }
 }
 

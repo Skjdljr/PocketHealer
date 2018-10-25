@@ -95,7 +95,9 @@ void AHealers_CharacterSheet::InitializeProfessionAttributes(UDataTable* Charact
 void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes & InAttributes)
 {
     CharacterSheet.Attributes.Health += InAttributes.Health;
+    CharacterSheet.Attributes.HealthMax += InAttributes.Health;
     CharacterSheet.Attributes.Mana += InAttributes.Mana;
+    CharacterSheet.Attributes.ManaMax += InAttributes.ManaMax;
     CharacterSheet.Attributes.ManaRegenerationPerSecond += InAttributes.ManaRegenerationPerSecond;
     CharacterSheet.Attributes.InitiativePerSecond += InAttributes.InitiativePerSecond;
 

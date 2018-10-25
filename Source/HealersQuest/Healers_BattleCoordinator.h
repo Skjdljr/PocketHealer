@@ -8,16 +8,16 @@
 
 class AHealers_CharacterSheet;
 
-USTRUCT(Blueprintable)
-struct FBattleData
+USTRUCT(BlueprintType, Blueprintable)
+struct FBattleData  
 {
     GENERATED_BODY();
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-        TArray<AHealers_CharacterSheet*> PartyMembers;
+    TArray<AHealers_CharacterSheet*> PartyMembers;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-        TArray<AHealers_CharacterSheet*> EnemyMembers;
+    TArray<AHealers_CharacterSheet*> EnemyMembers;
 
     //TODO:
     //Add some representation of waves/level
@@ -37,20 +37,21 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 {
     GENERATED_BODY()
 
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     FBattleData BattleData;
 
-    //UPROPERTY()
-    EBattleState BattleState;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
+    TEnumAsByte<EBattleState> BattleState;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleComplete;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleReadyToStart;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
-    int MAX_INITIATIVE = 100;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
+    int MAX_INITIATIVE = 5;
 
     AHealers_BattleCoordinator();
 
