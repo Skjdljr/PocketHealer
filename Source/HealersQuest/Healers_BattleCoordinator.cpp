@@ -14,52 +14,49 @@ void AHealers_BattleCoordinator::BeginPlay()
 
 void AHealers_BattleCoordinator::Tick(float dt)
 {
-
     switch (BattleState)
     {
-    case BS_PRE_BATTLE:
-    {
-        if (IsBattleReadyToStart())
+        case BS_PRE_BATTLE:
         {
-            SetBattleState(BS_BATTLE_IN_PROGRESS);
-            //OnBattleBeginDelegate
+            if (IsBattleReadyToStart())
+            {
+                SetBattleState(BS_BATTLE_IN_PROGRESS);
+                //OnBattleBeginDelegate
+            }
+            break;
         }
-        break;
-    }
-    case BS_BATTLE_IN_PROGRESS:
-    {
-        TickAllCharacters(dt); 
+        case BS_BATTLE_IN_PROGRESS:
+        {
+            TickAllCharacters(dt); 
             
-        // Victory or Defeat Conditions
-        if (IsPartyDefeated() || IsEnemyDefeated())
-        {
-            SetBattleState(BS_POST_BATTLE);
-            //OnBattleEndedDelegate
+            // Victory or Defeat Conditions
+            if (IsPartyDefeated() || IsEnemyDefeated())
+            {
+                SetBattleState(BS_POST_BATTLE);
+                //OnBattleEndedDelegate
+            }
+
+            //
+
+            break;
         }
-
-        //
-
-        break;
-    }
-    case BS_POST_BATTLE:
-    {
-        //
-        if (IsBattleComplete())
+        case BS_POST_BATTLE:
         {
-            SetBattleState(BS_BATTLE_COMPLETE);
-            //OnBattleCompleted
+            //
+            if (IsBattleComplete())
+            {
+                SetBattleState(BS_BATTLE_COMPLETE);
+                //OnBattleCompleted
+            }
+
+            break;
         }
-
-        break;
+        default:
+        {
+            //noop
+            break;
+        }
     }
-
-    default:
-    {
-        break;
-    }
-    //noop
-    }
-
 }
 
 void AHealers_BattleCoordinator::TickAllCharacters(float dt)
@@ -70,20 +67,72 @@ void AHealers_BattleCoordinator::TickAllCharacters(float dt)
 
         if (member->GetInitiative() > MAX_INITIATIVE)
         {
-            //member.DoAction();
+            if (auto enemy = GetRandomEnemyTarget())
+            {
+                Take_Damage(enemy, member);
+            }
         }
     }
-    //for each character update initiative based on charactersheet init.
-                //once we reach threshhold of 100 do action
-                    //Action will be a selection of (1) ability from char sheet
-                    //need to be able to select target with function below
-       //GetRandomTarget( pass in self)
-        //fire spell
 }
 
-AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomTarget()
+void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* attacker)
 {
-    return nullptr;
+    //TODO? maybe overload aactors TakeDamage for now use our own
+    //TODO? Maybe overload aactors ReceiveAnyDamage?
+    
+    if (defender != nullptr && attacker != nullptr)
+    {
+        //TODO: actually write the CalculateDamage function
+        auto newHealth = CalculateDamage(defender->GetCharacterAttributes(), attacker->GetCharacterAttributes());
+        
+        if (newHealth >= 0)
+            defender->SetHealth(newHealth);
+        else
+        {
+            defender->SetHealth(0);
+
+            //Remove them from the list?
+        }
+    }
+    else
+    {
+        //LOG Something done goofed
+    }
+}
+
+float AHealers_BattleCoordinator::CalculateDamage(FCharacterAttributes& defender, FCharacterAttributes& attacker)
+{
+    //TODO: -Calculate this based of armor/resistances/attackspeed/crit what ever else
+    //for now just do health - dmg... bc gamejam
+    return defender.Health - attacker.AttackPower;
+}
+
+AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
+{
+    AHealers_CharacterSheet* target = nullptr;
+
+    if (!IsPartyDefeated() && !IsEnemyDefeated())
+    {
+        auto index = FMath::FRandRange(0, BattleData.EnemyMembers.Num() - 1);
+        target = BattleData.EnemyMembers[index];
+        //need to check the target isn't defeated.... or just remove the defeated ones from the array...
+    }
+
+    return target;
+}
+
+AHealers_CharacterSheet * AHealers_BattleCoordinator::GetRandomPartyTarget()
+{
+    AHealers_CharacterSheet* target = nullptr;
+
+    if (!IsPartyDefeated() && !IsEnemyDefeated())
+    {
+        auto index = FMath::FRandRange(0, BattleData.PartyMembers.Num() - 1);
+        target = BattleData.PartyMembers[index];
+        //need to check the target isn't defeated.... or just remove the defeated ones from the array...
+    }
+
+    return target;
 }
 
 bool AHealers_BattleCoordinator::IsPartyDefeated()

@@ -3,6 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Healers_CharacterAttributes.h"
 #include "Healers_BattleCoordinator.generated.h"
 
 class AHealers_CharacterSheet;
@@ -42,13 +43,13 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
     //UPROPERTY()
     EBattleState BattleState;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleComplete;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleReadyToStart;
 
-    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Data")
+    UPROPERTY(/*BlueprintReadWrite,*/ EditAnywhere, Category = "Battle Coordinator")
     int MAX_INITIATIVE = 100;
 
     AHealers_BattleCoordinator();
@@ -58,16 +59,16 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 
     virtual void Tick(float dt) override;
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsPartyDefeated();
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsEnemyDefeated();
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsBattleComplete();
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Data")
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsBattleReadyToStart();
 
     //Ours
@@ -75,7 +76,17 @@ class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 
     void TickAllCharacters(float dt);
     
-    AHealers_CharacterSheet* GetRandomTarget();
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
+    AHealers_CharacterSheet* GetRandomEnemyTarget();
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
+    AHealers_CharacterSheet* GetRandomPartyTarget();
+    
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* Attacker);
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
+    float CalculateDamage(FCharacterAttributes& defender, FCharacterAttributes& attacker);
 
     //todo: duration?
 };
