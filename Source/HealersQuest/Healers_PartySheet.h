@@ -19,7 +19,7 @@ class AHealers_CharacterSheet;
  * Store Information about our Party
  */
 UCLASS(BlueprintType, Blueprintable)
-class HEALERSQUEST_API AHealers_PartySheet : public AActor//AInfo
+class HEALERSQUEST_API AHealers_PartySheet : public AActor //AInfo
 {
 	GENERATED_BODY()
 	

@@ -44,6 +44,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     TEnumAsByte<EBattleState> BattleState;
 
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Battle Coordinator")
+    TEnumAsByte<EBattleState> PriorBattleState;
+
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleComplete;
 

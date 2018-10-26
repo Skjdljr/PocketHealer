@@ -91,7 +91,7 @@ UDataTable* UHealers_FunctionLibrary::GetRaceDataTableFromLibrary(const UObject*
     return RaceTable;
 }
 
-UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UObject * WorldContextObject, ECharacterProfession InProfession)
+UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UObject* WorldContextObject, ECharacterProfession InProfession)
 {
     UDataTable* ProfessionTable = nullptr;
 
@@ -128,14 +128,14 @@ UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UO
     return ProfessionTable;
 }
 
-AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* PC)
+AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* PlayerController)
 {
     AHealers_PartySheet* PartySheet = nullptr;
-    if (PC)
+    if (PlayerController)
     {
-        if (auto PS = Cast<AHealers_PlayerState>(PC->PlayerState))
+        if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
         {
-            PartySheet = PS->PartySheet;
+            PartySheet = PlayerState->PartySheet;
         }
     }
     return PartySheet;

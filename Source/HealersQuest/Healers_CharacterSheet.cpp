@@ -13,7 +13,7 @@ AHealers_CharacterSheet::AHealers_CharacterSheet()
 {
 }
 
-AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet (APawn* sheetOwner)
+AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet(APawn* sheetOwner)
 {
     AHealers_PlayerState* healerState = Cast<AHealers_PlayerState>(sheetOwner->PlayerState);
     if (healerState == nullptr)
@@ -92,12 +92,12 @@ void AHealers_CharacterSheet::InitializeProfessionAttributes(UDataTable* Charact
     }
 }
 
-void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes & InAttributes)
+void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes& InAttributes)
 {
     CharacterSheet.Attributes.Health += InAttributes.Health;
-    CharacterSheet.Attributes.HealthMax += InAttributes.Health;
+    CharacterSheet.Attributes.HealthMax += FMath::Max(InAttributes.HealthMax, InAttributes.Health);
     CharacterSheet.Attributes.Mana += InAttributes.Mana;
-    CharacterSheet.Attributes.ManaMax += InAttributes.ManaMax;
+    CharacterSheet.Attributes.ManaMax += FMath::Max(InAttributes.ManaMax, InAttributes.Mana);
     CharacterSheet.Attributes.ManaRegenerationPerSecond += InAttributes.ManaRegenerationPerSecond;
     CharacterSheet.Attributes.InitiativePerSecond += InAttributes.InitiativePerSecond;
 
