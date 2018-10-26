@@ -3,23 +3,29 @@
 
 AHealers_BattleCoordinator::AHealers_BattleCoordinator(): bIsBattleComplete(false), bIsBattleReadyToStart(true)
 {
-    SetActorTickEnabled(true);
     PrimaryActorTick.bCanEverTick = true;
-    PrimaryActorTick.SetTickFunctionEnable(true);
     PrimaryActorTick.bStartWithTickEnabled = true;
 }
 
 void AHealers_BattleCoordinator::BeginPlay()
 {
-
+    Super::BeginPlay();
 }
 
 void AHealers_BattleCoordinator::Tick(float dt)
 {
+    Super::Tick(dt);
+
     switch (BattleState)
     {
         case BS_PRE_BATTLE:
         {
+            if (BattleState != PriorBattleState)
+            {
+                UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_PRE_BATTLE."));
+                PriorBattleState = BattleState;
+            }
+
             if (IsBattleReadyToStart())
             {
                 SetBattleState(BS_BATTLE_IN_PROGRESS);
@@ -29,6 +35,12 @@ void AHealers_BattleCoordinator::Tick(float dt)
         }
         case BS_BATTLE_IN_PROGRESS:
         {
+            if (BattleState != PriorBattleState)
+            {
+                UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_BATTLE_IN_PROGRESS."));
+                PriorBattleState = BattleState;
+            }
+
             TickAllCharacters(dt); 
             
             // Victory or Defeat Conditions
@@ -42,6 +54,12 @@ void AHealers_BattleCoordinator::Tick(float dt)
         }
         case BS_POST_BATTLE:
         {
+            if (BattleState != PriorBattleState)
+            {
+                UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_POST_BATTLE."));
+                PriorBattleState = BattleState;
+            }
+
             //
             if (IsBattleComplete())
             {
@@ -61,20 +79,23 @@ void AHealers_BattleCoordinator::Tick(float dt)
 
 void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy)
 {
-    auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
-
     for (auto member : sheet)
     {
-        member->SetInitiative(member->GetInitiativePerSecond() * dt);
+        auto newInitiative = member->GetInitiative() + member->GetInitiativePerSecond() * dt;
+        member->SetInitiative(newInitiative);
         
         if (member->GetInitiative() > MAX_INITIATIVE)
         {
+            auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
             if (target != nullptr)
             {
-                member->SetInitiative(0);
+                member->SetInitiative(0.0f);
                 
-                UE_LOG(Game, Log, TEXT("Character attacked - "));
-                Take_Damage(target, member);
+                if (member && target)
+                {
+                    UE_LOG(Game, Log, TEXT("Attacker(%s) initiated attack against Defender(%s)"), *member->CharacterSheet.CharacterName, *target->CharacterSheet.CharacterName);
+                    Take_Damage(target, member);
+                }
             }
             else
             {
@@ -101,7 +122,7 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
         //TODO: actually write the CalculateDamage function
         auto newHealth = CalculateDamage(defender->GetCharacterAttributes(), attacker->GetCharacterAttributes());
 
-        UE_LOG(Game, Log, TEXT("newHealth = %d"), newHealth);
+        UE_LOG(Game, Log, TEXT("newHealth = %f"), newHealth);
 
         if (newHealth >= 0)
             defender->SetHealth(newHealth);
@@ -123,7 +144,7 @@ float AHealers_BattleCoordinator::CalculateDamage(FCharacterAttributes& defender
 {
     //TODO: -Calculate this based of armor/resistances/attackspeed/crit what ever else
     //for now just do health - dmg... bc gamejam
-    return defender.Health - attacker.AttackPower;
+    return defender.Health - FMath::Max(1.f, attacker.AttackPower - defender.ArmorValue);
 }
 
 AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
