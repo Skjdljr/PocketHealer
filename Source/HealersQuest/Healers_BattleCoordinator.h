@@ -23,20 +23,24 @@ struct FBattleData
     //Add some representation of waves/level
 };
 
-UENUM()
+UENUM(BlueprintType, Blueprintable)
 enum EBattleState
 {
-    BS_PRE_BATTLE = 0,
+    BS_BATTLE_MIN = 0,
+    BS_PRE_BATTLE,
     BS_BATTLE_IN_PROGRESS,
     BS_POST_BATTLE,
-    BS_BATTLE_COMPLETE
+    BS_BATTLE_COMPLETE,
+    BS_BATTLE_MAX,
 };
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Delegates
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleStateChanged);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBattleStateChanged, EBattleState, BattleState);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleVictory);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleDefeat);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,6 +57,15 @@ public:
     virtual void BeginPlay() override;
     virtual void Tick(float dt) override;
 
+    UPROPERTY(BlueprintAssignable, Category = "Battle Coordinator")
+    FBattleStateChanged OnBattleStateChanged;
+
+    UPROPERTY(BlueprintAssignable, Category = "Battle Coordinator")
+    FBattleVictory OnBattleVictory;
+
+    UPROPERTY(BlueprintAssignable, Category = "Battle Coordinator")
+    FBattleDefeat OnBattleDefeat;
+
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     FBattleData BattleData;
 
@@ -62,11 +75,23 @@ public:
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Battle Coordinator")
     TEnumAsByte<EBattleState> PriorBattleState;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
-    bool bIsBattleComplete;
+    UPROPERTY(BlueprintGetter = GetIsBattleComplete, BlueprintSetter = SetIsBattleComplete, VisibleAnywhere, Category = "Battle Coordinator")
+    uint32 bIsBattleComplete:1;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
-    bool bIsBattleReadyToStart;
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
+    bool GetIsBattleComplete() const { return bIsBattleComplete; }
+
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void SetIsBattleComplete(bool InValue) { bIsBattleComplete = InValue; }
+
+    UPROPERTY(BlueprintGetter = GetIsBattleReadyToStart, BlueprintSetter = SetIsBattleReadyToStart, EditAnywhere, Category = "Battle Coordinator")
+    uint32 bIsBattleReadyToStart:1;
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
+    bool GetIsBattleReadyToStart() const { return bIsBattleReadyToStart; }
+
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void SetIsBattleReadyToStart(bool InValue) { bIsBattleReadyToStart = InValue; }
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Config = "Game", Category = "Battle Coordinator")
     float INITIATIVEMAX = 5.f;

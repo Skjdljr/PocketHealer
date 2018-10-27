@@ -22,6 +22,14 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMatchStateChanged);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+UENUM()
+enum EAdventureState
+{
+    AS_Tavern,
+    AS_Battle,
+    AS_MAX
+};
+
 /**
  * 
  */
@@ -38,8 +46,14 @@ public:
     FMatchStateChanged OnMatchStateChanged;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
-    int32 CurrentGold;
+    int32 Gold;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
+    int32 Reputation;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
     FHealers_QuestContract ActiveQuestContract;
+
+    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
+
 };

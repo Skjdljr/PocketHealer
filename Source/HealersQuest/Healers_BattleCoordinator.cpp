@@ -1,10 +1,15 @@
 #include "Healers_BattleCoordinator.h"
 #include "Healers_CharacterSheet.h"
 
-AHealers_BattleCoordinator::AHealers_BattleCoordinator(): bIsBattleComplete(false), bIsBattleReadyToStart(true)
+AHealers_BattleCoordinator::AHealers_BattleCoordinator() :
+    bIsBattleComplete(false),
+    bIsBattleReadyToStart(false),
+    BattleState(BS_PRE_BATTLE),
+    PriorBattleState(BS_BATTLE_MIN)
 {
     PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.bStartWithTickEnabled = true;
+
 }
 
 void AHealers_BattleCoordinator::BeginPlay()
@@ -23,6 +28,7 @@ void AHealers_BattleCoordinator::Tick(float dt)
             if (BattleState != PriorBattleState)
             {
                 UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_PRE_BATTLE."));
+                OnBattleStateChanged.Broadcast(BattleState);
                 PriorBattleState = BattleState;
             }
 
@@ -38,13 +44,14 @@ void AHealers_BattleCoordinator::Tick(float dt)
             if (BattleState != PriorBattleState)
             {
                 UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_BATTLE_IN_PROGRESS."));
+                OnBattleStateChanged.Broadcast(BattleState);
                 PriorBattleState = BattleState;
             }
 
             TickAllCharacters(dt); 
             
             // Victory or Defeat Conditions
-            if (IsPartyDefeated() || IsEnemyDefeated())
+            if (IsEnemyDefeated() || IsPartyDefeated())
             {
                 SetBattleState(BS_POST_BATTLE);
                 //OnBattleEndedDelegate
@@ -57,14 +64,24 @@ void AHealers_BattleCoordinator::Tick(float dt)
             if (BattleState != PriorBattleState)
             {
                 UE_LOG(Game, Log, TEXT("Transition to BattleState == BS_POST_BATTLE."));
+                OnBattleStateChanged.Broadcast(BattleState);
                 PriorBattleState = BattleState;
+
+                if (IsEnemyDefeated())
+                {
+                    OnBattleVictory.Broadcast();
+                }
+                else if (IsPartyDefeated())
+                {
+                    OnBattleDefeat.Broadcast();
+                }
             }
 
             //
             if (IsBattleComplete())
             {
                 SetBattleState(BS_BATTLE_COMPLETE);
-                //OnBattleCompleted
+                OnBattleStateChanged.Broadcast(BattleState);
             }
 
             break;
