@@ -81,10 +81,10 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
 {
     for (auto member : sheet)
     {
-        auto newInitiative = member->GetInitiative() + member->GetInitiativePerSecond() * dt;
+        auto newInitiative = member->GetHealth() > 0 ? member->GetInitiative() + member->GetInitiativePerSecond() * dt : 0.f;
         member->SetInitiative(newInitiative);
         
-        if (member->GetInitiative() > MAX_INITIATIVE)
+        if (member->GetInitiative() > INITIATIVEMAX)
         {
             auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
             if (target != nullptr)
@@ -120,7 +120,7 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
     if (defender != nullptr && attacker != nullptr)
     {
         //TODO: actually write the CalculateDamage function
-        auto newHealth = CalculateDamage(defender->GetCharacterAttributes(), attacker->GetCharacterAttributes());
+        auto newHealth = CalculateDamage(defender->GetAttributes(), attacker->GetAttributes());
 
         UE_LOG(Game, Log, TEXT("newHealth = %f"), newHealth);
 
@@ -149,30 +149,41 @@ float AHealers_BattleCoordinator::CalculateDamage(FCharacterAttributes& defender
 
 AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
 {
-    AHealers_CharacterSheet* target = nullptr;
+    AHealers_CharacterSheet* Target = nullptr;
 
     if (!IsPartyDefeated() && !IsEnemyDefeated())
     {
-        auto index = FMath::FRandRange(0, BattleData.EnemyMembers.Num() - 1);
-        target = BattleData.EnemyMembers[index];
+        // Valid Targets match this filter by functor
+        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.EnemyMembers.FilterByPredicate([&](AHealers_CharacterSheet* CharacterSheet) { return (CharacterSheet->GetAttributes().Health > 0); });
+
+        if (ValidTargets.Num() > 0)
+        {
+            auto index = FMath::RandRange(0, ValidTargets.Num() - 1);
+            Target = ValidTargets[index];
+        }
         //need to check the target isn't defeated.... or just remove the defeated ones from the array...
     }
 
-    return target;
+    return Target;
 }
 
 AHealers_CharacterSheet * AHealers_BattleCoordinator::GetRandomPartyTarget()
 {
-    AHealers_CharacterSheet* target = nullptr;
+    AHealers_CharacterSheet* Target = nullptr;
 
     if (!IsPartyDefeated() && !IsEnemyDefeated())
     {
-        auto index = FMath::FRandRange(0, BattleData.PartyMembers.Num() - 1);
-        target = BattleData.PartyMembers[index];
+        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.PartyMembers.FilterByPredicate([&](AHealers_CharacterSheet* CharacterSheet) { return (CharacterSheet->GetAttributes().Health > 0); });
+
+        if (ValidTargets.Num() > 0)
+        {
+            auto index = FMath::RandRange(0, BattleData.PartyMembers.Num() - 1);
+            Target = BattleData.PartyMembers[index];
+        }
         //need to check the target isn't defeated.... or just remove the defeated ones from the array...
     }
 
-    return target;
+    return Target;
 }
 
 bool AHealers_BattleCoordinator::IsPartyDefeated()

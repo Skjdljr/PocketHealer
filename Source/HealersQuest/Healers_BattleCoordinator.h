@@ -32,12 +32,27 @@ enum EBattleState
     BS_BATTLE_COMPLETE
 };
 
-UCLASS()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Delegates
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleStateChanged);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+UCLASS(BlueprintType, NotPlaceable)
 class HEALERSQUEST_API AHealers_BattleCoordinator : public AActor
 {
     GENERATED_BODY()
 
+    AHealers_BattleCoordinator();
+
 public:
+
+    //Inherited 
+    virtual void BeginPlay() override;
+    virtual void Tick(float dt) override;
+
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     FBattleData BattleData;
 
@@ -53,15 +68,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
     bool bIsBattleReadyToStart;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Coordinator")
-    int MAX_INITIATIVE = 5;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Config = "Game", Category = "Battle Coordinator")
+    float INITIATIVEMAX = 5.f;
 
-    AHealers_BattleCoordinator();
+    //Ours
+    void SetBattleState(EBattleState newState);
 
-    //Inherited 
-    virtual void BeginPlay() override;
-
-    virtual void Tick(float dt) override;
+    void TickAllCharacters(float dt);
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsPartyDefeated();
@@ -74,11 +87,6 @@ public:
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsBattleReadyToStart();
-
-    //Ours
-    void SetBattleState(EBattleState newState);
-
-    void TickAllCharacters(float dt);
 
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy);

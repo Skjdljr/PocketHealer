@@ -149,7 +149,7 @@ struct FCharacterSheet : public FTableRowBase
 * AHealers_CharacterSheet : Character Sheet Actor. Run-time instance of a CharacterSheet.
 *
 */
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, BlueprintType, NotPlaceable)
 class HEALERSQUEST_API AHealers_CharacterSheet : public AInfo
 {
     GENERATED_BODY()
@@ -163,8 +163,13 @@ public:
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void InitializeCharacter();
 
+    UFUNCTION()
     void InitializeRaceAttributes(UDataTable* CharacterRaceDataTable);
+    
+    UFUNCTION()
     void InitializeProfessionAttributes(UDataTable* CharacterProfessionDataTable);
+    
+    UFUNCTION()
     void AddAttributes(const FCharacterAttributes& InAttributes);
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
@@ -174,64 +179,77 @@ public:
     * Getter and Setters
     */
 
+    // Name
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Name"), Category = "CharacterSheet")
+    FString GetCharacterName() const { return CharacterSheet.CharacterName; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Name"), Category = "CharacterSheet")
+    void SetCharacterName(const FString& InName) { CharacterSheet.CharacterName = InName; }
+
     // Race
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    TEnumAsByte<ECharacterRace> GetCharacterRace() { return CharacterSheet.Race; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Race"), Category = "CharacterSheet")
+    TEnumAsByte<ECharacterRace> GetRace() const { return CharacterSheet.Race; }
 
     // Profession
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    TEnumAsByte<ECharacterProfession> GetCharacterProfession() { return CharacterSheet.Profession; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Profession"), Category = "CharacterSheet")
+    TEnumAsByte<ECharacterProfession> GetProfession() const { return CharacterSheet.Profession; }
 
     // Attributes
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    FCharacterAttributes& GetCharacterAttributes() { return CharacterSheet.Attributes; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attributes"), Category = "CharacterSheet")
+    FCharacterAttributes& GetAttributes() { return CharacterSheet.Attributes; }
 
     // Level
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    int32 GetLevel() { return CharacterSheet.Level; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Level"), Category = "CharacterSheet")
+    int32 GetCharacterLevel() const { return CharacterSheet.Level; }
 
-    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Level"), Category = "CharacterSheet")
     void SetLevel(int32 InLevel) { CharacterSheet.Level = InLevel; }
 
     // Experience
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float GetExperience() { return CharacterSheet.Experience; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Experience"), Category = "CharacterSheet")
+    float GetExperience() const { return CharacterSheet.Experience; }
 
-    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Experience"), Category = "CharacterSheet")
     void SetExperience(float InExperience) { CharacterSheet.Experience = InExperience; }
 
     //Initiative
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float GetInitiative() { return CharacterSheet.Attributes.Initiative; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
+    float GetInitiative() const { return CharacterSheet.Attributes.Initiative; }
 
-    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
     void SetInitiative(float inInit) { CharacterSheet.Attributes.Initiative = inInit; }
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float GetInitiativePerSecond() { return CharacterSheet.Attributes.InitiativePerSecond; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character InitiativePerSecond"), Category = "CharacterSheet")
+    float GetInitiativePerSecond() const { return CharacterSheet.Attributes.InitiativePerSecond; }
 
     // Health
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float GetHealth() { return CharacterSheet.Attributes.Health; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Health"), Category = "CharacterSheet")
+    float GetHealth() const { return CharacterSheet.Attributes.Health; }
 
-    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Health"), Category = "CharacterSheet")
     void SetHealth(float InHealth) { CharacterSheet.Attributes.Health = InHealth; }
 
-    // Mana
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
-    float GetMana() { return CharacterSheet.Attributes.Mana; }
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character HealthMax"), Category = "CharacterSheet")
+    float GetHealthMax() const { return CharacterSheet.Attributes.HealthMax; }
 
-    UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
+    // Mana
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
+    float GetMana() const { return CharacterSheet.Attributes.Mana; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
     void SetMana(float InMana) { CharacterSheet.Attributes.Mana = InMana; }
 
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaMax"), Category = "CharacterSheet")
+    float GetManaMax() const { return CharacterSheet.Attributes.ManaMax; }
+
     // Resistances
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "CharacterSheet")
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
 
     /**
      * Convenience function to find a character sheet associated with a pawn.
      */
-    UFUNCTION(BlueprintCallable, Category="Healers")
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category="Healers")
     static AHealers_CharacterSheet* GetCharacterSheet (APawn* sheetOwner);
 };
 
