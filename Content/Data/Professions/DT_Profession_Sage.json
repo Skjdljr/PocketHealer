@@ -142,7 +142,7 @@
 		"Attributes":
 		{
 			"Health": 150,
-			"HealthMax": 15,
+			"HealthMax": 150,
 			"Mana": 90,
 			"ManaMax": 90,
 			"ManaRegenerationPerSecond": 1,
@@ -156,7 +156,7 @@
 			"CriticalDamageValue": 2,
 			"EvasionValue": 0,
 			"ArmorValue": 0,
-			"LuckValue": 1,
+			"LuckValue": 2,
 			"Resistances": [
 				{
 					"DamageType": "DR_Null",
