@@ -35,7 +35,6 @@ void AHealers_BattleCoordinator::Tick(float dt)
             if (IsBattleReadyToStart())
             {
                 SetBattleState(BS_BATTLE_IN_PROGRESS);
-                //OnBattleBeginDelegate
             }
             break;
         }
@@ -48,15 +47,13 @@ void AHealers_BattleCoordinator::Tick(float dt)
                 PriorBattleState = BattleState;
             }
 
-            TickAllCharacters(dt); 
+            TickAllCharacters(dt);
             
             // Victory or Defeat Conditions
             if (IsEnemyDefeated() || IsPartyDefeated())
             {
                 SetBattleState(BS_POST_BATTLE);
-                //OnBattleEndedDelegate
             }
-
             break;
         }
         case BS_POST_BATTLE:
@@ -83,7 +80,6 @@ void AHealers_BattleCoordinator::Tick(float dt)
                 SetBattleState(BS_BATTLE_COMPLETE);
                 OnBattleStateChanged.Broadcast(BattleState);
             }
-
             break;
         }
         default:
@@ -116,7 +112,7 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
             }
             else
             {
-                UE_LOG(Game, Log, TEXT("You dun goofed, target is null"));
+                UE_LOG(Game, Error, TEXT("You dun goofed, target is null"));
             }
         }
     }
@@ -139,21 +135,23 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
         //TODO: actually write the CalculateDamage function
         auto newHealth = CalculateDamage(defender->GetAttributes(), attacker->GetAttributes());
 
-        UE_LOG(Game, Log, TEXT("newHealth = %f"), newHealth);
+        UE_LOG(Game, Log, TEXT("Defender(%s) took damage. Health was %f, reduced to %f"), *defender->CharacterSheet.CharacterName, defender->GetHealth(), newHealth);
 
         if (newHealth >= 0)
+        {
             defender->SetHealth(newHealth);
+        }
         else
         {
             defender->SetHealth(0);
-            UE_LOG(Game, Log, TEXT("Health or Attacker null!"));
+            UE_LOG(Game, Log, TEXT("Defender(%s) was defeated!"), *defender->CharacterSheet.CharacterName);
 
-            //Remove them from the list?
+            // Remove them from the list?
         }
     }
     else
     {
-        UE_LOG(Game, Log, TEXT("Defender or Attacker null!"));
+        UE_LOG(Game, Error, TEXT("Defender or Attacker null!"));
     }
 }
 
@@ -175,6 +173,11 @@ AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
 
         if (ValidTargets.Num() > 0)
         {
+            for (int i = 0; i < ValidTargets.Num(); i++)
+            {
+                UE_LOG(Game, Log, TEXT("GetRandomEnemyTarget - %s"), *ValidTargets[i]->GetName());
+            }
+
             auto index = FMath::RandRange(0, ValidTargets.Num() - 1);
             Target = ValidTargets[index];
         }
@@ -184,7 +187,7 @@ AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
     return Target;
 }
 
-AHealers_CharacterSheet * AHealers_BattleCoordinator::GetRandomPartyTarget()
+AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomPartyTarget()
 {
     AHealers_CharacterSheet* Target = nullptr;
 
@@ -194,8 +197,13 @@ AHealers_CharacterSheet * AHealers_BattleCoordinator::GetRandomPartyTarget()
 
         if (ValidTargets.Num() > 0)
         {
-            auto index = FMath::RandRange(0, BattleData.PartyMembers.Num() - 1);
-            Target = BattleData.PartyMembers[index];
+            for (int i = 0; i < ValidTargets.Num(); i++)
+            {
+                UE_LOG(Game, Log, TEXT("GetRandomPartyTarget - %s"), *ValidTargets[i]->GetName());
+            }
+
+            auto index = FMath::RandRange(0, ValidTargets.Num() - 1);
+            Target = ValidTargets[index];
         }
         //need to check the target isn't defeated.... or just remove the defeated ones from the array...
     }
@@ -235,14 +243,11 @@ bool AHealers_BattleCoordinator::IsEnemyDefeated()
 
 bool AHealers_BattleCoordinator::IsBattleComplete()
 {
-    //todo create logic and have it set bIsBattleComplete
     return bIsBattleComplete;
 }
 
 bool AHealers_BattleCoordinator::IsBattleReadyToStart()
 {
-    //todo create logic and have it set bIsBattleReadyToStart
-
     return bIsBattleReadyToStart;
 }
 
