@@ -12,6 +12,10 @@
 #include "Runtime/UMG/Public/IUMGModule.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 
+#include "Healers_Character.h"
+#include "Healers_PlayerController.h"
+#include "Healers_HUD.h"
+
 AHealers_GameMode::AHealers_GameMode()
 {
     // Set to true via MainMenu to start the game
@@ -26,14 +30,29 @@ void AHealers_GameMode::BeginPlay()
     {
         UE_LOG(Game, Log, TEXT("Simple Log"));
 
-        MainMenu = CreateWidget<UUserWidget>(world, MainMenuClass);
+        if (GameState)
+        {
+            for (auto PlayerState : GameState->PlayerArray)
+            {
+                if (auto HealersPC = Cast<AHealers_PlayerController>(PlayerState->GetOwner()))
+                {
+                    if (auto HealersHUD = Cast<AHealers_HUD>(HealersPC->GetHUD()))
+                    {
+                        HealersHUD->SetScene(MainMenuClass);
+                    }
+                }
+            }
+        }
+
+        /*MainMenu = CreateWidget<UUserWidget>(world, MainMenuClass);
         if (MainMenu)
         {
             auto pc = world->GetFirstPlayerController();
 
             MainMenu->AddToViewport();
-        }
-        else if (ReadyToStartMatch())
+        }*/
+
+        if (ReadyToStartMatch())
         {
             StartMatch();
         }
