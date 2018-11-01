@@ -14,10 +14,16 @@ void AHealers_HUD::SetScene(TSubclassOf<UUserWidget> InSceneClass)
 {
     if (auto World = GetWorld())
     {
-        CurrentScene = CreateWidget<UUserWidget>(World, InSceneClass);
-        if (CurrentScene)
+        if (auto PC = GetOwningPlayerController())
         {
-            CurrentScene->AddToViewport();
+            if (PC->IsLocalController())
+            {
+                CurrentScene = CreateWidget<UUserWidget>(World, InSceneClass);
+                if (CurrentScene)
+                {
+                    CurrentScene->AddToViewport();
+                }
+            }
         }
     }
 }
