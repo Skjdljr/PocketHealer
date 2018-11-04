@@ -51,4 +51,11 @@ public:
 
     UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameMode")
     UDataTable* QuestBattleLibrary;
+
+    UPROPERTY(Config = Game, BlueprintReadWrite, EditDefaultsOnly, Category = "GameMode")
+    int32 DefaultStartingGold;
+
+    UPROPERTY(Config = Game, BlueprintReadWrite, EditDefaultsOnly, Category = "GameMode")
+    int32 DefaultStartingReputation;
+
 };
