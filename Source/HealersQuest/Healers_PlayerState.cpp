@@ -30,7 +30,7 @@ AHealers_CharacterSheet* AHealers_PlayerState::GetHealersCharacterSheet() const
             Sheet = PartySheet->PartyMembers[0];
         }
     }
-    return nullptr;
+    return Sheet;
 }
 
 
