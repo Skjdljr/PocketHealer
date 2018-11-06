@@ -9,29 +9,27 @@ UHealers_SpellManaRequirement::UHealers_SpellManaRequirement(const FObjectInitia
 
 }
 
-bool UHealers_SpellManaRequirement::CanCastSpell(APawn* caster) const
+bool UHealers_SpellManaRequirement::CanCastSpell(AHealers_CharacterSheet* caster) const
 {
     if (!Super::CanCastSpell(caster))
     {
         return false;
     }
 
-    AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
 
     // @! TODO FIX
-    //return (charSheet == nullptr || charSheet->Mana >= ManaCost);
-    return false;
+    return (caster == nullptr || caster->GetMana() >= ManaCost);
+   
 }
 
-void UHealers_SpellManaRequirement::SpellExecuted(APawn* caster)
+void UHealers_SpellManaRequirement::SpellExecuted(AHealers_CharacterSheet* caster)
 {
     Super::SpellExecuted(caster);
 
-    AHealers_CharacterSheet* charSheet = AHealers_CharacterSheet::GetCharacterSheet(caster);
-    if (charSheet != nullptr)
+    if (caster != nullptr)
     {
-        auto Mana = charSheet->GetMana();
+        auto Mana = caster->GetMana();
         Mana -= ManaCost;
-        charSheet->SetMana(Mana);
+        caster->SetMana(Mana);
     }
 }

@@ -6,6 +6,7 @@
 #include "Healers_SpellPrerequisiteComponent.generated.h"
 
 class AHealers_Spell;
+class AHealers_CharacterSheet;
 
 UCLASS(blueprintable)
 class HEALERSQUEST_API UHealers_SpellPrerequisiteComponent : public UActorComponent
@@ -16,17 +17,17 @@ public:
     UHealers_SpellPrerequisiteComponent(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION(BlueprintCallable, Category="Healers")
-	virtual bool CanCastSpell(APawn* caster) const;
+	virtual bool CanCastSpell(AHealers_CharacterSheet* caster) const;
 
 	UFUNCTION(BlueprintCallable, Category="Healers")
-	virtual bool CanCastSpellOnTargets(APawn* caster, const TArray<AActor*>& targets) const;
+	virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const;
 
 	/**
 	 * Invoked once a spell is executed.
 	 * Used to deduct mana cost, reset cooldowns, etc...
 	 */
 	UFUNCTION(BlueprintCallable, Category="Healers")
-	virtual void SpellExecuted(APawn* caster);
+	virtual void SpellExecuted(AHealers_CharacterSheet* caster);
 
 	/**
 	 * Invoked every frame.  Allows prerequisites to continuously check and update their values

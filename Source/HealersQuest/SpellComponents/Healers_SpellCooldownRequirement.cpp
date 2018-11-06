@@ -11,12 +11,12 @@ UHealers_SpellCooldownRequirement::UHealers_SpellCooldownRequirement(const FObje
 	CooldownMultiplier = 1.f;
 }
 
-bool UHealers_SpellCooldownRequirement::CanCastSpell(APawn* caster) const
+bool UHealers_SpellCooldownRequirement::CanCastSpell(AHealers_CharacterSheet* caster) const
 {
 	return (Super::CanCastSpell(caster) && Cooldown <= 0.f);
 }
 
-void UHealers_SpellCooldownRequirement::SpellExecuted(APawn* caster)
+void UHealers_SpellCooldownRequirement::SpellExecuted(AHealers_CharacterSheet* caster)
 {
 	Super::SpellExecuted(caster);
 

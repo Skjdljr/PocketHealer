@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Healers_Spell.generated.h"
 
+class AHealers_CharacterSheet;
 class UHealers_SpellComponent;
 class UHealers_SpellTargetingComponent;
 class UHealers_SpellPrerequisiteComponent;
@@ -45,14 +46,14 @@ public:
     /* Returns true if all requirements are met, and the user is allowed to choose this spell.
     Useful for conditions before a target is selected (eg:  is it on cooldown?  Do you have enough mana?) */
     UFUNCTION(BlueprintCallable, Category="Healers Spell")
-    virtual bool CanCastSpell(APawn* caster) const;
+    virtual bool CanCastSpell(AHealers_CharacterSheet* caster) const;
 
     /* Returns true if all requirements are met, and the user is allowed to cast the spell on specified actors.
     This is useful if you want to deny the spell cast because the user has chosen an invalid target. */
     UFUNCTION(BlueprintCallable, Category="Healers Spell")
-    virtual bool CanCastSpellOnTargets(APawn* caster, const TArray<AActor*>& targets) const;
+    virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const;
 
     UFUNCTION(BlueprintCallable, Category="Healers Spell")
     /* Initializes the spell components and executes the spell sequence. */
-    virtual void CastSpell(APawn* caster, const TArray<AActor*>& targets);
+    virtual void CastSpell(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets);
 };

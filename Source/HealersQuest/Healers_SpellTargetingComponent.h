@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Healers_SpellTargetingComponent.generated.h"
 
+class AHealers_CharacterSheet;
 
 UCLASS(blueprintable)
 class HEALERSQUEST_API UHealers_SpellTargetingComponent : public UActorComponent
@@ -16,5 +17,5 @@ public:
 	 * Populates a list of actors this spell will affect.
 	 * Examples:  All hostiles, single target, environment, all undead
 	 */
-	virtual TArray<AActor*> GetTargets (APawn* caster) const;
+	virtual TArray<AHealers_CharacterSheet*> GetTargets (AHealers_CharacterSheet* caster) const;
 };

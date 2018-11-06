@@ -7,6 +7,7 @@
 #include "Healers_SpellManaRequirement.generated.h"
 
 class AHealers_Spell;
+class AHealers_CharacterSheet;
 
 UCLASS(Blueprintable, BlueprintType, Category="Healers", meta=(BlueprintSpawnableComponent))
 class HEALERSQUEST_API UHealers_SpellManaRequirement : public UHealers_SpellPrerequisiteComponent
@@ -19,6 +20,6 @@ public:
 
     UHealers_SpellManaRequirement(const FObjectInitializer& ObjectInitializer);
 
-	virtual bool CanCastSpell(APawn* caster) const override;
-	virtual void SpellExecuted(APawn* caster) override;
+	virtual bool CanCastSpell(AHealers_CharacterSheet* caster) const override;
+	virtual void SpellExecuted(AHealers_CharacterSheet* caster) override;
 };

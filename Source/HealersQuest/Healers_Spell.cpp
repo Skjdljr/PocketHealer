@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Healers_Spell.h"
+#include "Healers_CharacterSheet.h"
 #include "Healers_SpellComponent.h"
 #include "Healers_SpellPrerequisiteComponent.h"
 #include "Healers_SpellTargetingComponent.h"
@@ -42,7 +43,7 @@ void AHealers_Spell::Tick (float deltaSec)
 	}
 }
 
-bool AHealers_Spell::CanCastSpell (APawn* caster) const
+bool AHealers_Spell::CanCastSpell (AHealers_CharacterSheet* caster) const
 {
 	for (int i = 0; i < Prerequisites.Num(); ++i)
 	{
@@ -64,7 +65,7 @@ bool AHealers_Spell::CanCastSpell (APawn* caster) const
 	return true;
 }
 
-bool AHealers_Spell::CanCastSpellOnTargets(APawn* caster, const TArray<AActor*>& targets) const
+bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const
 {
 	for (int i = 0; i < Prerequisites.Num(); ++i)
 	{
@@ -77,7 +78,7 @@ bool AHealers_Spell::CanCastSpellOnTargets(APawn* caster, const TArray<AActor*>&
 	return true;
 }
 
-void AHealers_Spell::CastSpell(APawn* caster, const TArray<AActor*>& targets)
+void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
 {
 	for (int i = 0; i < Prerequisites.Num(); ++i)
 	{

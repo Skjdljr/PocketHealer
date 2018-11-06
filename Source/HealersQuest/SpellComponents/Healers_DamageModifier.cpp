@@ -7,7 +7,7 @@ UHealers_DamageModifier::UHealers_DamageModifier(const FObjectInitializer& Objec
 
 }
 
-void UHealers_DamageModifier::ExecuteSpell(AHealers_Spell* spellOwner, APawn* caster, const TArray<AActor*>& targets)
+void UHealers_DamageModifier::ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
 {
     Super::ExecuteSpell(spellOwner, caster, targets);
 
