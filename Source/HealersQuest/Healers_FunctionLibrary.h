@@ -49,4 +49,7 @@ public:
     // Get the PlayerController's PartySheet
     UFUNCTION(BlueprintPure, Category = "Healers|Party") //Keywords = "PartySheet", 
     static AHealers_PartySheet* GetPartySheet(APlayerController* PlayerController);
+
+    UFUNCTION(BlueprintPure, Category = "Healers|Character|Sheet") 
+    static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
 };

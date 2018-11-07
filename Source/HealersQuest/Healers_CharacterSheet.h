@@ -175,6 +175,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;
 
+    UPROPERTY(BlueprintReadWRite, EditAnywhere, Category = "CharacterSheet")
+    AHealers_Spell* CurrentSelectedSpell;
+
     /**
     * Getter and Setters
     */

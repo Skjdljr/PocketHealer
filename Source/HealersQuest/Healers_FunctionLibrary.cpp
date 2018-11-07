@@ -140,3 +140,16 @@ AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* 
     }
     return PartySheet;
 }
+
+AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlayerController* PlayerController)
+{
+    AHealers_CharacterSheet* charSheet = nullptr;
+    if (PlayerController)
+    {
+        if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
+        {
+            charSheet = PlayerState->PartySheet->PartyMembers[0];
+        }
+    }
+    return charSheet;
+}
