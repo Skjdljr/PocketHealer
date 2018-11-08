@@ -65,7 +65,7 @@ bool AHealers_Spell::CanCastSpell (AHealers_CharacterSheet* caster) const
 	return true;
 }
 
-bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const
+bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const
 {
 	for (int i = 0; i < Prerequisites.Num(); ++i)
 	{
@@ -78,7 +78,7 @@ bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, cons
 	return true;
 }
 
-void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
+void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
 	for (int i = 0; i < Prerequisites.Num(); ++i)
 	{

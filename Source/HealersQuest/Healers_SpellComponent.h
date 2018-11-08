@@ -29,7 +29,7 @@ public:
     /**
      * Invoked whenever the spell was casted.
      */
-    virtual void ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets);
+    virtual void ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
 
     /**
      * Invoked on every frame when this spell component is active.
@@ -54,7 +54,7 @@ public:
 
 protected:
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
-    void BP_ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets);
+    void BP_ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
 
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
     void BP_TickSpell (float deltaSec);

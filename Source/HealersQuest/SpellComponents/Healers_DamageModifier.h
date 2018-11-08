@@ -25,7 +25,7 @@ public:
 
     UHealers_DamageModifier(const FObjectInitializer& ObjectInitializer);
 
-	virtual void ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) override;
+	virtual void ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) override;
 	virtual void ShutdownSpell () override;
 	virtual void DestroySpellComponent () override;
 

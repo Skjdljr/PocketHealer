@@ -51,9 +51,9 @@ public:
     /* Returns true if all requirements are met, and the user is allowed to cast the spell on specified actors.
     This is useful if you want to deny the spell cast because the user has chosen an invalid target. */
     UFUNCTION(BlueprintCallable, Category="Healers Spell")
-    virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const;
+    virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const;
 
     UFUNCTION(BlueprintCallable, Category="Healers Spell")
     /* Initializes the spell components and executes the spell sequence. */
-    virtual void CastSpell(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets);
+    virtual void CastSpell(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
 };

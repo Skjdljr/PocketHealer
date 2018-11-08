@@ -1,13 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Healers_DamageModifier.h"
+#include "Healers_CharacterSheet.h"
 
 UHealers_DamageModifier::UHealers_DamageModifier(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 
 }
 
-void UHealers_DamageModifier::ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
+void UHealers_DamageModifier::ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
     Super::ExecuteSpell(spellOwner, caster, targets);
 

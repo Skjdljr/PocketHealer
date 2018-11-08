@@ -14,7 +14,7 @@ bool UHealers_SpellPrerequisiteComponent::CanCastSpell(AHealers_CharacterSheet* 
 	return true;
 }
 
-bool UHealers_SpellPrerequisiteComponent::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const
+bool UHealers_SpellPrerequisiteComponent::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const
 {
 	return true;
 }

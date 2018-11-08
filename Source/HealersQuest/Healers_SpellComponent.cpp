@@ -9,7 +9,7 @@ UHealers_SpellComponent::UHealers_SpellComponent(const FObjectInitializer& Objec
 
 }
 
-void UHealers_SpellComponent::ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
+void UHealers_SpellComponent::ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
 	SpellLifespan = SpellDuration;
 
@@ -45,7 +45,7 @@ bool UHealers_SpellComponent::IsSpellActive () const
 	return (SpellLifespan > 0.f);
 }
 
-void UHealers_SpellComponent::BP_ExecuteSpell_Implementation (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AActor*>& targets)
+void UHealers_SpellComponent::BP_ExecuteSpell_Implementation (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
 	//Noop
 }

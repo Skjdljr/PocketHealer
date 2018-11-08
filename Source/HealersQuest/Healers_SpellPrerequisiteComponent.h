@@ -20,7 +20,7 @@ public:
 	virtual bool CanCastSpell(AHealers_CharacterSheet* caster) const;
 
 	UFUNCTION(BlueprintCallable, Category="Healers")
-	virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AActor*>& targets) const;
+	virtual bool CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const;
 
 	/**
 	 * Invoked once a spell is executed.

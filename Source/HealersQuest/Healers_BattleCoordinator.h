@@ -116,6 +116,12 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy);
     
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void TickMana(float dt);
+
+    UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
+    void TickCooldowns(float dt);
+
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     AHealers_CharacterSheet* GetRandomEnemyTarget();
 

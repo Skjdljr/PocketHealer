@@ -118,11 +118,35 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
     }
 }
 
+void AHealers_BattleCoordinator::TickMana(float dt)
+{
+    for (auto member : BattleData.PartyMembers)
+    {
+        auto newMana = member->GetMana() + member->GetManaRegenerationPerSecond() * dt;
+        newMana = FMath::Clamp(newMana, 0.f, member->GetManaMax());
+        member->SetMana(newMana);
+    }
+
+    for (auto member : BattleData.EnemyMembers)
+    {
+        auto newMana = member->GetMana() + member->GetManaRegenerationPerSecond() * dt;
+        newMana = FMath::Clamp(newMana, 0.f, member->GetManaMax());
+        member->SetMana(newMana);
+    }
+}
+
+void AHealers_BattleCoordinator::TickCooldowns(float dt)
+{
+}
+
 void AHealers_BattleCoordinator::TickAllCharacters(float dt)
 {
     //Need a better name, this also does dmg.... Confusing I know leave me alone
     AddInitiative(dt, BattleData.EnemyMembers, true);
     AddInitiative(dt, BattleData.PartyMembers, false);
+
+    TickMana(dt);
+    TickCooldowns(dt);
 }
 
 void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* attacker)

@@ -245,6 +245,9 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaMax"), Category = "CharacterSheet")
     float GetManaMax() const { return CharacterSheet.Attributes.ManaMax; }
 
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaRegeneration"), Category = "CharacterSheet")
+    float GetManaRegenerationPerSecond() const { return CharacterSheet.Attributes.ManaRegenerationPerSecond; }
+
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
