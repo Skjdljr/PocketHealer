@@ -143,13 +143,13 @@ AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* 
 
 AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlayerController* PlayerController)
 {
-    AHealers_CharacterSheet* charSheet = nullptr;
+    AHealers_CharacterSheet* CharacterSheet = nullptr;
     if (PlayerController)
     {
         if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
         {
-            charSheet = PlayerState->PartySheet->PartyMembers[0];
+            CharacterSheet = PlayerState->PartySheet->PartyMembers[0];
         }
     }
-    return charSheet;
+    return CharacterSheet;
 }
