@@ -5,15 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
 
-#include "Healers_QuestContract.h"
-
 #include "Healers_GameState.generated.h"
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-// Forward Declarations
-
-struct FHealers_QuestContract;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Delegates
@@ -44,15 +36,6 @@ public:
 
     UPROPERTY(BlueprintAssignable)
     FMatchStateChanged OnMatchStateChanged;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
-    int32 Gold;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
-    int32 Reputation;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
-    FHealers_QuestContract ActiveQuestContract;
 
     //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
 
