@@ -7,7 +7,22 @@
 #include "GameFramework/Info.h"
 #include "Healers_CharacterSheet.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+USTRUCT(BlueprintType, Blueprintable)
+struct FProfessionIconSet : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession Icon Set")
+    TEnumAsByte<ECharacterProfession> Profession;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession Icon Set")
+    UTexture2D* Icon;
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
 * FCharacterRace : Character Race Definition. Design-time structure stored in DataTable. 
