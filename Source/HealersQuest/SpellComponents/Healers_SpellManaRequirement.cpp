@@ -11,15 +11,17 @@ UHealers_SpellManaRequirement::UHealers_SpellManaRequirement(const FObjectInitia
 
 bool UHealers_SpellManaRequirement::CanCastSpell(AHealers_CharacterSheet* caster) const
 {
+    bool IsAbleToCast = false;
     if (!Super::CanCastSpell(caster))
     {
-        return false;
+        IsAbleToCast = false;
+    }
+    else if (caster != nullptr)
+    {
+        IsAbleToCast = caster->GetMana() >= ManaCost;
     }
 
-
-    // @! TODO FIX
-    return (caster == nullptr || caster->GetMana() >= ManaCost);
-   
+    return IsAbleToCast;
 }
 
 void UHealers_SpellManaRequirement::SpellExecuted(AHealers_CharacterSheet* caster)
