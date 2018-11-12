@@ -41,6 +41,9 @@ public:
     UDataTable* CharacterProfessionLibrary;
 
     UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameMode")
+    UDataTable* CharacterProfessionIconSetLibrary;
+
+    UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameMode")
     UDataTable* CharacterAllyLibrary;
 
     UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameMode")
