@@ -8,85 +8,90 @@
 #include "HealersQuest.h"
 
 AHealers_Spell::AHealers_Spell(const FObjectInitializer& ObjectInitializer) :
-	Super(ObjectInitializer)
+    Super(ObjectInitializer)
 {
-	PrimaryActorTick.bCanEverTick = true;
+    PrimaryActorTick.bCanEverTick = true;
 }
 
 void AHealers_Spell::BeginPlay ()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
 
-	GetComponents(OUT SpellComponents);
-	GetComponents(OUT Prerequisites);
+    GetComponents(OUT SpellComponents);
+    GetComponents(OUT Prerequisites);
 
-	TargetComponent = FindComponentByClass<UHealers_SpellTargetingComponent>();
+    TargetComponent = FindComponentByClass<UHealers_SpellTargetingComponent>();
 }
 
 void AHealers_Spell::Destroyed ()
 {
-	for (int i = 0; i < SpellComponents.Num(); ++i)
-	{
-		SpellComponents[i]->DestroySpellComponent();
-	}
+    for (int i = 0; i < SpellComponents.Num(); ++i)
+    {
+        SpellComponents[i]->DestroySpellComponent();
+    }
 
-	Super::Destroyed();
+    Super::Destroyed();
 }
 
 void AHealers_Spell::Tick (float deltaSec)
 {
-	Super::Tick(deltaSec);
+    Super::Tick(deltaSec);
 
-	for (int i = 0; i < SpellComponents.Num(); ++i)
-	{
-		SpellComponents[i]->TickSpell(deltaSec);
-	}
+    for (int i = 0; i < Prerequisites.Num(); ++i)
+    {
+        Prerequisites[i]->TickPrerequisite(deltaSec);
+    }
+
+    for (int i = 0; i < SpellComponents.Num(); ++i)
+    {
+        SpellComponents[i]->TickSpell(deltaSec);
+    }
 }
 
 bool AHealers_Spell::CanCastSpell (AHealers_CharacterSheet* caster) const
 {
-	for (int i = 0; i < Prerequisites.Num(); ++i)
-	{
-		if (!Prerequisites[i]->CanCastSpell(caster))
-		{
-			return false;
-		}
-	}
+    for (int i = 0; i < Prerequisites.Num(); ++i)
+    {
+        if (!Prerequisites[i]->CanCastSpell(caster))
+        {
+            return false;
+        }
+    }
 
-	//Can't cast it again if it's already active
-	for (int i = 0; i < SpellComponents.Num(); ++i)
-	{
-		if (SpellComponents[i]->IsSpellActive())
-		{
-			return false;
-		}
-	}
+    //Can't cast it again if it's already active
+    for (int i = 0; i < SpellComponents.Num(); ++i)
+    {
+        if (SpellComponents[i]->IsSpellActive())
+        {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const
 {
-	for (int i = 0; i < Prerequisites.Num(); ++i)
-	{
-		if (!Prerequisites[i]->CanCastSpellOnTargets(caster, targets))
-		{
-			return false;
-		}
-	}
+    for (int i = 0; i < Prerequisites.Num(); ++i)
+    {
+        if (!Prerequisites[i]->CanCastSpellOnTargets(caster, targets))
+        {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
-	for (int i = 0; i < Prerequisites.Num(); ++i)
-	{
-		Prerequisites[i]->SpellExecuted(caster);
-	}
+    for (int i = 0; i < Prerequisites.Num(); ++i)
+    {
+        Prerequisites[i]->SpellExecuted(caster);
+    }
 
-	for (int i = 0; i < SpellComponents.Num(); ++i)
-	{
-		SpellComponents[i]->ExecuteSpell(this, caster, targets);
-	}
+    for (int i = 0; i < SpellComponents.Num(); ++i)
+    {
+        SpellComponents[i]->ExecuteSpell(this, caster, targets);
+    }
 }
