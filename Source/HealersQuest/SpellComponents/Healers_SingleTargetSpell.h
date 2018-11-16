@@ -15,10 +15,10 @@ class HEALERSQUEST_API UHealers_SingleTargetSpell : public UHealers_SpellTargeti
     GENERATED_BODY()
 
 public:
-	/* The single target the user has selected.  The UI is most likely going to set this variable. */
-	AHealers_CharacterSheet* Target;
+    /* The single target the user has selected.  The UI is most likely going to set this variable. */
+    AHealers_CharacterSheet* Target;
 
     UHealers_SingleTargetSpell(const FObjectInitializer& ObjectInitializer);
 
-	virtual TArray<AHealers_CharacterSheet*> GetTargets (AHealers_CharacterSheet* caster) const override;
+    virtual TArray<AHealers_CharacterSheet*> GetTargets (AHealers_CharacterSheet* caster) const override;
 };
