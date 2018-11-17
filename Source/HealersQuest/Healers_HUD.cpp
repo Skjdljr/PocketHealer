@@ -10,6 +10,8 @@
 #include "Runtime/UMG/Public/IUMGModule.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 
+#include "Healers_SceneMenu.h"
+
 void AHealers_HUD::SetScene(TSubclassOf<UUserWidget> InSceneClass)
 {
     if (auto World = GetWorld())
@@ -18,10 +20,11 @@ void AHealers_HUD::SetScene(TSubclassOf<UUserWidget> InSceneClass)
         {
             if (PC->IsLocalController())
             {
-                CurrentScene = CreateWidget<UUserWidget>(World, InSceneClass);
-                if (CurrentScene)
+                CurrentWidget = CreateWidget<UUserWidget>(World, InSceneClass);
+                if (auto CurrentScene = Cast<UHealers_SceneMenu>(CurrentWidget))
                 {
                     CurrentScene->AddToViewport();
+                    CurrentScene->OpenScene();
                 }
             }
         }

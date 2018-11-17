@@ -1,6 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Healers_Spell.h"
+
+#include "Kismet/GameplayStatics.h"
+
 #include "Healers_CharacterSheet.h"
 #include "Healers_SpellComponent.h"
 #include "Healers_SpellPrerequisiteComponent.h"
@@ -85,6 +88,8 @@ bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, cons
 
 void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
 {
+    //UGameplayStatics::PlaySound2D(caster, SpellCastSound);
+
     for (int i = 0; i < Prerequisites.Num(); ++i)
     {
         Prerequisites[i]->SpellExecuted(caster);

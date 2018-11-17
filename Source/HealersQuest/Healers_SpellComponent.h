@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 #include "Healers_SpellComponent.generated.h"
 
-//class UHealers_SpellTargetComponent;
 class AHealers_Spell;
 class AHealers_CharacterSheet;
 
@@ -24,7 +24,6 @@ protected:
     float SpellLifespan;
 
 public:
-    UHealers_SpellComponent(const FObjectInitializer& ObjectInitializer);
 
     /**
      * Invoked whenever the spell was casted.
@@ -52,7 +51,6 @@ public:
     UFUNCTION(BlueprintCallable, Category="Healers")
     virtual bool IsSpellActive() const;
 
-protected:
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
     void BP_ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
 
