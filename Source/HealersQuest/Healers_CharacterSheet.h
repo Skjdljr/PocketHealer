@@ -235,10 +235,13 @@ public:
     float GetInitiative() const { return CharacterSheet.Attributes.Initiative; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
-    void SetInitiative(float inInit) { CharacterSheet.Attributes.Initiative = inInit; }
+    void SetInitiative(float inInitiative) { CharacterSheet.Attributes.Initiative = inInitiative; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character InitiativePerSecond"), Category = "CharacterSheet")
     float GetInitiativePerSecond() const { return CharacterSheet.Attributes.InitiativePerSecond; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character InitiativePerSecond"), Category = "CharacterSheet")
+    void SetInitiativePerSecond(float inInitiativePerSecond) { CharacterSheet.Attributes.InitiativePerSecond = inInitiativePerSecond; }
 
     // Health
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Health"), Category = "CharacterSheet")
@@ -260,8 +263,14 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaMax"), Category = "CharacterSheet")
     float GetManaMax() const { return CharacterSheet.Attributes.ManaMax; }
 
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
+    void SetManaMax(float InManaMax) { CharacterSheet.Attributes.Mana = InManaMax; }
+
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaRegeneration"), Category = "CharacterSheet")
     float GetManaRegenerationPerSecond() const { return CharacterSheet.Attributes.ManaRegenerationPerSecond; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
+    void SetManaRegenerationPerSecond(float InManaRegenerationPerSecond) { CharacterSheet.Attributes.ManaRegenerationPerSecond = InManaRegenerationPerSecond; }
 
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
