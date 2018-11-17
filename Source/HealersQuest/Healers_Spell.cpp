@@ -23,7 +23,7 @@ void AHealers_Spell::BeginPlay ()
     TargetComponent = FindComponentByClass<UHealers_SpellTargetingComponent>();
 }
 
-void AHealers_Spell::Destroyed ()
+void AHealers_Spell::Destroyed()
 {
     for (int i = 0; i < SpellComponents.Num(); ++i)
     {
@@ -33,7 +33,7 @@ void AHealers_Spell::Destroyed ()
     Super::Destroyed();
 }
 
-void AHealers_Spell::Tick (float deltaSec)
+void AHealers_Spell::Tick(float deltaSec)
 {
     Super::Tick(deltaSec);
 
@@ -48,7 +48,7 @@ void AHealers_Spell::Tick (float deltaSec)
     }
 }
 
-bool AHealers_Spell::CanCastSpell (AHealers_CharacterSheet* caster) const
+bool AHealers_Spell::CanCastSpell(AHealers_CharacterSheet* caster) const
 {
     for (int i = 0; i < Prerequisites.Num(); ++i)
     {

@@ -39,25 +39,25 @@ public:
     /**
      * Invoked whenever enough time elapsed since this component was last casted.
      */
-    virtual void ShutdownSpell ();
+    virtual void ShutdownSpell();
 
     /**
      * Invoked whenever the spell owner actor is destroyed.
      */
-    virtual void DestroySpellComponent ();
+    virtual void DestroySpellComponent();
 
     /**
      * Returns true if this spell is actively being ticked.
      */
     UFUNCTION(BlueprintCallable, Category="Healers")
-    virtual bool IsSpellActive () const;
+    virtual bool IsSpellActive() const;
 
 protected:
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
-    void BP_ExecuteSpell (AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
+    void BP_ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets);
 
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
-    void BP_TickSpell (float deltaSec);
+    void BP_TickSpell(float deltaSec);
 
     UFUNCTION(BlueprintNativeEvent, Category="Healers")
     void BP_ShutdownSpell();
