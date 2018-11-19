@@ -139,6 +139,9 @@ struct FCharacterSheet : public FTableRowBase
     FString CharacterName;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
+    UTexture2D* CharacterIcon;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     int32 Level;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")

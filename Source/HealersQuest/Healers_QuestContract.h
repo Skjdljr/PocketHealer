@@ -37,6 +37,9 @@ struct HEALERSQUEST_API FAdventureStep
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Adveture Step")
+    UTexture2D* Background;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Adveture Step")
     FAdventureBattle Battle;
 };
 
@@ -119,4 +122,20 @@ public:
 
     //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
     //TArray<AHealers_CharacterSheet*> ContractMembers;
+};
+
+
+/**
+* AHealers_QuestContract : Quest Contract Actor. Run-time instance of a QuestContract.
+*
+*/
+UCLASS(Blueprintable, BlueprintType, NotPlaceable)
+class HEALERSQUEST_API AHealers_QuestContract : public AInfo
+{
+    GENERATED_BODY()
+
+public:
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract")
+    FQuestContract QuestContract;
 };

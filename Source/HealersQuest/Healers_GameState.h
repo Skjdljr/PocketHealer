@@ -14,6 +14,10 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMatchStateChanged);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+class AHealers_QuestContract;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 UENUM()
 enum EAdventureState
 {
@@ -21,6 +25,8 @@ enum EAdventureState
     AS_Battle,
     AS_MAX
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * 
@@ -37,6 +43,6 @@ public:
     UPROPERTY(BlueprintAssignable)
     FMatchStateChanged OnMatchStateChanged;
 
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameState")
+    TArray<AHealers_QuestContract*> QuestContracts;
 };
