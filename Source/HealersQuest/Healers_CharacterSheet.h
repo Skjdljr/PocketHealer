@@ -196,6 +196,9 @@ public:
     UPROPERTY(BlueprintReadWRite, EditAnywhere, Category = "CharacterSheet")
     AHealers_Spell* CurrentSelectedSpell;
 
+    UPROPERTY(BlueprintReadWRite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
+    bool isPlayer;
+
     /**
     * Getter and Setters
     */

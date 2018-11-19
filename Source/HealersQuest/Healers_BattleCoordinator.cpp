@@ -94,27 +94,30 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
 {
     for (auto member : sheet)
     {
-        auto newInitiative = member->GetHealth() > 0 ? member->GetInitiative() + member->GetInitiativePerSecond() * dt : 0.f;
-        member->SetInitiative(newInitiative);
-        
-        if (member->GetInitiative() > INITIATIVEMAX)
-        {
-            auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
-            if (target != nullptr)
-            {
-                member->SetInitiative(0.0f);
-                
-                if (member && target)
-                {
-                    UE_LOG(Game, Log, TEXT("Attacker(%s) initiated attack against Defender(%s)"), *member->CharacterSheet.CharacterName, *target->CharacterSheet.CharacterName);
-                    Take_Damage(target, member);
-                }
-            }
-            else
-            {
-                UE_LOG(Game, Error, TEXT("You dun goofed, target is null"));
-            }
-        }
+         if (!member->isPlayer)
+         {
+             auto newInitiative = member->GetHealth() > 0 ? member->GetInitiative() + member->GetInitiativePerSecond() * dt : 0.f;
+             member->SetInitiative(newInitiative);
+
+             if (member->GetInitiative() > INITIATIVEMAX)
+             {
+                 auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
+                 if (target != nullptr)
+                 {
+                     member->SetInitiative(0.0f);
+
+                     if (member && target)
+                     {
+                         UE_LOG(Game, Log, TEXT("Attacker(%s) initiated attack against Defender(%s)"), *member->CharacterSheet.CharacterName, *target->CharacterSheet.CharacterName);
+                         Take_Damage(target, member);
+                     }
+                 }
+                 else
+                 {
+                     UE_LOG(Game, Error, TEXT("You dun goofed, target is null"));
+                 }
+             }
+         }
     }
 }
 
