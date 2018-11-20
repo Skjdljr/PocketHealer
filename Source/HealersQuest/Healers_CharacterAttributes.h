@@ -6,8 +6,6 @@
 #include "Engine/DataTable.h"
 #include "Healers_CharacterAttributes.generated.h"
 
-
-
 #pragma region FDamageResistance
 
 /**

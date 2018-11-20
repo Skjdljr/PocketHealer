@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HealersQuest.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Healers_FunctionLibrary.generated.h"
 
@@ -11,8 +12,6 @@
 
 class AHealers_CharacterSheet;
 class AHealers_GameMode;
-enum ECharacterRace;
-enum ECharacterProfession;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
