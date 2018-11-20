@@ -1,0 +1,742 @@
+[
+	{
+		"Name": "Yarn",
+		"ID": 0,
+		"ContractName": "Defeat the Darn Yarn",
+		"Description": "",
+		"Image": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_wool.T_UI_Icon_wool'",
+		"Cost": 0,
+		"Prerequisite":
+		{
+			"Level": 0,
+			"Profession": "PROFESSION_Null",
+			"Reputation": 0
+		},
+		"Reward":
+		{
+			"Gold": 10,
+			"Reputation": 25
+		},
+		"ChallengeRating": 0.10000000149011612,
+		"Steps": [
+			{
+				"Background": "Texture2D'/Game/Sprites/BackGrounds/BG_TEMP_Hearth.BG_TEMP_Hearth'",
+				"Battle":
+				{
+					"PartyMembers": [
+						{
+							"CharacterName": "Grandma Sorcerela",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_shepherds-crook.T_UI_Icon_shepherds-crook'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Human",
+							"Profession": "PROFESSION_Wizard",
+							"Attributes":
+							{
+								"Health": -50,
+								"HealthMax": -50,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.5,
+								"AttackAccuracy": 0,
+								"AttackPower": -5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					],
+					"EnemyMembers": [
+						{
+							"CharacterName": "Aggressive Yarn",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_wool.T_UI_Icon_wool'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Construct",
+							"Profession": "PROFESSION_Barbarian",
+							"Attributes":
+							{
+								"Health": -390,
+								"HealthMax": -390,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": -20,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	{
+		"Name": "Pumpkin",
+		"ID": 0,
+		"ContractName": "Bake the Pumpkin King",
+		"Description": "",
+		"Image": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_pumpkin-mask.T_UI_Icon_pumpkin-mask'",
+		"Cost": 0,
+		"Prerequisite":
+		{
+			"Level": 1,
+			"Profession": "PROFESSION_Null",
+			"Reputation": 0
+		},
+		"Reward":
+		{
+			"Gold": 25,
+			"Reputation": 50
+		},
+		"ChallengeRating": 0.20000000298023224,
+		"Steps": [
+			{
+				"Background": "Texture2D'/Game/Sprites/BackGrounds/BG_TEMP_CountryVillageDark.BG_TEMP_CountryVillageDark'",
+				"Battle":
+				{
+					"PartyMembers": [
+						{
+							"CharacterName": "Farmer Wilhelm",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_farmer.T_UI_Icon_farmer'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Human",
+							"Profession": "PROFESSION_Druid",
+							"Attributes":
+							{
+								"Health": -45,
+								"HealthMax": -45,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.5,
+								"AttackAccuracy": 0,
+								"AttackPower": -5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Rufus",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_fat.T_UI_Icon_fat'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Human",
+							"Profession": "PROFESSION_Commoner",
+							"Attributes":
+							{
+								"Health": -60,
+								"HealthMax": -60,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.75,
+								"AttackAccuracy": 0,
+								"AttackPower": -5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					],
+					"EnemyMembers": [
+						{
+							"CharacterName": "Mad Pumpkin King",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_pumpkin-mask.T_UI_Icon_pumpkin-mask'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Plant",
+							"Profession": "PROFESSION_Druid",
+							"Attributes":
+							{
+								"Health": 100,
+								"HealthMax": 100,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.25,
+								"AttackAccuracy": 0,
+								"AttackPower": 10,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	{
+		"Name": "Starfish",
+		"ID": 0,
+		"ContractName": "Sink the Starfish",
+		"Description": "",
+		"Image": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_sea-star.T_UI_Icon_sea-star'",
+		"Cost": 0,
+		"Prerequisite":
+		{
+			"Level": 0,
+			"Profession": "PROFESSION_Null",
+			"Reputation": 0
+		},
+		"Reward":
+		{
+			"Gold": 25,
+			"Reputation": 50
+		},
+		"ChallengeRating": 0.20000000298023224,
+		"Steps": [
+			{
+				"Background": "Texture2D'/Game/Sprites/BackGrounds/BG_TEMP_Coastline.BG_TEMP_Coastline'",
+				"Battle":
+				{
+					"PartyMembers": [
+						{
+							"CharacterName": "Drunken Pirate Iago",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_saber-and-pistol.T_UI_Icon_saber-and-pistol'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Human",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -50,
+								"HealthMax": -50,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.75,
+								"AttackAccuracy": 0,
+								"AttackPower": 0,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Polly",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_parrot-head.T_UI_Icon_parrot-head'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -80,
+								"HealthMax": -80,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0.25,
+								"AttackAccuracy": 0,
+								"AttackPower": -15,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					],
+					"EnemyMembers": [
+						{
+							"CharacterName": "Brown Starfish",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_sea-star.T_UI_Icon_sea-star'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Plant",
+							"Profession": "PROFESSION_Knight",
+							"Attributes":
+							{
+								"Health": -60,
+								"HealthMax": -60,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0.10000000149011612,
+								"AttackAccuracy": 0,
+								"AttackPower": -10,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Red Starfish",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_sea-star.T_UI_Icon_sea-star'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Plant",
+							"Profession": "PROFESSION_Ranger",
+							"Attributes":
+							{
+								"Health": -70,
+								"HealthMax": -70,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.40000000596046448,
+								"AttackAccuracy": 0,
+								"AttackPower": 5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	{
+		"Name": "Earthwyrms",
+		"ID": 0,
+		"ContractName": "Bury the Earthwyrms",
+		"Description": "",
+		"Image": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_earth-worm.T_UI_Icon_earth-worm'",
+		"Cost": 0,
+		"Prerequisite":
+		{
+			"Level": 0,
+			"Profession": "PROFESSION_Null",
+			"Reputation": 0
+		},
+		"Reward":
+		{
+			"Gold": 25,
+			"Reputation": 75
+		},
+		"ChallengeRating": 0.40000000596046448,
+		"Steps": [
+			{
+				"Background": "Texture2D'/Game/Sprites/BackGrounds/BG_TEMP_EarthyPlateaus.BG_TEMP_EarthyPlateaus'",
+				"Battle":
+				{
+					"PartyMembers": [
+						{
+							"CharacterName": "Groundskeeper Grumm",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_war-pick.T_UI_Icon_war-pick'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Dwarf",
+							"Profession": "PROFESSION_Knight",
+							"Attributes":
+							{
+								"Health": -45,
+								"HealthMax": -45,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": -0.25,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": -5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Babe, Prize Winning Hog",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_pig.T_UI_Icon_pig'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Ranger",
+							"Attributes":
+							{
+								"Health": -70,
+								"HealthMax": -70,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": -0.25,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": 5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					],
+					"EnemyMembers": [
+						{
+							"CharacterName": "Wriggling Earthworm",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_earth-worm.T_UI_Icon_earth-worm'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -50,
+								"HealthMax": -50,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.20000000298023224,
+								"AttackAccuracy": 0,
+								"AttackPower": 5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Engorged Earthworm",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_earth-worm.T_UI_Icon_earth-worm'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Knight",
+							"Attributes":
+							{
+								"Health": 10,
+								"HealthMax": 10,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.30000001192092896,
+								"AttackAccuracy": 0,
+								"AttackPower": 10,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Wriggling Earthworm",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_earth-worm.T_UI_Icon_earth-worm'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -50,
+								"HealthMax": -50,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.20000000298023224,
+								"AttackAccuracy": 0,
+								"AttackPower": 5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	{
+		"Name": "Bats",
+		"ID": 1,
+		"ContractName": "Guano Battle the Bats",
+		"Description": "",
+		"Image": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_bat_animal.T_UI_Icon_bat_animal'",
+		"Cost": 0,
+		"Prerequisite":
+		{
+			"Level": 0,
+			"Profession": "PROFESSION_Null",
+			"Reputation": 0
+		},
+		"Reward":
+		{
+			"Gold": 25,
+			"Reputation": 100
+		},
+		"ChallengeRating": 0.60000002384185791,
+		"Steps": [
+			{
+				"Background": "Texture2D'/Game/Sprites/BackGrounds/BG_TEMP_DiabloChurch.BG_TEMP_DiabloChurch'",
+				"Battle":
+				{
+					"PartyMembers": [
+						{
+							"CharacterName": "Shaggy Apothecary",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_lunar-wand.T_UI_Icon_lunar-wand'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Human",
+							"Profession": "PROFESSION_Wizard",
+							"Attributes":
+							{
+								"Health": -20,
+								"HealthMax": -20,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": -0.20000000298023224,
+								"AttackAccuracy": 0,
+								"AttackPower": 0,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Scoob",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_hound.T_UI_Icon_hound'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Barbarian",
+							"Attributes":
+							{
+								"Health": -60,
+								"HealthMax": -60,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0.20000000298023224,
+								"AttackAccuracy": 0,
+								"AttackPower": 5,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					],
+					"EnemyMembers": [
+						{
+							"CharacterName": "Rabid Bat",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_bat_animal.T_UI_Icon_bat_animal'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -60,
+								"HealthMax": -60,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": 0,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Overgrown Bat",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_bat_animal.T_UI_Icon_bat_animal'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Knight",
+							"Attributes":
+							{
+								"Health": -40,
+								"HealthMax": -40,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": 0,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Rabid Bat",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_bat_animal.T_UI_Icon_bat_animal'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Rogue",
+							"Attributes":
+							{
+								"Health": -60,
+								"HealthMax": -60,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": 0,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						},
+						{
+							"CharacterName": "Wisened Bat",
+							"CharacterIcon": "Texture2D'/Game/Sprites/UI/Icons/T_UI_Icon_bat_animal.T_UI_Icon_bat_animal'",
+							"Level": 1,
+							"Experience": 0,
+							"Race": "RACE_Beast",
+							"Profession": "PROFESSION_Sage",
+							"Attributes":
+							{
+								"Health": -40,
+								"HealthMax": -40,
+								"Mana": 0,
+								"ManaMax": 0,
+								"ManaRegenerationPerSecond": 0,
+								"Initiative": 0,
+								"InitiativePerSecond": 0,
+								"AttackAccuracy": 0,
+								"AttackPower": -10,
+								"MagicAccuracy": 0,
+								"MagicPower": 0,
+								"CriticalDamageChance": 0,
+								"CriticalDamageValue": 0,
+								"EvasionValue": 0,
+								"ArmorValue": 0,
+								"LuckValue": 0,
+								"Resistances": [],
+								"Abilities": []
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+]
