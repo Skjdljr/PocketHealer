@@ -16,38 +16,42 @@
 
 AHealers_PlayerController::AHealers_PlayerController()
 {
-	MusicVolumeScalar = 1.0;
-	MusicComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
-	MusicComponent->SetupAttachment(RootComponent);
+    MusicVolumeScalar = 1.0;
+    MusicComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
+    MusicComponent->SetupAttachment(RootComponent);
 }
 
 void AHealers_PlayerController::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
+
+    FInputModeGameAndUI InputMode;
+    InputMode.SetHideCursorDuringCapture(false);
+    SetInputMode(InputMode);
 }
 
 void AHealers_PlayerController::PlayMusic(USoundBase * Music, float FadeInDuration)
 {
-	if (MusicComponent)
-	{
-		MusicComponent->SetSound(Music);
-		MusicComponent->FadeIn(FadeInDuration, MusicVolumeScalar);
-	}
+    if (MusicComponent)
+    {
+        MusicComponent->SetSound(Music);
+        MusicComponent->FadeIn(FadeInDuration, MusicVolumeScalar);
+    }
 }
 
 void AHealers_PlayerController::StopMusic(float FadeOutDuration)
 {
-	if (MusicComponent)
-	{
-		MusicComponent->FadeOut(FadeOutDuration, 0.f);
-	}
+    if (MusicComponent)
+    {
+        MusicComponent->FadeOut(FadeOutDuration, 0.f);
+    }
 }
 
 void AHealers_PlayerController::SetMusicVolume(float MusicVolume)
 {
-	MusicVolumeScalar = MusicVolume;
-	if (MusicComponent)
-	{
-		MusicComponent->AdjustVolume(0.f, MusicVolumeScalar);
-	}
+    MusicVolumeScalar = MusicVolume;
+    if (MusicComponent)
+    {
+        MusicComponent->AdjustVolume(0.f, MusicVolumeScalar);
+    }
 }
