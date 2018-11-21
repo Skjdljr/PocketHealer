@@ -1,5 +1,10 @@
 #include "Healers_BattleCoordinator.h"
+
+#include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "Healers_CharacterSheet.h"
+#include "Healers_PlayerState.h"
 
 AHealers_BattleCoordinator::AHealers_BattleCoordinator() :
     bIsBattleComplete(false),
@@ -66,6 +71,19 @@ void AHealers_BattleCoordinator::Tick(float dt)
 
                 if (IsEnemyDefeated())
                 {
+                    
+                    if (auto World = GetWorld())
+                    {
+                        if (auto PC = UGameplayStatics::GetPlayerController(World, 0))
+                        {
+                            if (auto HealersPlayerState = Cast<AHealers_PlayerState>(PC->PlayerState))
+                            {
+                                HealersPlayerState->Gold += HealersPlayerState->QuestContract.Reward.Gold;
+                                HealersPlayerState->Reputation += HealersPlayerState->QuestContract.Reward.Reputation;
+                            }
+                        }
+                    }
+
                     OnBattleVictory.Broadcast();
                 }
                 else if (IsPartyDefeated())
