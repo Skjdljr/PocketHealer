@@ -1,7 +1,6 @@
-+ Create To-Do Document
-
-- Create GameInstance Class
-- Create GameMode Class
-- Create GameState Class
-- Create PlayerController Class
-- Create PlayerState Class
+X Create To-Do Document
+X Create GameInstance Class
+X Create GameMode Class
+X Create GameState Class
+X Create PlayerController Class
+X Create PlayerState Class
