@@ -7,6 +7,7 @@
 #include "Healers_GameMode.generated.h"
 
 class UDataTable;
+class AHealers_BattleCoordinator;
 
 /**
  * 
@@ -23,6 +24,9 @@ public:
     // Reference UMG Asset in the Editor
     UPROPERTY(BlueprintReadOnly, Category = "GameMode")
     UUserWidget* MainMenu;
+
+    UPROPERTY(BlueprintReadWrite, Category = "GameMode")
+    AHealers_BattleCoordinator* BattleCoordinator;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
     TSubclassOf<class UUserWidget> MainMenuClass;
