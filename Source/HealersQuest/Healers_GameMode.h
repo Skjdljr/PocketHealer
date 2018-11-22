@@ -25,9 +25,6 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "GameMode")
     UUserWidget* MainMenu;
 
-    UPROPERTY(BlueprintReadWrite, Category = "GameMode")
-    AHealers_BattleCoordinator* BattleCoordinator;
-
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
     TSubclassOf<class UUserWidget> MainMenuClass;
 
@@ -64,5 +61,8 @@ public:
 
     UPROPERTY(Config = Game, BlueprintReadWrite, EditDefaultsOnly, Category = "GameMode")
     int32 DefaultStartingReputation;
+    
+    UPROPERTY(BlueprintReadWrite, Category = "GameMode")
+    AHealers_BattleCoordinator* BattleCoordinator;
 
 };
