@@ -29,7 +29,19 @@ struct HEALERSQUEST_API FAdventureBattle
 
     //TODO:
     //Add some representation of waves/level
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    USoundBase* SoundBattle;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    USoundBase* SoundVictory;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
+    USoundBase* SoundDefeat;
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
 struct HEALERSQUEST_API FAdventureStep
@@ -41,7 +53,16 @@ struct HEALERSQUEST_API FAdventureStep
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Adveture Step")
     FAdventureBattle Battle;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Adveture Step")
+    FString StringEnter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Adveture Step")
+    FString StringExit;
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
 struct HEALERSQUEST_API FQuestContractPrerequisite : public FTableRowBase
@@ -58,6 +79,8 @@ struct HEALERSQUEST_API FQuestContractPrerequisite : public FTableRowBase
     int32 Reputation;
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
 struct HEALERSQUEST_API FQuestContractReward
@@ -69,11 +92,17 @@ struct HEALERSQUEST_API FQuestContractReward
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract Reward")
     int32 Reputation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract Reward")
+    int32 Experience;
 
     // TODO : Inventory Item Rewards
 
     // TODO : Skill or Stat buffs.
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * 
@@ -124,6 +153,8 @@ public:
     //TArray<AHealers_CharacterSheet*> ContractMembers;
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
 * AHealers_QuestContract : Quest Contract Actor. Run-time instance of a QuestContract.
