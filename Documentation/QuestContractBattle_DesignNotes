@@ -3,16 +3,58 @@ Design Notes for QuestContractBattles
 
 1. Darn Yarn :
 - Introduce the player to most basic mechanics of the game.
+- Player should only have access to 1 - 2 abilites (Basic heal, Resurrect)
 - One single ally against one single enemy.
 - Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
 - Ally and enemy use basic attacks.
 - No status effects inflicted by players or enemies.
 
-2. Pumpkin - 
+Lesson:
+- With no healing input, player's party should lose
 
-3. Starfish -
+2. (Beer Keg?) :
+- Continued introduction to basic mechanics of the game
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- One single ally against one single enemy.
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks.
+- No status effects inflicted by players or enemies.
 
-4. Earthwyrms -
+Lesson: 
+- Enemy attacks should be powerful enough to KO the allied party member initially
+- Teach usage of the resurrect ability to win the battle
+- Enemy should prioritze attacks on the ally, if the ally is living.
 
-5. Bats
+
+3. Pumpkin :
+- Continued introduction to basic mechanics of the game
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- Two allies against one single enemy.
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks.
+- No status effects inflicted by players or enemies.
+
+Lesson: 
+- Teach players to manage healing between more than one single heal target.
+- Teach players that allied party members may vary in certain abilities (HP, Defense) by class
+
+4. (Gargoyle) :
+- Continued introduction to basic mechanics of the game
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- Two allies against one single enemy.
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks and defensive actions.
+- No status effects inflicted by players or enemies.
+
+Lesson: 
+- Teach players to manage healing between more than one single heal target.
+- Introduce players to the concept of allies and enemies using more than one ability
+- Teach players abilities may modify defenses or other stats
+
+
+X. Starfish -
+
+X. Earthwyrms -
+
+X. Bats
 
