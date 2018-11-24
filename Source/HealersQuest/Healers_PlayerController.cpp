@@ -16,6 +16,8 @@
 
 AHealers_PlayerController::AHealers_PlayerController()
 {
+    bShowMouseCursor = true;
+    
     MusicVolumeScalar = 1.0;
     MusicComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
     MusicComponent->SetupAttachment(RootComponent);
@@ -24,7 +26,6 @@ AHealers_PlayerController::AHealers_PlayerController()
 void AHealers_PlayerController::BeginPlay()
 {
     Super::BeginPlay();
-
     FInputModeGameAndUI InputMode;
     InputMode.SetHideCursorDuringCapture(false);
     SetInputMode(InputMode);
