@@ -38,6 +38,7 @@ Lesson:
 - Teach players to manage healing between more than one single heal target.
 - Teach players that allied party members may vary in certain abilities (HP, Defense) by class
 
+
 4. (Gargoyle) :
 - Continued introduction to basic mechanics of the game
 - Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
@@ -52,9 +53,72 @@ Lesson:
 - Teach players abilities may modify defenses or other stats
 
 
+5. (Lessons in Dying?) :
+- Continued introduction to basic mechanics of the game
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks and defensive actions.
+- No status effects inflicted by players or enemies.
+
+Lesson: 
+- Player must die during this combat.
+- The opponent probably needs to have a high-powered single attack. (Alternatively, this could be done by having the player's ally use a damage-all ability like a bomb that hurts everyone without fire resist.)
+- Teach players that you might be defeated during combat.
+- Your abilities generally disable when defeated.
+- Some allies might be able to restore you to get you back into the fight.
+- Ally needs to be able to use Phoenix Down to restore the player to Life.
+
+6. (Pass the Gas) : 
+- Continued introduction to basic mechanics of the game
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks and defensive actions.
+- No status effects inflicted by players or enemies.
+
+Lesson: 
+- Introduce status effects such as damage-over-time
+- Player should only have access to 1 - 2 abilities (Basic heal, Resurrect)
+- Inability to adequately respond to ongoing damage-over-time (except via repeated heals) demands a response.
+- Speed of combat is reduced to allow players to acclimate themselves to most basic mechanics.
+- Ally and enemy use basic attacks and defensive actions.
+
+
+
+
+
 X. Starfish -
 
 X. Earthwyrms -
 
 X. Bats
+
+
+
+?. Viper -
+- Introduction to advanced status-effect mechanic.
+- Enemy inflicts POISON status-effect with one attack
+- Allied party member has ongoing debuff.
+- Player must use CLEANSE ability to remove the debuff.
+
+?. Ghost -
+- Prerequisite: Player must have access to HOLY mark ability to access this (Sage class?)
+- Introduction to advanced ETHEREAL mechanic.
+- ETHEREAL state causes all non-magical attacks to miss.
+- HOLY Mark dispels ghost's ETHEREAL state.
+
+?. Necromancer -
+- Necromancer enemy with two skeletal minions
+- Skeletal minions are resurrected by the Necromancer upon death
+
+?. Bombadier -
+- Powerful defensive enemy creates bomb minions
+- Bomb minions have low initiative gain but are immune to most attacks
+- 
+
+?. Siege Battle -
+- Allied party has ENGINEER & CANNON. Enemy party has WALL.
+- Attacks against Enemy are Absorbed by WALL
+- WALL takes no damage from non-siege attacks
+- CANNON fires seige damage and can destroy the wall, over time.
+- CANNON cannot be healed by the player, only by the ENGINEER.
 
