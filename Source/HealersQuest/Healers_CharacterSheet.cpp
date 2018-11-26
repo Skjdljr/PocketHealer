@@ -13,6 +13,23 @@ AHealers_CharacterSheet::AHealers_CharacterSheet()
 {
 }
 
+void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* spell)
+{
+    if (spell != nullptr)
+    {
+        if (!activeEffects.Contains(spell))
+            activeEffects.Add(spell);
+        else
+        {
+            //psudo
+            //if (spell.isStackable)
+            //    activeEffects.Add(spell);
+            //else
+            //    //error?
+        }
+    }
+}
+
 AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet(APawn* sheetOwner)
 {
     AHealers_PlayerState* healerState = Cast<AHealers_PlayerState>(sheetOwner->PlayerState);

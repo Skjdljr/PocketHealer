@@ -193,11 +193,14 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FCharacterSheet CharacterSheet;
 
-    UPROPERTY(BlueprintReadWRite, EditAnywhere, Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     AHealers_Spell* CurrentSelectedSpell;
 
-    UPROPERTY(BlueprintReadWRite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     bool isPlayer;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
+    TArray<AHealers_Spell*> activeEffects;
 
     /**
     * Getter and Setters
@@ -281,6 +284,10 @@ public:
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
+
+    // Spell buffs/effects
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
+    void AddSpellEffect(AHealers_Spell* spell);
 
     /**
      * Convenience function to find a character sheet associated with a pawn.
