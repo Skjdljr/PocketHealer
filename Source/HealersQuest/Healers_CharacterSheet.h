@@ -7,6 +7,10 @@
 #include "GameFramework/Info.h"
 #include "Healers_CharacterSheet.generated.h"
 
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSpellEffectChanged, AHealers_Spell*, spell, bool, isStackable);
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(BlueprintType, Blueprintable)
@@ -201,6 +205,9 @@ public:
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
     TArray<AHealers_Spell*> activeEffects;
+
+    UPROPERTY(BlueprintAssignable, Category = "CharacterSheet")
+    FOnSpellEffectChanged OnSpellEffectAdded;
 
     /**
     * Getter and Setters

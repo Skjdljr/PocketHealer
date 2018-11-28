@@ -18,12 +18,18 @@ void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* spell)
     if (spell != nullptr)
     {
         if (!activeEffects.Contains(spell))
+        {
             activeEffects.Add(spell);
+            OnSpellEffectAdded.Broadcast(spell, false);
+        }
         else
         {
             //psudo
             //if (spell.isStackable)
-            //    activeEffects.Add(spell);
+            {
+                //activeEffects.Add(spell); 
+                //OnSpellEffectAdded(spell, true);
+            }
             //else
             //    //error?
         }
