@@ -246,7 +246,7 @@ public:
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Experience"), Category = "CharacterSheet")
     void SetExperience(float InExperience) { CharacterSheet.Experience = InExperience; }
 
-    //Initiative
+    // Initiative
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
     float GetInitiative() const { return CharacterSheet.Attributes.Initiative; }
 
@@ -288,6 +288,59 @@ public:
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
     void SetManaRegenerationPerSecond(float InManaRegenerationPerSecond) { CharacterSheet.Attributes.ManaRegenerationPerSecond = InManaRegenerationPerSecond; }
 
+    // Attack
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attack Accuracy"), Category = "CharacterSheet")
+    float GetAttackAccuracy() const { return CharacterSheet.Attributes.AttackAccuracy; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Attack Accuracy"), Category = "CharacterSheet")
+    void SetAttackAccuracy(float InAttackAccuracy) { CharacterSheet.Attributes.AttackAccuracy = InAttackAccuracy; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attack Power"), Category = "CharacterSheet")
+    float GetAttackPower() const { return CharacterSheet.Attributes.AttackPower; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Attack Power"), Category = "CharacterSheet")
+    void SetAttackPower(float InAttackPower) { CharacterSheet.Attributes.AttackPower = InAttackPower; }
+
+    // Magic
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Magic Accuracy"), Category = "CharacterSheet")
+    float GetMagicAccuracy() const { return CharacterSheet.Attributes.MagicAccuracy; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Magic Accuracy"), Category = "CharacterSheet")
+    void SetMagicAccuracy(float InMagicAccuracy) { CharacterSheet.Attributes.MagicAccuracy = InMagicAccuracy; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Magic Power"), Category = "CharacterSheet")
+    float GetMagicPower() const { return CharacterSheet.Attributes.MagicPower; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Magic Power"), Category = "CharacterSheet")
+    void SetMagicPower(float InMagicPower) { CharacterSheet.Attributes.MagicPower = InMagicPower; }
+
+    // Critical
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Critical Damage Chance"), Category = "CharacterSheet")
+    float GetCriticalChance() const { return CharacterSheet.Attributes.CriticalDamageChance; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Critical Damage Chance"), Category = "CharacterSheet")
+    void SetCriticalChance(float InCriticalChance) { CharacterSheet.Attributes.CriticalDamageChance = InCriticalChance; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Critical Damage Power"), Category = "CharacterSheet")
+    float GetCriticalPower() const { return CharacterSheet.Attributes.CriticalDamageValue; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Critical Damage Power"), Category = "CharacterSheet")
+    void SetCriticalPower(float InCriticalPower) { CharacterSheet.Attributes.CriticalDamageValue = InCriticalPower; }
+
+    // Defense
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Evasion"), Category = "CharacterSheet")
+    float GetEvasion() const { return CharacterSheet.Attributes.EvasionValue; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Evasion"), Category = "CharacterSheet")
+    void SetEvasion(float InEvasion) { CharacterSheet.Attributes.EvasionValue = InEvasion; }
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Armor"), Category = "CharacterSheet")
+    float GetArmor() const { return CharacterSheet.Attributes.ArmorValue; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Armor"), Category = "CharacterSheet")
+    void SetArmor(float InArmor) { CharacterSheet.Attributes.ArmorValue = InArmor; }
+
+
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
     TArray<FDamageResistance>& GetResistances() { return CharacterSheet.Attributes.Resistances; }
@@ -295,6 +348,8 @@ public:
     // Spell buffs/effects
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
     void AddSpellEffect(AHealers_Spell* spell);
+
+
 
     /**
      * Convenience function to find a character sheet associated with a pawn.
