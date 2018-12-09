@@ -340,6 +340,12 @@ public:
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Armor"), Category = "CharacterSheet")
     void SetArmor(float InArmor) { CharacterSheet.Attributes.ArmorValue = InArmor; }
 
+    // Luck
+    UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Luck"), Category = "CharacterSheet")
+    float GetLuck() const { return CharacterSheet.Attributes.LuckValue; }
+
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Luck"), Category = "CharacterSheet")
+    void SetLuck(float InLuck) { CharacterSheet.Attributes.LuckValue = InLuck; }
 
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
