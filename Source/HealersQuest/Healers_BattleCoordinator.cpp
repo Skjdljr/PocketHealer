@@ -3,6 +3,7 @@
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "Healers_FunctionLibrary.h"
 #include "Healers_CharacterSheet.h"
 #include "Healers_PlayerState.h"
 
@@ -80,6 +81,7 @@ void AHealers_BattleCoordinator::Tick(float dt)
                             {
                                 HealersPlayerState->Gold += HealersPlayerState->QuestContract.Reward.Gold;
                                 HealersPlayerState->Reputation += HealersPlayerState->QuestContract.Reward.Reputation;
+                                UHealers_FunctionLibrary::GetPlayerCharacterSheet(PC)->CharacterSheet.Experience += HealersPlayerState->QuestContract.Reward.Experience;
                             }
                         }
                     }
