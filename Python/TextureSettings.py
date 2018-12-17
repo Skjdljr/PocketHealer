@@ -1,5 +1,7 @@
 # TextureSettings.py
-# 
+# This is a script to find Texture2D assets intended for UI and properly set the following properties:
+# LOD Group, Compression Settings, Mip Gen Settings, Never Stream
+#
 # Reference: https://api.unrealengine.com/INT/PythonAPI/
 
 import unreal
