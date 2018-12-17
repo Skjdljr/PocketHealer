@@ -51,4 +51,38 @@ public:
 
     UFUNCTION(BlueprintPure, Category = "Healers|Character|Sheet") 
     static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
+
+
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
+    FORCEINLINE FString GetEnumAsString_ECharacterProfession(const ECharacterProfession Value)
+    {
+        const UEnum* enumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ECharacterProfession"), true);
+        if (!enumPtr)
+        {
+            return FString("Invalid");
+        }
+        return enumPtr->GetNameByValue((int64)Value).ToString();
+    }
+
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
+    FORCEINLINE FString GetEnumAsString_ECharacterRace(const ECharacterRace Value)
+    {
+        const UEnum* enumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ECharacterRace"), true);
+        if (!enumPtr)
+        {
+            return FString("Invalid");
+        }
+        return enumPtr->GetNameByValue((int64)Value).ToString();
+    }
+
+    template<typename TEnum>
+    static FORCEINLINE FString GetEnumValueAsString(const FString& Name, TEnum Value)
+    {
+        const UEnum* enumPtr = FindObject<UEnum>(ANY_PACKAGE, *Name, true);
+        if (!enumPtr)
+        {
+            return FString("Invalid");
+        }
+        return enumPtr->GetNameByValue((int64)Value).ToString();
+    }
 };
