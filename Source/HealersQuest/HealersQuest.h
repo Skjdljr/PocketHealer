@@ -13,7 +13,7 @@ DECLARE_LOG_CATEGORY_EXTERN(GameUI, Log, All);
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 UENUM(BlueprintType)
-enum ECharacterRace
+enum class ECharacterRace : uint8
 {
     RACE_Null		UMETA(Hidden),
     RACE_Human		UMETA(DisplayName = "Human"),
@@ -34,7 +34,7 @@ enum ECharacterRace
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 UENUM(BlueprintType)
-enum ECharacterProfession
+enum class ECharacterProfession : uint8
 {
     PROFESSION_Null			UMETA(Hidden),
     PROFESSION_Commoner		UMETA(DisplayName = "Commoner"),
@@ -54,7 +54,7 @@ enum ECharacterProfession
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 UENUM(BlueprintType)
-enum EDamageResistance
+enum class EDamageResistance : uint8
 {
     DR_Null			UMETA(Hidden),
     DR_Physical		UMETA(DisplayName = "Physical"),

@@ -142,7 +142,7 @@ void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes& InAttrib
         bool IsPresent = false;
         for (auto& ResistanceEntry : CharacterSheet.Attributes.Resistances)
         {
-            if ((int32)ResistanceEntry.DamageType == (int32)InResistanceEntry.DamageType)
+            if ((uint8)ResistanceEntry.DamageType == (uint8)InResistanceEntry.DamageType)
             {
                 IsPresent = true;
                 ResistanceEntry.DamageResistancePercentValue += InResistanceEntry.DamageResistancePercentValue;

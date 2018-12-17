@@ -19,7 +19,7 @@ struct FDamageResistance
 
     /* DamageResistance Type */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")
-    TEnumAsByte<EDamageResistance> DamageType;
+    EDamageResistance DamageType;
 
     /* Flat DamageResistance Percent Value */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")

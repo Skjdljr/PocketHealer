@@ -19,7 +19,7 @@ struct FProfessionIconSet : public FTableRowBase
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession Icon Set")
-    TEnumAsByte<ECharacterProfession> Profession;
+    ECharacterProfession Profession;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession Icon Set")
     UTexture2D* Icon;
@@ -60,7 +60,7 @@ struct FCharacterRaceLibrary : public FTableRowBase
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-    TEnumAsByte<ECharacterRace> Race;
+    ECharacterRace Race;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
     UDataTable* DataTable;
@@ -101,7 +101,7 @@ struct FCharacterProfessionLibrary : public FTableRowBase
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-    TEnumAsByte<ECharacterProfession> Profession;
+    ECharacterProfession Profession;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
     UDataTable* DataTable;
@@ -121,7 +121,7 @@ struct FCharacterProfessionLibrary : public FTableRowBase
 //    GENERATED_BODY()
 //
 //    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
-//    TEnumAsByte<ECharacterProfession> Profession;
+//    ECharacterProfession Profession;
 //
 //    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Profession")
 //    int32 Level;
@@ -152,10 +152,10 @@ struct FCharacterSheet : public FTableRowBase
     float Experience;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
-    TEnumAsByte<ECharacterRace> Race;
+    ECharacterRace Race;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
-    TEnumAsByte<ECharacterProfession> Profession;
+    ECharacterProfession Profession;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
     FCharacterAttributes Attributes;
@@ -222,11 +222,11 @@ public:
 
     // Race
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Race"), Category = "CharacterSheet")
-    TEnumAsByte<ECharacterRace> GetRace() const { return CharacterSheet.Race; }
+    ECharacterRace GetRace() const { return CharacterSheet.Race; }
 
     // Profession
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Profession"), Category = "CharacterSheet")
-    TEnumAsByte<ECharacterProfession> GetProfession() const { return CharacterSheet.Profession; }
+    ECharacterProfession GetProfession() const { return CharacterSheet.Profession; }
 
     // Attributes
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attributes"), Category = "CharacterSheet")
