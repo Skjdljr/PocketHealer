@@ -38,13 +38,13 @@ void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* spell)
 
 AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet(APawn* sheetOwner)
 {
-    AHealers_PlayerState* healerState = Cast<AHealers_PlayerState>(sheetOwner->PlayerState);
-    if (healerState == nullptr)
+    AHealers_CharacterSheet* OutSheet = nullptr;
+    if (auto PS = Cast<AHealers_PlayerState>(sheetOwner->GetPlayerState()))
     {
-        return nullptr;
+        OutSheet = PS->GetHealersCharacterSheet();
     }
 
-    return healerState->GetHealersCharacterSheet();
+    return OutSheet;
 }
 
 void AHealers_CharacterSheet::BeginPlay()
