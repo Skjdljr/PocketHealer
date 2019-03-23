@@ -6,7 +6,11 @@
 #include "GameFramework/PlayerController.h"
 #include "Healers_PlayerController.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class UAudioComponent;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * 
@@ -37,4 +41,10 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Healers|PlayerController|Music")
     void SetMusicVolume(float MusicVolume);
+
+    /** Allows the PlayerController to set up custom input bindings. */
+    virtual void SetupInputComponent() override;
+
+    UFUNCTION(BlueprintCallable, Category = "Healers|PlayerController")
+    void ToggleGameMenu();
 };

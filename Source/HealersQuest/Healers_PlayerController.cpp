@@ -56,3 +56,13 @@ void AHealers_PlayerController::SetMusicVolume(float MusicVolume)
         MusicComponent->AdjustVolume(0.f, MusicVolumeScalar);
     }
 }
+
+void AHealers_PlayerController::SetupInputComponent()
+{
+    InputComponent->BindAction("GameMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleGameMenu);
+}
+
+void AHealers_PlayerController::ToggleGameMenu()
+{
+    UE_LOG(Game, Log, TEXT("Key Pressed - Game Menu"));
+}
