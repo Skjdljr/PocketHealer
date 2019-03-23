@@ -59,6 +59,8 @@ void AHealers_PlayerController::SetMusicVolume(float MusicVolume)
 
 void AHealers_PlayerController::SetupInputComponent()
 {
+    Super::SetupInputComponent();
+
     InputComponent->BindAction("GameMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleGameMenu);
 }
 
