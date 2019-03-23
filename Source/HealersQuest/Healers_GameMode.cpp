@@ -15,6 +15,9 @@
 #include "Healers_Character.h"
 #include "Healers_PlayerController.h"
 #include "Healers_HUD.h"
+#include "Healers_GameInstance.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 AHealers_GameMode::AHealers_GameMode()
 {
@@ -26,31 +29,29 @@ void AHealers_GameMode::BeginPlay()
 {
     Super::BeginPlay();
 
-    if (auto world = GetWorld())
+    if (auto World = GetWorld())
     {
         UE_LOG(Game, Log, TEXT("Simple Log"));
 
-        if (GameState)
+        if (auto GameInstance = Cast<UHealers_GameInstance>(World->GetGameInstance()))
         {
-            for (auto PlayerState : GameState->PlayerArray)
+            if (auto MainMenuClass = GameInstance->MainMenuClass)
             {
-                if (auto HealersPC = Cast<AHealers_PlayerController>(PlayerState->GetOwner()))
+                if (GameState)
                 {
-                    if (auto HealersHUD = Cast<AHealers_HUD>(HealersPC->GetHUD()))
+                    for (auto PlayerState : GameState->PlayerArray)
                     {
-                        HealersHUD->SetScene(MainMenuClass);
+                        if (auto HealersPC = Cast<AHealers_PlayerController>(PlayerState->GetOwner()))
+                        {
+                            if (auto HealersHUD = Cast<AHealers_HUD>(HealersPC->GetHUD()))
+                            {
+                                HealersHUD->SetScene(MainMenuClass);
+                            }
+                        }
                     }
                 }
             }
         }
-
-        /*MainMenu = CreateWidget<UUserWidget>(world, MainMenuClass);
-        if (MainMenu)
-        {
-            auto pc = world->GetFirstPlayerController();
-
-            MainMenu->AddToViewport();
-        }*/
 
         if (ReadyToStartMatch())
         {
@@ -61,15 +62,9 @@ void AHealers_GameMode::BeginPlay()
 
 void AHealers_GameMode::StartMatch()
 {
-    if (MainMenu)
-    {
-        MainMenu->RemoveFromViewport();
-        MainMenu->Destruct();
-    }
-
     // Display World Map / Tavern / whatever UI
     
-    Super::StartMatch();
+    AGameMode::StartMatch();
 }
 
 void AHealers_GameMode::BP_StartMatch()

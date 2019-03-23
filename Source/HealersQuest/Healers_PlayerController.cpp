@@ -14,6 +14,10 @@
 
 #include "Components/AudioComponent.h"
 
+#include "Healers_GameInstance.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 AHealers_PlayerController::AHealers_PlayerController()
 {
     bShowMouseCursor = true;
@@ -67,4 +71,29 @@ void AHealers_PlayerController::SetupInputComponent()
 void AHealers_PlayerController::ToggleGameMenu()
 {
     UE_LOG(Game, Log, TEXT("Key Pressed - Game Menu"));
+    if (auto World = GetWorld())
+    {
+        if (auto GameInstance = Cast<UHealers_GameInstance>(World->GetGameInstance()))
+        {
+            if (auto GameMenu = GameInstance->GameMenu)
+            {
+                GameMenu->RemoveFromViewport();
+                GameInstance->GameMenu = nullptr;
+            }
+            else
+            {
+                if (auto GameMenuClass = GameInstance->GameMenuClass)
+                {
+                    GameMenu = CreateWidget<UUserWidget>(World, GameMenuClass);
+                    if (GameMenu)
+                    {
+                        auto pc = World->GetFirstPlayerController();
+
+                        GameMenu->AddToViewport();
+                        GameInstance->GameMenu = GameMenu;
+                    }
+                }
+            }
+        }
+    }
 }

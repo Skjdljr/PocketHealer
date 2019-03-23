@@ -6,8 +6,13 @@
 #include "GameFramework/GameMode.h"
 #include "Healers_GameMode.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Forward Declarations
+
 class UDataTable;
 class AHealers_BattleCoordinator;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * 
@@ -20,13 +25,6 @@ class HEALERSQUEST_API AHealers_GameMode : public AGameMode
 public:
 
     AHealers_GameMode();
-
-    // Reference UMG Asset in the Editor
-    UPROPERTY(BlueprintReadOnly, Category = "GameMode")
-    UUserWidget* MainMenu;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
-    TSubclassOf<class UUserWidget> MainMenuClass;
 
     // Override BeginPlay()
     virtual void BeginPlay() override;
