@@ -66,6 +66,14 @@ void AHealers_PlayerController::SetupInputComponent()
     Super::SetupInputComponent();
 
     InputComponent->BindAction("GameMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleGameMenu);
+    InputComponent->BindAction("CombatAction1", IE_Pressed, this, &AHealers_PlayerController::CombatAction<1>);
+    InputComponent->BindAction("CombatAction2", IE_Pressed, this, &AHealers_PlayerController::CombatAction<2>);
+    InputComponent->BindAction("CombatAction3", IE_Pressed, this, &AHealers_PlayerController::CombatAction<3>);
+    InputComponent->BindAction("CombatAction4", IE_Pressed, this, &AHealers_PlayerController::CombatAction<4>);
+    InputComponent->BindAction("CombatAction5", IE_Pressed, this, &AHealers_PlayerController::CombatAction<5>);
+    InputComponent->BindAction("CombatAction6", IE_Pressed, this, &AHealers_PlayerController::CombatAction<6>);
+    InputComponent->BindAction("CombatAction7", IE_Pressed, this, &AHealers_PlayerController::CombatAction<7>);
+    InputComponent->BindAction("CombatAction8", IE_Pressed, this, &AHealers_PlayerController::CombatAction<8>);
 }
 
 void AHealers_PlayerController::ToggleGameMenu()
@@ -96,4 +104,9 @@ void AHealers_PlayerController::ToggleGameMenu()
             }
         }
     }
+}
+
+void AHealers_PlayerController::CombatAction(int32 Index)
+{
+    UE_LOG(Game, Log, TEXT("<%s>(Line %i) : Key Pressed - CombatAction %i"), *FString(__FUNCTION__), __LINE__, Index);
 }

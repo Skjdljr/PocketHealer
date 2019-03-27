@@ -48,4 +48,12 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Healers|PlayerController")
     void ToggleGameMenu();
+
+    template<int32 Index>
+    void CombatAction()
+    {
+        CombatAction(Index);
+    }
+
+    void CombatAction(int32 Index);
 };
