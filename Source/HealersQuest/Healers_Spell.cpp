@@ -16,7 +16,7 @@ AHealers_Spell::AHealers_Spell(const FObjectInitializer& ObjectInitializer) :
     PrimaryActorTick.bCanEverTick = true;
 }
 
-void AHealers_Spell::BeginPlay ()
+void AHealers_Spell::BeginPlay()
 {
     Super::BeginPlay();
 

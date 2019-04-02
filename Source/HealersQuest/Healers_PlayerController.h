@@ -10,6 +10,8 @@
 // Forward Declaration
 
 class UAudioComponent;
+class AHealers_Spell;
+class AHealers_SpellBar;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,6 +51,9 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Healers|PlayerController")
     void ToggleGameMenu();
 
+    UFUNCTION(BlueprintCallable, Category = "Healers|PlayerController")
+    void ToggleCharacterMenu();
+
     template<int32 Index>
     void CombatAction()
     {
@@ -56,4 +61,10 @@ public:
     }
 
     void CombatAction(int32 Index);
+
+    UFUNCTION(BlueprintNativeEvent, Category = "Healers|PlayerController")
+    bool IsCombatActionAllowed() const;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|PlayerController")
+    AHealers_SpellBar* SpellBar;
 };

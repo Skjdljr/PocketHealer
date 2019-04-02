@@ -14,7 +14,10 @@
 
 #include "Components/AudioComponent.h"
 
+#include "Healers_CharacterSheet.h"
 #include "Healers_GameInstance.h"
+#include "Healers_Spell.h"
+#include "Healers_SpellBar.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,6 +69,9 @@ void AHealers_PlayerController::SetupInputComponent()
     Super::SetupInputComponent();
 
     InputComponent->BindAction("GameMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleGameMenu);
+    
+    InputComponent->BindAction("CharacterMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleCharacterMenu);
+    
     InputComponent->BindAction("CombatAction1", IE_Pressed, this, &AHealers_PlayerController::CombatAction<1>);
     InputComponent->BindAction("CombatAction2", IE_Pressed, this, &AHealers_PlayerController::CombatAction<2>);
     InputComponent->BindAction("CombatAction3", IE_Pressed, this, &AHealers_PlayerController::CombatAction<3>);
@@ -106,7 +112,29 @@ void AHealers_PlayerController::ToggleGameMenu()
     }
 }
 
+void AHealers_PlayerController::ToggleCharacterMenu()
+{
+    //
+    if (auto Pawn = GetPawn())
+    {
+        AHealers_CharacterSheet* Sheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
+
+        // TODO : Need an interface to open a window
+    }
+}
+
 void AHealers_PlayerController::CombatAction(int32 Index)
 {
     UE_LOG(Game, Log, TEXT("<%s>(Line %i) : Key Pressed - CombatAction %i"), *FString(__FUNCTION__), __LINE__, Index);
+
+    if (SpellBar && IsCombatActionAllowed())
+    {
+        SpellBar->SelectSpell(Index);
+    }
+}
+
+bool AHealers_PlayerController::IsCombatActionAllowed_Implementation() const
+{
+    // TODO: Logic for when this is allowed.
+    return true;
 }
