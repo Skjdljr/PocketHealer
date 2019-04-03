@@ -20,15 +20,21 @@ class HEALERSQUEST_API UHealers_GameInstance : public UGameInstance
 public:
     
     // Reference UMG Asset in the Editor
-    UPROPERTY(BlueprintReadOnly, Category = "GameMode")
+    UPROPERTY(BlueprintReadOnly, Category = "Healers|GameInstance")
     UUserWidget* MainMenu;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Healers|GameInstance")
     TSubclassOf<class UUserWidget> MainMenuClass;
 
-    UPROPERTY(BlueprintReadOnly, Category = "GameMode")
+    UPROPERTY(BlueprintReadOnly, Category = "Healers|GameInstance")
     UUserWidget* GameMenu;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Healers|GameInstance")
     TSubclassOf<class UUserWidget> GameMenuClass;
+
+    UPROPERTY(BlueprintReadOnly, Category = "Healers|GameInstance")
+    UUserWidget* CharacterMenu;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Healers|GameInstance")
+    TSubclassOf<class UUserWidget> CharacterMenuClass;
 };
