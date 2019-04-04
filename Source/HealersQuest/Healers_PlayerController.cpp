@@ -114,12 +114,34 @@ void AHealers_PlayerController::ToggleGameMenu()
 
 void AHealers_PlayerController::ToggleCharacterMenu()
 {
-    //
-    if (auto Pawn = GetPawn())
-    {
-        AHealers_CharacterSheet* Sheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
+    //AHealers_CharacterSheet* Sheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
 
-        // TODO : Need an interface to open a window
+    //
+    if (auto World = GetWorld())
+    {
+        if (auto GameInstance = Cast<UHealers_GameInstance>(World->GetGameInstance()))
+        {
+            if (auto CharacterMenu = GameInstance->CharacterMenu)
+            {
+                CharacterMenu->RemoveFromViewport();
+                GameInstance->CharacterMenu = nullptr;
+            }
+            else
+            {
+                if (auto CharacterMenuClass = GameInstance->CharacterMenuClass)
+                {
+                    // TODO : Need an interface to open a window
+                    CharacterMenu = CreateWidget<UUserWidget>(World, CharacterMenuClass);
+                    if (CharacterMenu)
+                    {
+                        auto pc = World->GetFirstPlayerController();
+
+                        CharacterMenu->AddToViewport();
+                        GameInstance->CharacterMenu = CharacterMenu;
+                    }
+                }
+            }
+        }
     }
 }
 

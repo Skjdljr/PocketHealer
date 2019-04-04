@@ -148,7 +148,17 @@ AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlay
     {
         if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
         {
-            CharacterSheet = PlayerState->PartySheet->PartyMembers[0];
+            if (auto PartySheet = PlayerState->PartySheet)
+            {
+                if (PartySheet->PartyMembers.Num() > 0)
+                {
+                    CharacterSheet = PlayerState->PartySheet->PartyMembers[0];
+                }
+                else if (auto Pawn = PlayerController->GetPawn())
+                {
+                    CharacterSheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
+                }
+            }
         }
     }
     return CharacterSheet;

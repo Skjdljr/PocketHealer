@@ -49,10 +49,11 @@ public:
     UFUNCTION(BlueprintPure, Category = "Healers|Party") //Keywords = "PartySheet", 
     static AHealers_PartySheet* GetPartySheet(APlayerController* PlayerController);
 
+    // Get the PlayerController's CharacterSheet
     UFUNCTION(BlueprintPure, Category = "Healers|Character|Sheet") 
     static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
 
-
+    // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
     FORCEINLINE FString GetEnumAsString_ECharacterProfession(const ECharacterProfession Value)
     {
