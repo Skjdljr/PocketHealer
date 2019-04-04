@@ -73,7 +73,7 @@ struct HEALERSQUEST_API FQuestContractPrerequisite : public FTableRowBase
     int32 Level;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract Prerequisite")
-    TEnumAsByte<ECharacterProfession> Profession;
+    ECharacterProfession Profession;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "QuestContract Prerequisite")
     int32 Reputation;

@@ -8,10 +8,10 @@
 #include "Healers_PlayerState.h"
 
 AHealers_BattleCoordinator::AHealers_BattleCoordinator() :
-    bIsBattleComplete(false),
-    bIsBattleReadyToStart(false),
     BattleState(BS_PRE_BATTLE),
-    PriorBattleState(BS_BATTLE_MIN)
+    PriorBattleState(BS_BATTLE_MIN),
+    bIsBattleComplete(false),
+    bIsBattleReadyToStart(false)
 {
     PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.bStartWithTickEnabled = true;
