@@ -1,3 +1,7 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_FunctionLibrary.h"
 
 #include "Engine/DataTable.h"
@@ -10,6 +14,8 @@
 #include "Healers_PlayerController.h"
 #include "Healers_PlayerState.h"
 #include "Healers_PartySheet.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 float UHealers_FunctionLibrary::PseudoRandomChance(float BaseChance, int32 Counter)
 {
@@ -40,11 +46,11 @@ AHealers_GameMode* UHealers_FunctionLibrary::GetGameModeDefaultObject(const UObj
 {
     AHealers_GameMode* GameModeDefaultObject = nullptr;
     
-    if (auto World = WorldContextObject->GetWorld())
+    if (const auto World = WorldContextObject->GetWorld())
     {
-        if (auto GS = World->GetGameState())
+        if (const auto GameState = World->GetGameState())
         {
-            if (auto GameModeClass = GS->GameModeClass)
+            if (auto GameModeClass = GameState->GameModeClass)
             {
                 GameModeDefaultObject = Cast<AHealers_GameMode>(GameModeClass->GetDefaultObject());
             }
@@ -58,15 +64,15 @@ UDataTable* UHealers_FunctionLibrary::GetRaceDataTableFromLibrary(const UObject*
 {
     UDataTable* RaceTable = nullptr;
 
-    if (auto GameModeDefaultObject = GetGameModeDefaultObject(WorldContextObject))
+    if (const auto GameModeDefaultObject = GetGameModeDefaultObject(WorldContextObject))
     {
-        if (auto RaceLibrary = GameModeDefaultObject->CharacterRaceLibrary)
+        if (const auto RaceLibrary = GameModeDefaultObject->CharacterRaceLibrary)
         {
             auto RaceRowNames = RaceLibrary->GetRowNames();
             for (auto& CurrentRowName : RaceRowNames)
             {
                 FString OutErrorMessage;
-                if (auto CurrentRow = RaceLibrary->FindRow<FCharacterRaceLibrary>(CurrentRowName, OutErrorMessage))
+                if (const auto CurrentRow = RaceLibrary->FindRow<FCharacterRaceLibrary>(CurrentRowName, OutErrorMessage))
                 {
                     // If our Race Enums Match
                     if (InRace == CurrentRow->Race)
@@ -95,15 +101,15 @@ UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UO
 {
     UDataTable* ProfessionTable = nullptr;
 
-    if (auto GameModeDefaultObject = GetGameModeDefaultObject(WorldContextObject))
+    if (const auto GameModeDefaultObject = GetGameModeDefaultObject(WorldContextObject))
     {
-        if (auto ProfessionLibrary = GameModeDefaultObject->CharacterProfessionLibrary)
+        if (const auto ProfessionLibrary = GameModeDefaultObject->CharacterProfessionLibrary)
         {
             auto RaceRowNames = ProfessionLibrary->GetRowNames();
             for (auto& CurrentRowName : RaceRowNames)
             {
                 FString OutErrorMessage;
-                if (auto CurrentRow = ProfessionLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
+                if (const auto CurrentRow = ProfessionLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
                 {
                     // If our Race Enums Match
                     if (InProfession == CurrentRow->Profession)
@@ -133,7 +139,7 @@ AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* 
     AHealers_PartySheet* PartySheet = nullptr;
     if (PlayerController)
     {
-        if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
+        if (const auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
         {
             PartySheet = PlayerState->PartySheet;
         }
@@ -148,13 +154,13 @@ AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlay
     {
         if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
         {
-            if (auto PartySheet = PlayerState->PartySheet)
+            if (const auto PartySheet = PlayerState->PartySheet)
             {
                 if (PartySheet->PartyMembers.Num() > 0)
                 {
                     CharacterSheet = PlayerState->PartySheet->PartyMembers[0];
                 }
-                else if (auto Pawn = PlayerController->GetPawn())
+                else if (const auto Pawn = PlayerController->GetPawn())
                 {
                     CharacterSheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
                 }

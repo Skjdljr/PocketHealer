@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_GameMode.h"
 #include "HealersQuest.h"
 #include "Engine/World.h"
@@ -19,11 +21,17 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-AHealers_GameMode::AHealers_GameMode()
+AHealers_GameMode::AHealers_GameMode() :
+    CharacterRaceLibrary(nullptr),
+    DefaultStartingGold(0),
+    DefaultStartingReputation(0),
+    BattleCoordinator(nullptr)
 {
     // Set to true via MainMenu to start the game
     bDelayedStart = true;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 void AHealers_GameMode::BeginPlay()
 {

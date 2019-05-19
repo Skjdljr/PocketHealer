@@ -1,4 +1,6 @@
+// Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -12,6 +14,8 @@
 
 class AHealers_CharacterSheet;
 class AHealers_GameMode;
+class UDataTable;
+class AHealers_PartySheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,7 +66,7 @@ public:
         {
             return FString("Invalid");
         }
-        return enumPtr->GetNameByValue((int64)Value).ToString();
+        return enumPtr->GetNameByValue(static_cast<int64>(Value)).ToString();
     }
 
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
@@ -73,7 +77,7 @@ public:
         {
             return FString("Invalid");
         }
-        return enumPtr->GetNameByValue((int64)Value).ToString();
+        return enumPtr->GetNameByValue(static_cast<int64>(Value)).ToString();
     }
 
     template<typename TEnum>
@@ -84,6 +88,6 @@ public:
         {
             return FString("Invalid");
         }
-        return enumPtr->GetNameByValue((int64)Value).ToString();
+        return enumPtr->GetNameByValue(static_cast<int64>(Value)).ToString();
     }
 };

@@ -1,21 +1,25 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_SpellComponent.h"
 #include "Healers_CharacterSheet.h"
 
-void UHealers_SpellComponent::ExecuteSpell(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+void UHealers_SpellComponent::ExecuteSpell(AHealers_Spell* SpellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& Targets)
 {
 	SpellLifespan = SpellDuration;
 
-	BP_ExecuteSpell(spellOwner, caster, targets);
+	BP_ExecuteSpell(SpellOwner, caster, Targets);
 }
 
-void UHealers_SpellComponent::TickSpell(float deltaSec)
+void UHealers_SpellComponent::TickSpell(float DeltaSec)
 {
 	if (SpellLifespan > 0.f)
 	{
-		SpellLifespan -= deltaSec;
-		BP_TickSpell(deltaSec);
+		SpellLifespan -= DeltaSec;
+		BP_TickSpell(DeltaSec);
 
 		if (SpellLifespan <= 0.f)
 		{
@@ -39,12 +43,12 @@ bool UHealers_SpellComponent::IsSpellActive() const
 	return (SpellLifespan > 0.f);
 }
 
-void UHealers_SpellComponent::BP_ExecuteSpell_Implementation(AHealers_Spell* spellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
+void UHealers_SpellComponent::BP_ExecuteSpell_Implementation(AHealers_Spell* SpellOwner, AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& Targets)
 {
 	//Noop
 }
 
-void UHealers_SpellComponent::BP_TickSpell_Implementation(float deltaSec)
+void UHealers_SpellComponent::BP_TickSpell_Implementation(float DeltaSec)
 {
 	//Noop
 }

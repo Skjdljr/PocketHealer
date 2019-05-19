@@ -1,10 +1,14 @@
-// (c)2018 - 2019 : Pocket Healer Games
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Healers_SceneMenu.generated.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * 
@@ -31,5 +35,5 @@ public:
     void BP_CloseScene(TSubclassOf<UHealers_SceneMenu> NextScene);
 
     UFUNCTION(BlueprintCallable, Category = "SceneMenu")
-    void EndCloseScene(TSubclassOf<UHealers_SceneMenu> NextScene);
+    void EndCloseScene(TSubclassOf<UHealers_SceneMenu> NextScene) const;
 };

@@ -1,10 +1,16 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "HealersQuest.h"
 #include "Healers_Spell.h"
-#include "Engine/DataTable.h"
 #include "Healers_CharacterAttributes.generated.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma region FDamageResistance
 

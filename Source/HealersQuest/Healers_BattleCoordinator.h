@@ -1,3 +1,6 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -6,10 +9,10 @@
 #include "Healers_CharacterAttributes.h"
 #include "Healers_BattleCoordinator.generated.h"
 
-class AHealers_CharacterSheet;
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(BlueprintType, Blueprintable)
-struct FBattleData  
+struct FBattleData
 {
     GENERATED_BODY();
 
@@ -23,6 +26,8 @@ struct FBattleData
     //Add some representation of waves/level
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 UENUM(BlueprintType, Blueprintable)
 enum EBattleState
 {
@@ -34,13 +39,19 @@ enum EBattleState
     BS_BATTLE_MAX,
 };
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Delegates
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBattleStateChanged, EBattleState, BattleState);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleVictory);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBattleDefeat);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Forward Declarations
+
+class AHealers_CharacterSheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,7 +66,7 @@ public:
 
     //Inherited 
     virtual void BeginPlay() override;
-    virtual void Tick(float dt) override;
+    virtual void Tick(float DeltaTime) override;
 
     UPROPERTY(BlueprintAssignable, Category = "Battle Coordinator")
     FBattleStateChanged OnBattleStateChanged;
@@ -84,7 +95,8 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void SetIsBattleComplete(bool InValue) { bIsBattleComplete = InValue; }
 
-    UPROPERTY(BlueprintGetter = GetIsBattleReadyToStart, BlueprintSetter = SetIsBattleReadyToStart, EditAnywhere, Category = "Battle Coordinator")
+    UPROPERTY(BlueprintGetter = GetIsBattleReadyToStart, BlueprintSetter = SetIsBattleReadyToStart, EditAnywhere,
+        Category = "Battle Coordinator")
     uint32 bIsBattleReadyToStart:1;
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
@@ -94,12 +106,12 @@ public:
     void SetIsBattleReadyToStart(bool InValue) { bIsBattleReadyToStart = InValue; }
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Config = "Game", Category = "Battle Coordinator")
-    float INITIATIVEMAX = 5.f;
+    float InitiativeMax = 5.f;
 
     //Ours
-    void SetBattleState(EBattleState newState);
+    void SetBattleState(EBattleState NewState);
 
-    void TickAllCharacters(float dt);
+    void TickAllCharacters(float DeltaTime);
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     bool IsPartyDefeated();
@@ -115,7 +127,7 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void AddInitiative(float dt, TArray<AHealers_CharacterSheet*> sheet, bool isEnemy);
-    
+
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void TickMana(float dt);
 
@@ -127,12 +139,12 @@ public:
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
     AHealers_CharacterSheet* GetRandomPartyTarget();
-    
+
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
-    void Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* Attacker);
+    void Take_Damage(AHealers_CharacterSheet* Defender, AHealers_CharacterSheet* Attacker);
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
-    float CalculateDamage(FCharacterAttributes& defender, FCharacterAttributes& attacker);
+    float CalculateDamage(FCharacterAttributes& Defender, FCharacterAttributes& Attacker);
 
     //todo: duration?
 };

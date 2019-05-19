@@ -1,3 +1,7 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_BattleCoordinator.h"
 
 #include "Engine/World.h"
@@ -7,6 +11,8 @@
 #include "Healers_CharacterSheet.h"
 #include "Healers_PlayerState.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 AHealers_BattleCoordinator::AHealers_BattleCoordinator() :
     BattleState(BS_PRE_BATTLE),
     PriorBattleState(BS_BATTLE_MIN),
@@ -15,7 +21,6 @@ AHealers_BattleCoordinator::AHealers_BattleCoordinator() :
 {
     PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.bStartWithTickEnabled = true;
-
 }
 
 void AHealers_BattleCoordinator::BeginPlay()
@@ -23,9 +28,9 @@ void AHealers_BattleCoordinator::BeginPlay()
     Super::BeginPlay();
 }
 
-void AHealers_BattleCoordinator::Tick(float dt)
+void AHealers_BattleCoordinator::Tick(float DeltaTime)
 {
-    Super::Tick(dt);
+    Super::Tick(DeltaTime);
 
     switch (BattleState)
     {
@@ -53,8 +58,8 @@ void AHealers_BattleCoordinator::Tick(float dt)
                 PriorBattleState = BattleState;
             }
 
-            TickAllCharacters(dt);
-            
+            TickAllCharacters(DeltaTime);
+
             // Victory or Defeat Conditions
             if (IsEnemyDefeated() || IsPartyDefeated())
             {
@@ -72,8 +77,7 @@ void AHealers_BattleCoordinator::Tick(float dt)
 
                 if (IsEnemyDefeated())
                 {
-                    
-                    if (auto World = GetWorld())
+                    if (const auto World = GetWorld())
                     {
                         if (auto PC = UGameplayStatics::GetPlayerController(World, 0))
                         {
@@ -81,7 +85,8 @@ void AHealers_BattleCoordinator::Tick(float dt)
                             {
                                 HealersPlayerState->Gold += HealersPlayerState->QuestContract.Reward.Gold;
                                 HealersPlayerState->Reputation += HealersPlayerState->QuestContract.Reward.Reputation;
-                                UHealers_FunctionLibrary::GetPlayerCharacterSheet(PC)->CharacterSheet.Experience += HealersPlayerState->QuestContract.Reward.Experience;
+                                UHealers_FunctionLibrary::GetPlayerCharacterSheet(PC)->CharacterSheet.Experience +=
+                                    HealersPlayerState->QuestContract.Reward.Experience;
                             }
                         }
                     }
@@ -114,47 +119,50 @@ void AHealers_BattleCoordinator::AddInitiative(float dt, TArray<AHealers_Charact
 {
     for (auto member : sheet)
     {
-         if (!member->isPlayer)
-         {
-             auto newInitiative = member->GetHealth() > 0 ? member->GetInitiative() + member->GetInitiativePerSecond() * dt : 0.f;
-             member->SetInitiative(newInitiative);
+        if (!member->bIsPlayer)
+        {
+            auto newInitiative = member->GetHealth() > 0
+                                     ? member->GetInitiative() + member->GetInitiativePerSecond() * dt
+                                     : 0.f;
+            member->SetInitiative(newInitiative);
 
-             if (member->GetInitiative() > INITIATIVEMAX)
-             {
-                 auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
-                 if (target != nullptr)
-                 {
-                     member->SetInitiative(0.0f);
+            if (member->GetInitiative() > InitiativeMax)
+            {
+                auto target = isEnemy ? GetRandomPartyTarget() : GetRandomEnemyTarget();
+                if (target != nullptr)
+                {
+                    member->SetInitiative(0.0f);
 
-                     if (member && target)
-                     {
-                         UE_LOG(Game, Log, TEXT("Attacker(%s) initiated attack against Defender(%s)"), *member->CharacterSheet.CharacterName, *target->CharacterSheet.CharacterName);
-                         Take_Damage(target, member);
-                     }
-                 }
-                 else
-                 {
-                     UE_LOG(Game, Error, TEXT("You dun goofed, target is null"));
-                 }
-             }
-         }
+                    if (member && target)
+                    {
+                        UE_LOG(Game, Log, TEXT("Attacker(%s) initiated attack against Defender(%s)"),
+                               *member->CharacterSheet.CharacterName, *target->CharacterSheet.CharacterName);
+                        Take_Damage(target, member);
+                    }
+                }
+                else
+                {
+                    UE_LOG(Game, Error, TEXT("You dun goofed, target is null"));
+                }
+            }
+        }
     }
 }
 
 void AHealers_BattleCoordinator::TickMana(float dt)
 {
-    for (auto member : BattleData.PartyMembers)
+    for (auto Member : BattleData.PartyMembers)
     {
-        auto newMana = member->GetMana() + member->GetManaRegenerationPerSecond() * dt;
-        newMana = FMath::Clamp(newMana, 0.f, member->GetManaMax());
-        member->SetMana(newMana);
+        auto NewMana = Member->GetMana() + Member->GetManaRegenerationPerSecond() * dt;
+        NewMana = FMath::Clamp(NewMana, 0.f, Member->GetManaMax());
+        Member->SetMana(NewMana);
     }
 
-    for (auto member : BattleData.EnemyMembers)
+    for (auto Member : BattleData.EnemyMembers)
     {
-        auto newMana = member->GetMana() + member->GetManaRegenerationPerSecond() * dt;
-        newMana = FMath::Clamp(newMana, 0.f, member->GetManaMax());
-        member->SetMana(newMana);
+        auto NewMana = Member->GetMana() + Member->GetManaRegenerationPerSecond() * dt;
+        NewMana = FMath::Clamp(NewMana, 0.f, Member->GetManaMax());
+        Member->SetMana(NewMana);
     }
 }
 
@@ -162,36 +170,37 @@ void AHealers_BattleCoordinator::TickCooldowns(float dt)
 {
 }
 
-void AHealers_BattleCoordinator::TickAllCharacters(float dt)
+void AHealers_BattleCoordinator::TickAllCharacters(float DeltaTime)
 {
     //Need a better name, this also does dmg.... Confusing I know leave me alone
-    AddInitiative(dt, BattleData.EnemyMembers, true);
-    AddInitiative(dt, BattleData.PartyMembers, false);
+    AddInitiative(DeltaTime, BattleData.EnemyMembers, true);
+    AddInitiative(DeltaTime, BattleData.PartyMembers, false);
 
-    TickMana(dt);
-    TickCooldowns(dt);
+    TickMana(DeltaTime);
+    TickCooldowns(DeltaTime);
 }
 
-void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, AHealers_CharacterSheet* attacker)
+void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* Defender, AHealers_CharacterSheet* attacker)
 {
-    //TODO? maybe overload aactors TakeDamage for now use our own
-    //TODO? Maybe overload aactors ReceiveAnyDamage?
-    
-    if (defender != nullptr && attacker != nullptr)
+    //TODO? maybe overload actors TakeDamage for now use our own
+    //TODO? Maybe overload actors ReceiveAnyDamage?
+
+    if (Defender != nullptr && attacker != nullptr)
     {
         //TODO: actually write the CalculateDamage function
-        auto newHealth = CalculateDamage(defender->GetAttributes(), attacker->GetAttributes());
+        auto newHealth = CalculateDamage(Defender->GetAttributes(), attacker->GetAttributes());
 
-        UE_LOG(Game, Log, TEXT("Defender(%s) took damage. Health was %f, reduced to %f"), *defender->CharacterSheet.CharacterName, defender->GetHealth(), newHealth);
+        UE_LOG(Game, Log, TEXT("Defender(%s) took damage. Health was %f, reduced to %f"),
+               *Defender->CharacterSheet.CharacterName, Defender->GetHealth(), newHealth);
 
         if (newHealth >= 0)
         {
-            defender->SetHealth(newHealth);
+            Defender->SetHealth(newHealth);
         }
         else
         {
-            defender->SetHealth(0);
-            UE_LOG(Game, Log, TEXT("Defender(%s) was defeated!"), *defender->CharacterSheet.CharacterName);
+            Defender->SetHealth(0);
+            UE_LOG(Game, Log, TEXT("Defender(%s) was defeated!"), *Defender->CharacterSheet.CharacterName);
 
             // Remove them from the list?
         }
@@ -202,11 +211,10 @@ void AHealers_BattleCoordinator::Take_Damage(AHealers_CharacterSheet* defender, 
     }
 }
 
-float AHealers_BattleCoordinator::CalculateDamage(FCharacterAttributes& defender, FCharacterAttributes& attacker)
+float AHealers_BattleCoordinator::CalculateDamage(FCharacterAttributes& Defender, FCharacterAttributes& Attacker)
 {
     //TODO: -Calculate this based of armor/resistances/attackspeed/crit what ever else
-    //for now just do health - dmg... bc gamejam
-    return defender.Health - FMath::Max(1.f, attacker.AttackPower - defender.ArmorValue);
+    return Defender.Health - FMath::Max(1.f, Attacker.AttackPower - Defender.ArmorValue);
 }
 
 AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
@@ -216,7 +224,12 @@ AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomEnemyTarget()
     if (!IsPartyDefeated() && !IsEnemyDefeated())
     {
         // Valid Targets match this filter by functor
-        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.EnemyMembers.FilterByPredicate([&](AHealers_CharacterSheet* CharacterSheet) { return (CharacterSheet->GetAttributes().Health > 0); });
+        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.EnemyMembers.FilterByPredicate(
+            [&](AHealers_CharacterSheet* CharacterSheet)
+            {
+                return (CharacterSheet
+                        ->GetAttributes().Health > 0);
+            });
 
         if (ValidTargets.Num() > 0)
         {
@@ -240,7 +253,12 @@ AHealers_CharacterSheet* AHealers_BattleCoordinator::GetRandomPartyTarget()
 
     if (!IsPartyDefeated() && !IsEnemyDefeated())
     {
-        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.PartyMembers.FilterByPredicate([&](AHealers_CharacterSheet* CharacterSheet) { return (CharacterSheet->GetAttributes().Health > 0); });
+        TArray<AHealers_CharacterSheet*> ValidTargets = BattleData.PartyMembers.FilterByPredicate(
+            [&](AHealers_CharacterSheet* CharacterSheet)
+            {
+                return (CharacterSheet
+                        ->GetAttributes().Health > 0);
+            });
 
         if (ValidTargets.Num() > 0)
         {
@@ -298,10 +316,10 @@ bool AHealers_BattleCoordinator::IsBattleReadyToStart()
     return bIsBattleReadyToStart;
 }
 
-void AHealers_BattleCoordinator::SetBattleState(EBattleState newState)
+void AHealers_BattleCoordinator::SetBattleState(EBattleState NewState)
 {
-    if (newState != BattleState)
+    if (NewState != BattleState)
     {
-        BattleState = newState;
+        BattleState = NewState;
     }
 }

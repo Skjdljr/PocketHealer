@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_PlayerController.h"
 #include "HealersQuest.h"
 #include "Engine/World.h"
@@ -24,11 +26,13 @@
 AHealers_PlayerController::AHealers_PlayerController()
 {
     bShowMouseCursor = true;
-    
+
     MusicVolumeScalar = 1.0;
-    MusicComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
+    MusicComponent    = CreateDefaultSubobject<UAudioComponent>(TEXT("MusicComponent"));
     MusicComponent->SetupAttachment(RootComponent);
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 void AHealers_PlayerController::BeginPlay()
 {
@@ -38,7 +42,7 @@ void AHealers_PlayerController::BeginPlay()
     SetInputMode(InputMode);
 }
 
-void AHealers_PlayerController::PlayMusic(USoundBase * Music, float FadeInDuration)
+void AHealers_PlayerController::PlayMusic(USoundBase* Music, float FadeInDuration)
 {
     if (MusicComponent)
     {
@@ -69,9 +73,9 @@ void AHealers_PlayerController::SetupInputComponent()
     Super::SetupInputComponent();
 
     InputComponent->BindAction("GameMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleGameMenu);
-    
+
     InputComponent->BindAction("CharacterMenu", IE_Pressed, this, &AHealers_PlayerController::ToggleCharacterMenu);
-    
+
     InputComponent->BindAction("CombatAction1", IE_Pressed, this, &AHealers_PlayerController::CombatAction<1>);
     InputComponent->BindAction("CombatAction2", IE_Pressed, this, &AHealers_PlayerController::CombatAction<2>);
     InputComponent->BindAction("CombatAction3", IE_Pressed, this, &AHealers_PlayerController::CombatAction<3>);
@@ -101,7 +105,7 @@ void AHealers_PlayerController::ToggleGameMenu()
                     GameMenu = CreateWidget<UUserWidget>(World, GameMenuClass);
                     if (GameMenu)
                     {
-                        auto pc = World->GetFirstPlayerController();
+                        //auto PC = World->GetFirstPlayerController();
 
                         GameMenu->AddToViewport();
                         GameInstance->GameMenu = GameMenu;
@@ -134,7 +138,7 @@ void AHealers_PlayerController::ToggleCharacterMenu()
                     CharacterMenu = CreateWidget<UUserWidget>(World, CharacterMenuClass);
                     if (CharacterMenu)
                     {
-                        auto pc = World->GetFirstPlayerController();
+                        //auto PC = World->GetFirstPlayerController();
 
                         CharacterMenu->AddToViewport();
                         GameInstance->CharacterMenu = CharacterMenu;

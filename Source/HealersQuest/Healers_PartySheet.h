@@ -1,4 +1,6 @@
+// Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -8,12 +10,11 @@
 #include "Healers_PartySheet.generated.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-// Foward Declarations
+// Forward Declarations
 
 class AHealers_CharacterSheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 /**
  * Store Information about our Party
@@ -29,5 +30,4 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|PartySheet")
 	TArray<AHealers_CharacterSheet*> PartyMembers;
-	
 };

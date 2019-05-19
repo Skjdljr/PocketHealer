@@ -1,3 +1,7 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_CharacterSheet.h"
 
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
@@ -8,23 +12,27 @@
 #include "Healers_PlayerState.h"
 #include "Healers_FunctionLibrary.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
-AHealers_CharacterSheet::AHealers_CharacterSheet()
+AHealers_CharacterSheet::AHealers_CharacterSheet() :
+    CharacterSheet()
 {
 }
 
-void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* spell)
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* Spell)
 {
-    if (spell != nullptr)
+    if (Spell != nullptr)
     {
-        if (!activeEffects.Contains(spell))
+        if (!ActiveEffects.Contains(Spell))
         {
-            activeEffects.Add(spell);
-            OnSpellEffectAdded.Broadcast(spell, false);
+            ActiveEffects.Add(Spell);
+            OnSpellEffectAdded.Broadcast(Spell, false);
         }
         else
         {
-            //psudo
+            //pseudo
             //if (spell.isStackable)
             {
                 //activeEffects.Add(spell); 
@@ -36,10 +44,10 @@ void AHealers_CharacterSheet::AddSpellEffect(AHealers_Spell* spell)
     }
 }
 
-AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet(APawn* sheetOwner)
+AHealers_CharacterSheet* AHealers_CharacterSheet::GetCharacterSheet(APawn* SheetOwner)
 {
     AHealers_CharacterSheet* OutSheet = nullptr;
-    if (auto PS = Cast<AHealers_PlayerState>(sheetOwner->GetPlayerState()))
+    if (auto PS = Cast<AHealers_PlayerState>(SheetOwner->GetPlayerState()))
     {
         OutSheet = PS->GetHealersCharacterSheet();
     }
@@ -101,7 +109,7 @@ void AHealers_CharacterSheet::InitializeProfessionAttributes(UDataTable* Charact
         auto RowNames = CharacterProfessionDataTable->GetRowNames();
         for (auto& CurrentRowName : RowNames)
         {
-            auto CurrentRow = CharacterProfessionDataTable->FindRow<FCharacterProfessionDefinition>(CurrentRowName, FString());
+            const auto CurrentRow = CharacterProfessionDataTable->FindRow<FCharacterProfessionDefinition>(CurrentRowName, FString());
             if (CurrentRow)
             {
                 // Get the entry for our Level
@@ -137,12 +145,12 @@ void AHealers_CharacterSheet::AddAttributes(const FCharacterAttributes& InAttrib
 
     CharacterSheet.Attributes.LuckValue += InAttributes.LuckValue;
 
-    for (auto InResistanceEntry : InAttributes.Resistances)
+    for (auto& InResistanceEntry : InAttributes.Resistances)
     {   
         bool IsPresent = false;
         for (auto& ResistanceEntry : CharacterSheet.Attributes.Resistances)
         {
-            if ((uint8)ResistanceEntry.DamageType == (uint8)InResistanceEntry.DamageType)
+            if (static_cast<uint8>(ResistanceEntry.DamageType) == static_cast<uint8>(InResistanceEntry.DamageType))
             {
                 IsPresent = true;
                 ResistanceEntry.DamageResistancePercentValue += InResistanceEntry.DamageResistancePercentValue;

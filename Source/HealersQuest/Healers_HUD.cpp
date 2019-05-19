@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_HUD.h"
 
 //UMG
@@ -32,5 +34,3 @@ void AHealers_HUD::SetScene(TSubclassOf<UUserWidget> InSceneClass)
         }
     }
 }
-
-

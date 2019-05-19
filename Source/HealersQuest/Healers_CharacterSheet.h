@@ -1,15 +1,19 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "GameFramework/Info.h"
+#include "DataTableEditor/Private/SRowEditor.h"
+
 #include "HealersQuest.h"
 #include "Healers_Spell.h"
 #include "Healers_CharacterAttributes.h"
-#include "GameFramework/Info.h"
+
 #include "Healers_CharacterSheet.generated.h"
-
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSpellEffectChanged, AHealers_Spell*, spell, bool, isStackable);
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -167,6 +171,12 @@ struct FCharacterSheet : public FTableRowBase
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Delegates
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSpellEffectChanged, AHealers_Spell*, spell, bool, isStackable);
+
 /**
 * AHealers_CharacterSheet : Character Sheet Actor. Run-time instance of a CharacterSheet.
 *
@@ -180,7 +190,7 @@ public:
 
     AHealers_CharacterSheet();
 
-    virtual void BeginPlay();
+    virtual void BeginPlay() override;
 
     UFUNCTION(BlueprintCallable, Category = "CharacterSheet")
     void InitializeCharacter();
@@ -201,10 +211,10 @@ public:
     AHealers_Spell* CurrentSelectedSpell;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = true), Category = "CharacterSheet")
-    bool isPlayer;
+    bool bIsPlayer;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "CharacterSheet")
-    TArray<AHealers_Spell*> activeEffects;
+    TArray<AHealers_Spell*> ActiveEffects;
 
     UPROPERTY(BlueprintAssignable, Category = "CharacterSheet")
     FOnSpellEffectChanged OnSpellEffectAdded;
@@ -237,34 +247,34 @@ public:
     int32 GetCharacterLevel() const { return CharacterSheet.Level; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Level"), Category = "CharacterSheet")
-    void SetLevel(int32 InLevel) { CharacterSheet.Level = InLevel; }
+    void SetLevel(const int32 InLevel) { CharacterSheet.Level = InLevel; }
 
     // Experience
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Experience"), Category = "CharacterSheet")
     float GetExperience() const { return CharacterSheet.Experience; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Experience"), Category = "CharacterSheet")
-    void SetExperience(float InExperience) { CharacterSheet.Experience = InExperience; }
+    void SetExperience(const float InExperience) { CharacterSheet.Experience = InExperience; }
 
     // Initiative
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
     float GetInitiative() const { return CharacterSheet.Attributes.Initiative; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Initiative"), Category = "CharacterSheet")
-    void SetInitiative(float inInitiative) { CharacterSheet.Attributes.Initiative = inInitiative; }
+    void SetInitiative(const float InInitiative) { CharacterSheet.Attributes.Initiative = InInitiative; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character InitiativePerSecond"), Category = "CharacterSheet")
     float GetInitiativePerSecond() const { return CharacterSheet.Attributes.InitiativePerSecond; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character InitiativePerSecond"), Category = "CharacterSheet")
-    void SetInitiativePerSecond(float inInitiativePerSecond) { CharacterSheet.Attributes.InitiativePerSecond = inInitiativePerSecond; }
+    void SetInitiativePerSecond(const float InInitiativePerSecond) { CharacterSheet.Attributes.InitiativePerSecond = InInitiativePerSecond; }
 
     // Health
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Health"), Category = "CharacterSheet")
     float GetHealth() const { return CharacterSheet.Attributes.Health; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Health"), Category = "CharacterSheet")
-    void SetHealth(float InHealth) { CharacterSheet.Attributes.Health = InHealth; }
+    void SetHealth(const float InHealth) { CharacterSheet.Attributes.Health = InHealth; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character HealthMax"), Category = "CharacterSheet")
     float GetHealthMax() const { return CharacterSheet.Attributes.HealthMax; }
@@ -274,78 +284,78 @@ public:
     float GetMana() const { return CharacterSheet.Attributes.Mana; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
-    void SetMana(float InMana) { CharacterSheet.Attributes.Mana = InMana; }
+    void SetMana(const float InMana) { CharacterSheet.Attributes.Mana = InMana; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaMax"), Category = "CharacterSheet")
     float GetManaMax() const { return CharacterSheet.Attributes.ManaMax; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
-    void SetManaMax(float InManaMax) { CharacterSheet.Attributes.Mana = InManaMax; }
+    void SetManaMax(const float InManaMax) { CharacterSheet.Attributes.Mana = InManaMax; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character ManaRegeneration"), Category = "CharacterSheet")
     float GetManaRegenerationPerSecond() const { return CharacterSheet.Attributes.ManaRegenerationPerSecond; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Mana"), Category = "CharacterSheet")
-    void SetManaRegenerationPerSecond(float InManaRegenerationPerSecond) { CharacterSheet.Attributes.ManaRegenerationPerSecond = InManaRegenerationPerSecond; }
+    void SetManaRegenerationPerSecond(const float InManaRegenerationPerSecond) { CharacterSheet.Attributes.ManaRegenerationPerSecond = InManaRegenerationPerSecond; }
 
     // Attack
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attack Accuracy"), Category = "CharacterSheet")
     float GetAttackAccuracy() const { return CharacterSheet.Attributes.AttackAccuracy; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Attack Accuracy"), Category = "CharacterSheet")
-    void SetAttackAccuracy(float InAttackAccuracy) { CharacterSheet.Attributes.AttackAccuracy = InAttackAccuracy; }
+    void SetAttackAccuracy(const float InAttackAccuracy) { CharacterSheet.Attributes.AttackAccuracy = InAttackAccuracy; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Attack Power"), Category = "CharacterSheet")
     float GetAttackPower() const { return CharacterSheet.Attributes.AttackPower; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Attack Power"), Category = "CharacterSheet")
-    void SetAttackPower(float InAttackPower) { CharacterSheet.Attributes.AttackPower = InAttackPower; }
+    void SetAttackPower(const float InAttackPower) { CharacterSheet.Attributes.AttackPower = InAttackPower; }
 
     // Magic
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Magic Accuracy"), Category = "CharacterSheet")
     float GetMagicAccuracy() const { return CharacterSheet.Attributes.MagicAccuracy; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Magic Accuracy"), Category = "CharacterSheet")
-    void SetMagicAccuracy(float InMagicAccuracy) { CharacterSheet.Attributes.MagicAccuracy = InMagicAccuracy; }
+    void SetMagicAccuracy(const float InMagicAccuracy) { CharacterSheet.Attributes.MagicAccuracy = InMagicAccuracy; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Magic Power"), Category = "CharacterSheet")
     float GetMagicPower() const { return CharacterSheet.Attributes.MagicPower; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Magic Power"), Category = "CharacterSheet")
-    void SetMagicPower(float InMagicPower) { CharacterSheet.Attributes.MagicPower = InMagicPower; }
+    void SetMagicPower(const float InMagicPower) { CharacterSheet.Attributes.MagicPower = InMagicPower; }
 
     // Critical
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Critical Damage Chance"), Category = "CharacterSheet")
     float GetCriticalChance() const { return CharacterSheet.Attributes.CriticalDamageChance; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Critical Damage Chance"), Category = "CharacterSheet")
-    void SetCriticalChance(float InCriticalChance) { CharacterSheet.Attributes.CriticalDamageChance = InCriticalChance; }
+    void SetCriticalChance(const float InCriticalChance) { CharacterSheet.Attributes.CriticalDamageChance = InCriticalChance; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Critical Damage Power"), Category = "CharacterSheet")
     float GetCriticalPower() const { return CharacterSheet.Attributes.CriticalDamageValue; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Critical Damage Power"), Category = "CharacterSheet")
-    void SetCriticalPower(float InCriticalPower) { CharacterSheet.Attributes.CriticalDamageValue = InCriticalPower; }
+    void SetCriticalPower(const float InCriticalPower) { CharacterSheet.Attributes.CriticalDamageValue = InCriticalPower; }
 
     // Defense
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Evasion"), Category = "CharacterSheet")
     float GetEvasion() const { return CharacterSheet.Attributes.EvasionValue; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Evasion"), Category = "CharacterSheet")
-    void SetEvasion(float InEvasion) { CharacterSheet.Attributes.EvasionValue = InEvasion; }
+    void SetEvasion(const float InEvasion) { CharacterSheet.Attributes.EvasionValue = InEvasion; }
 
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Armor"), Category = "CharacterSheet")
     float GetArmor() const { return CharacterSheet.Attributes.ArmorValue; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Armor"), Category = "CharacterSheet")
-    void SetArmor(float InArmor) { CharacterSheet.Attributes.ArmorValue = InArmor; }
+    void SetArmor(const float InArmor) { CharacterSheet.Attributes.ArmorValue = InArmor; }
 
     // Luck
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Luck"), Category = "CharacterSheet")
     float GetLuck() const { return CharacterSheet.Attributes.LuckValue; }
 
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Luck"), Category = "CharacterSheet")
-    void SetLuck(float InLuck) { CharacterSheet.Attributes.LuckValue = InLuck; }
+    void SetLuck(const float InLuck) { CharacterSheet.Attributes.LuckValue = InLuck; }
 
     // Resistances
     UFUNCTION(BlueprintPure, BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
@@ -353,7 +363,7 @@ public:
 
     // Spell buffs/effects
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Character Resistances"), Category = "CharacterSheet")
-    void AddSpellEffect(AHealers_Spell* spell);
+    void AddSpellEffect(AHealers_Spell* Spell);
 
 
 
@@ -361,7 +371,7 @@ public:
      * Convenience function to find a character sheet associated with a pawn.
      */
     UFUNCTION(BlueprintPure, BlueprintCallable, Category="Healers")
-    static AHealers_CharacterSheet* GetCharacterSheet (APawn* sheetOwner);
+    static AHealers_CharacterSheet* GetCharacterSheet (APawn* SheetOwner);
 };
 
 

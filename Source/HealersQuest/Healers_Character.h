@@ -1,10 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Healers_Character.generated.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 UCLASS()
 class HEALERSQUEST_API AHealers_Character : public ACharacter

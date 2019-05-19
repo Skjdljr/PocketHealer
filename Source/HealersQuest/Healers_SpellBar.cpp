@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_SpellBar.h"
 
 #include "Healers_Spell.h"
@@ -7,11 +9,13 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-AHealers_SpellBar::AHealers_SpellBar()
-    : Caster(nullptr)
-    , SelectedSpell(nullptr)
+AHealers_SpellBar::AHealers_SpellBar() :
+    Caster(nullptr),
+    SelectedSpell(nullptr)
 {
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool AHealers_SpellBar::SelectSpell(int32 Index)
 {
@@ -24,7 +28,6 @@ bool AHealers_SpellBar::SelectSpell(int32 Index)
             // TODO : If TargetComponent == SingleTarget || MultiTargetComponent
             if (CurrentSpell->TargetComponent)
             {
-
             }
             // TODO else if AutoTarget, SelfTarget, GlobalTarget... Try to Cast
             else
@@ -34,7 +37,7 @@ bool AHealers_SpellBar::SelectSpell(int32 Index)
                 const TArray<AHealers_CharacterSheet*> Targets = TArray<AHealers_CharacterSheet*>();
                 SelectedSpell->CastSpell(nullptr, Targets);
             }
-        }        
+        }
     }
 
     return SelectedSpell;

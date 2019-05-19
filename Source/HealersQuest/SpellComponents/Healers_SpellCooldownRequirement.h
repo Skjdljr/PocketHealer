@@ -1,13 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Healers_SpellPrerequisiteComponent.h"
 #include "Healers_SpellCooldownRequirement.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class AHealers_Spell;
 class AHealers_CharacterSheet;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 UCLASS(Blueprintable, BlueprintType, Category="Healers", meta=(BlueprintSpawnableComponent))
 class HEALERSQUEST_API UHealers_SpellCooldownRequirement : public UHealers_SpellPrerequisiteComponent
@@ -15,7 +21,7 @@ class HEALERSQUEST_API UHealers_SpellCooldownRequirement : public UHealers_Spell
     GENERATED_BODY()
 
 public:
-    /* Number of seconds that must elapse before this spell can be casted again. */
+    /* Number of seconds that must elapse before this spell can be cast again. */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Healers")
     float SpellCastInterval;
 

@@ -1,13 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Healers_SpellTargetingComponent.h"
 #include "Healers_SingleTargetSpell.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class AHealers_Spell;
 class AHealers_CharacterSheet;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 UCLASS(Blueprintable, BlueprintType, Category="Healers", meta=(BlueprintSpawnableComponent))
 class HEALERSQUEST_API UHealers_SingleTargetSpell : public UHealers_SpellTargetingComponent

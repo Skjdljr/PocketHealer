@@ -1,5 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "Healers_Spell.h"
 
 #include "Kismet/GameplayStatics.h"
@@ -8,13 +10,16 @@
 #include "Healers_SpellComponent.h"
 #include "Healers_SpellPrerequisiteComponent.h"
 #include "Healers_SpellTargetingComponent.h"
-#include "HealersQuest.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 AHealers_Spell::AHealers_Spell(const FObjectInitializer& ObjectInitializer) :
     Super(ObjectInitializer)
 {
     PrimaryActorTick.bCanEverTick = true;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 void AHealers_Spell::BeginPlay()
 {
@@ -28,43 +33,43 @@ void AHealers_Spell::BeginPlay()
 
 void AHealers_Spell::Destroyed()
 {
-    for (int i = 0; i < SpellComponents.Num(); ++i)
+    for (auto& CurrentComponent : SpellComponents)
     {
-        SpellComponents[i]->DestroySpellComponent();
+        CurrentComponent->DestroySpellComponent();
     }
 
     Super::Destroyed();
 }
 
-void AHealers_Spell::Tick(float deltaSec)
+void AHealers_Spell::Tick(float DeltaSec)
 {
-    Super::Tick(deltaSec);
+    Super::Tick(DeltaSec);
 
-    for (int i = 0; i < Prerequisites.Num(); ++i)
+    for (auto& CurrentPrerequisite : Prerequisites)
     {
-        Prerequisites[i]->TickPrerequisite(deltaSec);
+        CurrentPrerequisite->TickPrerequisite(DeltaSec);
     }
 
-    for (int i = 0; i < SpellComponents.Num(); ++i)
+    for (auto& CurrentComponent : SpellComponents)
     {
-        SpellComponents[i]->TickSpell(deltaSec);
+        CurrentComponent->TickSpell(DeltaSec);
     }
 }
 
-bool AHealers_Spell::CanCastSpell(AHealers_CharacterSheet* caster) const
+bool AHealers_Spell::CanCastSpell(AHealers_CharacterSheet* Caster) const
 {
-    for (int i = 0; i < Prerequisites.Num(); ++i)
+    for (auto& CurrentPrerequisite : Prerequisites)
     {
-        if (!Prerequisites[i]->CanCastSpell(caster))
+        if (!CurrentPrerequisite->CanCastSpell(Caster))
         {
             return false;
         }
     }
 
     //Can't cast it again if it's already active
-    for (int i = 0; i < SpellComponents.Num(); ++i)
+    for (auto& CurrentComponent : SpellComponents)
     {
-        if (SpellComponents[i]->IsSpellActive())
+        if (CurrentComponent->IsSpellActive())
         {
             return false;
         }
@@ -73,11 +78,11 @@ bool AHealers_Spell::CanCastSpell(AHealers_CharacterSheet* caster) const
     return true;
 }
 
-bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets) const
+bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* Caster, const TArray<AHealers_CharacterSheet*>& Targets) const
 {
-    for (int i = 0; i < Prerequisites.Num(); ++i)
+    for (auto& CurrentPrerequisite : Prerequisites)
     {
-        if (!Prerequisites[i]->CanCastSpellOnTargets(caster, targets))
+        if (!CurrentPrerequisite->CanCastSpellOnTargets(Caster, Targets))
         {
             return false;
         }
@@ -86,17 +91,17 @@ bool AHealers_Spell::CanCastSpellOnTargets(AHealers_CharacterSheet* caster, cons
     return true;
 }
 
-void AHealers_Spell::CastSpell(AHealers_CharacterSheet* caster, const TArray<AHealers_CharacterSheet*>& targets)
+void AHealers_Spell::CastSpell(AHealers_CharacterSheet* Caster, const TArray<AHealers_CharacterSheet*>& Targets)
 {
     //UGameplayStatics::PlaySound2D(caster, SpellCastSound);
 
-    for (int i = 0; i < Prerequisites.Num(); ++i)
+    for (auto& CurrentPrerequisite : Prerequisites)
     {
-        Prerequisites[i]->SpellExecuted(caster);
+        CurrentPrerequisite->SpellExecuted(Caster);
     }
 
-    for (int i = 0; i < SpellComponents.Num(); ++i)
+    for (auto& CurrentComponent : SpellComponents)
     {
-        SpellComponents[i]->ExecuteSpell(this, caster, targets);
+        CurrentComponent->ExecuteSpell(this, Caster, Targets);
     }
 }
