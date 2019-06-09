@@ -18,10 +18,12 @@
 * FDamageResistance : Damage Resistance structure.
 *
 */
-USTRUCT(BlueprintType)
+USTRUCT(BlueprintType, Meta = (ScriptName = "Damage Resistance Structure"))
 struct FDamageResistance
 {
     GENERATED_BODY()
+
+    FDamageResistance();
 
     /* DamageResistance Type */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")
@@ -34,8 +36,6 @@ struct FDamageResistance
     /* Flat DamageResistance Value */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "DamageResistance")
     float DamageResistanceValue;
-
-    FDamageResistance();
 };
 
 #pragma endregion FDamageResistance

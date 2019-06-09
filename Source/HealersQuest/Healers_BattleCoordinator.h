@@ -86,7 +86,7 @@ public:
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Battle Coordinator")
     TEnumAsByte<EBattleState> PriorBattleState;
 
-    UPROPERTY(BlueprintGetter = GetIsBattleComplete, BlueprintSetter = SetIsBattleComplete, VisibleAnywhere, Category = "Battle Coordinator")
+    UPROPERTY(BlueprintGetter = GetIsBattleComplete, BlueprintSetter = SetIsBattleComplete, VisibleAnywhere, Meta = (ScriptName = "boolIsBattleComplete"), Category = "Battle Coordinator")
     uint32 bIsBattleComplete:1;
 
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Battle Coordinator")
@@ -95,7 +95,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Battle Coordinator")
     void SetIsBattleComplete(bool InValue) { bIsBattleComplete = InValue; }
 
-    UPROPERTY(BlueprintGetter = GetIsBattleReadyToStart, BlueprintSetter = SetIsBattleReadyToStart, EditAnywhere,
+    UPROPERTY(BlueprintGetter = GetIsBattleReadyToStart, BlueprintSetter = SetIsBattleReadyToStart, EditAnywhere, Meta = (ScriptName = "boolIsBattleReadyToStart"),
         Category = "Battle Coordinator")
     uint32 bIsBattleReadyToStart:1;
 
