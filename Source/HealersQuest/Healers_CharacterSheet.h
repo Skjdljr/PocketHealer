@@ -7,7 +7,7 @@
 #include "CoreMinimal.h"
 
 #include "GameFramework/Info.h"
-#include "DataTableEditor/Private/SRowEditor.h"
+#include "Engine/DataTable.h"
 
 #include "HealersQuest.h"
 #include "Healers_Spell.h"
