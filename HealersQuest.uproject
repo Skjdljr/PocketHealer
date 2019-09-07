@@ -47,6 +47,10 @@
 		{
 			"Name": "EditorTests",
 			"Enabled": true
+		},
+		{
+			"Name": "SequencerScripting",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
