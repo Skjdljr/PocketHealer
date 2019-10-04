@@ -14,7 +14,7 @@
 #include "Healers_AbilityTypes.generated.h"
 
 class UGameplayEffect;
-//class URPGTargetType;
+class UHealers_TargetType;
 
 
 /**
@@ -30,8 +30,8 @@ public:
     FHealers_GameplayEffectContainer() {}
 
     /** Sets the way that targeting happens */
-    //UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GameplayEffectContainer)
-    //TSubclassOf<URPGTargetType> TargetType;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GameplayEffectContainer)
+    TSubclassOf<UHealers_TargetType> TargetType;
 
     /** List of gameplay effects to apply to the targets */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GameplayEffectContainer)
