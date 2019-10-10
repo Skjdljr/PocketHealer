@@ -36,6 +36,6 @@ public:
     /*
     * Ability System Component
     */
-    UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Character")
+    UPROPERTY(Replicated, BlueprintReadOnly, VisibleAnywhere, Category = "Character")
     UHealers_AbilitySystemComponent* AbilityComponent;
 };

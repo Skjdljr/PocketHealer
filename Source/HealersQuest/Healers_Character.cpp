@@ -4,6 +4,8 @@
 
 #include "Healers_Character.h"
 
+#include "UnrealNetwork.h"
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Sets default values
@@ -13,6 +15,15 @@ AHealers_Character::AHealers_Character()
     PrimaryActorTick.bCanEverTick = true;
 
     AbilityComponent = CreateDefaultSubobject<UHealers_AbilitySystemComponent>("AbilityComponent");
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+void AHealers_Character::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME(AHealers_Character, AbilityComponent);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
