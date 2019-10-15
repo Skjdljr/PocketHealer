@@ -122,6 +122,9 @@ public:
     /** Fills in with ability specs, based on defaults and inventory */
     void FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbilitySpec>& SlottedAbilitySpecs);
 
+    /** Grant a GameplayAbility */
+    UFUNCTION(BlueprintCallable)
+    void GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel = 1);
 
 protected:
 

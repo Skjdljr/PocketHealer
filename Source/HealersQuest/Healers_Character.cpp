@@ -243,3 +243,16 @@ void AHealers_Character::FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbi
     //    }
     //}
 }
+
+void AHealers_Character::GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel)
+{
+    auto AbilitySystemComponent = GetAbilitySystemComponent();
+    if (AbilitySystemComponent)
+    {
+        // @! TODO : Unsure of the purpose of InputID, seems to be related to input/keybinding
+        const int32 InputID{ 0 }; //static_cast<int32>(Cast<UHealers_GameplayAbility>(InAbility.GetDefaultObject())->Input);
+
+        AbilitySystemComponent->GiveAbility(
+            FGameplayAbilitySpec(InAbility, InAbilityLevel, InputID, this));
+    }
+}
