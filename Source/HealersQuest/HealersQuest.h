@@ -13,9 +13,9 @@
 DECLARE_LOG_CATEGORY_EXTERN(Game, Log, All);
 DECLARE_LOG_CATEGORY_EXTERN(GameUI, Log, All);
 
-#define GAME_LOG(Category, Level, Message) UE_LOG(Category, Level, TEXT("[%s](Line: %d): %s"), *FString(__FUNCTION__), __LINE__, *FString(Message))
+#define GAME_PRINT(Time, Color, Message, ...) (GEngine->AddOnScreenDebugMessage(-1, Time, Color, *FString::Printf(TEXT(Message), ##__VA_ARGS__)))
 
-#define GAME_ERROR(Message) UE_LOG(Game, Error, TEXT("[%s](Line: %d): %s"), *FString(__FUNCTION__), __LINE__, *FString(Message))
+#define GAME_LOG(Category, Level, Message, ...) UE_LOG(Category, Level, TEXT("[%s](Line: %d): %s"), *FString(__FUNCTION__), __LINE__, *FString::Printf(TEXT(Message), ##__VA_ARGS__))
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
