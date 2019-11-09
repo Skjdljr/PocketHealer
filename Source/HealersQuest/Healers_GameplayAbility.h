@@ -8,6 +8,25 @@
 #include "Healers_AbilityTypes.h"
 #include "Healers_GameplayAbility.generated.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+USTRUCT(BlueprintType)
+struct FHealers_GameplayAbilityData
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "AbilityData")
+    FText DisplayName;
+
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "AbilityData")
+    FText Description;
+
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "AbilityData")
+    UTexture2D* AbilityIcon;
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Subclass of ability blueprint type with game-specific data
  * This class uses GameplayEffectContainers to allow easier execution of gameplay effects based on a triggering tag
@@ -41,5 +60,11 @@ public:
     /** Applies a gameplay effect container, by creating and then applying the spec */
     UFUNCTION(BlueprintCallable, Category = Ability, meta = (AutoCreateRefTerm = "EventData"))
     virtual TArray<FActiveGameplayEffectHandle> ApplyEffectContainer(FGameplayTag ContainerTag, const FGameplayEventData& EventData, int32 OverrideGameplayLevel = -1);
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers")
+    FHealers_GameplayAbilityData Data;
+
 
 };
