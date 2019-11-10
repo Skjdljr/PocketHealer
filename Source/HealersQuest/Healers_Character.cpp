@@ -41,14 +41,12 @@ void AHealers_Character::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 void AHealers_Character::BeginPlay()
 {
     Super::BeginPlay();
-    
 }
 
 // Called every frame
 void AHealers_Character::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -193,7 +191,7 @@ void AHealers_Character::RemoveSlottedGameplayAbilities(bool bRemoveAll)
         }
 
         if (bShouldRemove)
-        {	
+        {
             if (FoundSpec)
             {
                 // Need to remove registered ability
@@ -260,5 +258,49 @@ void AHealers_Character::GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbi
         const int32 InputID{ 0 }; //static_cast<int32>(Cast<UHealers_GameplayAbility>(InAbility.GetDefaultObject())->Input);
 
         AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(InAbility, InAbilityLevel, InputID, this));
+        GameplayAbilities.AddUnique(InAbility);
+    }
+}
+
+
+
+int32 AHealers_Character::GetAbilityLevel(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const
+{
+    int32 OutLevel{ -1 };
+
+    if (AbilitySystemComponent)
+    {
+        auto Abilities = AbilitySystemComponent->GetActivatableAbilities();
+
+        for (const auto& Ability : Abilities)
+        {
+            if (Ability.Ability->GetClass() == InAbilityClass)
+            {
+                OutLevel = Ability.Level;
+                break;
+            }
+        }
+    }
+
+    return OutLevel;
+}
+
+bool AHealers_Character::Server_SetAbilityLevel_Validate(TSubclassOf<UHealers_GameplayAbility> InAbilityClass, const int32 InAbilityLevel) { return true; }
+void AHealers_Character::Server_SetAbilityLevel_Implementation(TSubclassOf<UHealers_GameplayAbility> InAbilityClass, const int32 InAbilityLevel)
+{
+    if (AbilitySystemComponent)
+    {
+        // Get a reference to our ASC ActiveatableAbilities. Reference so our modifications stick.
+        auto& Abilities = AbilitySystemComponent->GetActivatableAbilities();
+
+        for (auto& Ability : Abilities)
+        {
+            if (Ability.Ability->GetClass() == InAbilityClass)
+            {
+                Ability.Level = InAbilityLevel;
+                AbilitySystemComponent->MarkAbilitySpecDirty(Ability);
+                break;
+            }
+        }
     }
 }

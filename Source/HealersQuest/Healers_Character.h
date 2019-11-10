@@ -7,6 +7,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
+#include "Net/UnrealNetwork.h"
 
 #include "Healers_Character.generated.h"
 
@@ -24,23 +25,23 @@ struct HEALERSQUEST_API FRPGItemSlot
 {
     GENERATED_BODY()
 
-        /** Constructor, -1 means an invalid slot */
-        FRPGItemSlot()
-        : SlotNumber(-1)
+    /** Constructor, -1 means an invalid slot */
+    FRPGItemSlot()
+    : SlotNumber(-1)
     {}
 
     FRPGItemSlot(const FPrimaryAssetType& InItemType, int32 InSlotNumber)
-        : ItemType(InItemType)
-        , SlotNumber(InSlotNumber)
+    : ItemType(InItemType)
+    , SlotNumber(InSlotNumber)
     {}
 
     /** The type of items that can go in this slot */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Item)
-        FPrimaryAssetType ItemType;
+    FPrimaryAssetType ItemType;
 
     /** The number of this slot, 0 indexed */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Item)
-        int32 SlotNumber;
+    int32 SlotNumber;
 
     /** Equality operators */
     bool operator==(const FRPGItemSlot& Other) const
@@ -123,8 +124,19 @@ public:
     void FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbilitySpec>& SlottedAbilitySpecs);
 
     /** Grant a GameplayAbility */
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, Category = "Character")
     void GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel = 1);
+
+    //UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Character")
+    //void RemoveAbility(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const;
+
+    /** Get the Level of a GameplayAbility */
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Character")
+    int32 GetAbilityLevel(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const;
+
+    /** Get the Level of a GameplayAbility */
+    UFUNCTION(Server, Reliable, WithValidation, BlueprintCallable, Category = "Character")
+    void Server_SetAbilityLevel(TSubclassOf<UHealers_GameplayAbility> InAbilityClass, const int32 InAbilityLevel = 1);
 
 protected:
 
