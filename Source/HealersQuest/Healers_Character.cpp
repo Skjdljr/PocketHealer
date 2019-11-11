@@ -242,11 +242,12 @@ void AHealers_Character::FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbi
     //}
 }
 
-void AHealers_Character::GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel)
+bool AHealers_Character::Server_GiveAbility_Validate(TSubclassOf<UHealers_GameplayAbility> InAbilityClass, const int32 InAbilityLevel) { return true; }
+void AHealers_Character::Server_GiveAbility_Implementation(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel)
 {
     if (InAbility == nullptr)
     {
-        GAME_LOG(Game, Error, "InAbility was Null!");
+        GAME_LOG(Game, Error, "InAbilityClass was Null!");
         return;
     }
 
@@ -255,14 +256,38 @@ void AHealers_Character::GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbi
     if (AbilitySystemComponent)
     {
         // @! TODO : Unsure of the purpose of InputID, seems to be related to input/keybinding
-        const int32 InputID{ 0 }; //static_cast<int32>(Cast<UHealers_GameplayAbility>(InAbility.GetDefaultObject())->Input);
+        const int32 InputID{ 0 }; //static_cast<int32>(Cast<UHealers_GameplayAbility>(InAbilityClass.GetDefaultObject())->Input);
 
         AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(InAbility, InAbilityLevel, InputID, this));
         GameplayAbilities.AddUnique(InAbility);
     }
 }
 
+bool AHealers_Character::Server_RemoveAbility_Validate(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) { return true; }
+void AHealers_Character::Server_RemoveAbility_Implementation(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const
+{
+    if (InAbilityClass == nullptr)
+    {
+        GAME_LOG(Game, Error, "InAbilityClass was Null!");
+        return;
+    }
 
+    check(AbilitySystemComponent);
+
+    if (AbilitySystemComponent)
+    {
+        const auto& Abilities = AbilitySystemComponent->GetActivatableAbilities();
+
+        for (const auto& Ability : Abilities)
+        {
+            if (Ability.Ability->GetClass() == InAbilityClass)
+            {
+                AbilitySystemComponent->ClearAbility(Ability.Handle);
+                break;
+            }
+        }
+    }
+}
 
 int32 AHealers_Character::GetAbilityLevel(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const
 {
@@ -270,7 +295,7 @@ int32 AHealers_Character::GetAbilityLevel(TSubclassOf<UHealers_GameplayAbility> 
 
     if (AbilitySystemComponent)
     {
-        auto Abilities = AbilitySystemComponent->GetActivatableAbilities();
+        const auto& Abilities = AbilitySystemComponent->GetActivatableAbilities();
 
         for (const auto& Ability : Abilities)
         {

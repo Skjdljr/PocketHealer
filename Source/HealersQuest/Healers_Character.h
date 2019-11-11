@@ -124,11 +124,12 @@ public:
     void FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbilitySpec>& SlottedAbilitySpecs);
 
     /** Grant a GameplayAbility */
-    UFUNCTION(BlueprintCallable, Category = "Character")
-    void GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel = 1);
+    UFUNCTION(Server, Reliable, WithValidation, BlueprintCallable, Category = "Character")
+    void Server_GiveAbility(TSubclassOf<UHealers_GameplayAbility> InAbility, const int32 InAbilityLevel = 1);
 
-    //UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Character")
-    //void RemoveAbility(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const;
+    /** Remove a GameplayAbility */
+    UFUNCTION(Server, Reliable, WithValidation, BlueprintCallable, Category = "Character")
+    void Server_RemoveAbility(TSubclassOf<UHealers_GameplayAbility> InAbilityClass) const;
 
     /** Get the Level of a GameplayAbility */
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Character")
