@@ -5,7 +5,10 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 UHealers_AttributeSet::UHealers_AttributeSet()
-    : Health(1.f)
+    : Level(1.f)
+    , SkillPoints(1.f)
+    , SkillPointsMax(1.f)
+    , Health(1.f)
     , HealthMax(1.f)
     , Mana(0.f)
     , ManaMax(0.f)
@@ -19,12 +22,20 @@ UHealers_AttributeSet::UHealers_AttributeSet()
 void UHealers_AttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(UHealers_AttributeSet, Level);
+    
+    DOREPLIFETIME(UHealers_AttributeSet, SkillPoints);
+    DOREPLIFETIME(UHealers_AttributeSet, SkillPointsMax);
 
     DOREPLIFETIME(UHealers_AttributeSet, Health);
-    /*DOREPLIFETIME(UHealers_AttributeSet, MaxHealth);
+    DOREPLIFETIME(UHealers_AttributeSet, HealthMax);
+
     DOREPLIFETIME(UHealers_AttributeSet, Mana);
-    DOREPLIFETIME(UHealers_AttributeSet, MaxMana);
-    DOREPLIFETIME(UHealers_AttributeSet, AttackPower);
+    DOREPLIFETIME(UHealers_AttributeSet, ManaMax);
+    DOREPLIFETIME(UHealers_AttributeSet, ManaRegenerationPerSecond);
+
+/*    DOREPLIFETIME(UHealers_AttributeSet, AttackPower);
     DOREPLIFETIME(UHealers_AttributeSet, DefensePower);
     DOREPLIFETIME(UHealers_AttributeSet, MoveSpeed);*/
 }
@@ -180,7 +191,31 @@ void UHealers_AttributeSet::AdjustAttributeForMaxChange(FGameplayAttributeData& 
     //}
 }
 
+void UHealers_AttributeSet::OnRep_Level()
+{
+}
+
+void UHealers_AttributeSet::OnRep_SkillPoints()
+{
+}
+
+void UHealers_AttributeSet::OnRep_SkillPointsMax()
+{
+}
+
 void UHealers_AttributeSet::OnRep_Health()
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UHealers_AttributeSet, Health);
+}
+
+void UHealers_AttributeSet::OnRep_HealthMax()
+{
+}
+
+void UHealers_AttributeSet::OnRep_Mana()
+{
+}
+
+void UHealers_AttributeSet::OnRep_ManaMax()
+{
 }
