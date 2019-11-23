@@ -219,3 +219,7 @@ void UHealers_AttributeSet::OnRep_Mana()
 void UHealers_AttributeSet::OnRep_ManaMax()
 {
 }
+
+void UHealers_AttributeSet::OnRep_ManaRegenerationPerSecond()
+{
+}
