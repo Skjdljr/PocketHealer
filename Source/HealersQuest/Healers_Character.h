@@ -8,6 +8,8 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
 #include "Net/UnrealNetwork.h"
+#include "GameplayAbilitySpec.h"
+#include "GameplayEffect.h"
 
 #include "Healers_Character.generated.h"
 

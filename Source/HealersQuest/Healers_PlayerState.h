@@ -15,7 +15,6 @@
 // Forward Declarations
 
 struct FHealers_QuestContract;
-class AHealers_PartySheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,10 +42,6 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "PlayerState")
     FQuestContract QuestContract;
 
-    UFUNCTION(BlueprintPure, meta = (Keywords = "Character Sheet"), Category = "PlayerState")
-    AHealers_CharacterSheet* GetHealersCharacterSheet() const;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (Keywords = "Party Sheet"), Category = "PlayerState")
-    AHealers_PartySheet* PartySheet;
+    //TODO: add a getter for what ever we are using ot replace CharacterSheet and PartySheet
     
 };

@@ -7,16 +7,15 @@
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
 #include "GameFramework/Info.h"
+#include "GameFramework/Character.h"
 
 #include "HealersQuest.h"
-#include "Healers_CharacterSheet.h"
 
 #include "Healers_QuestContract.generated.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Forward Declarations
 
-class AHealers_CharacterSheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -25,11 +24,12 @@ struct HEALERSQUEST_API FAdventureBattle
 {
     GENERATED_BODY();
 
+    //TODO::ReplaceACharacter with what ever we are using for are Party/Enemies
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-    TArray<FCharacterSheet> PartyMembers;
+    TArray<ACharacter*> PartyMembers;
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Battle Data")
-    TArray<FCharacterSheet> EnemyMembers;
+    TArray<ACharacter*> EnemyMembers;
 
     //TODO:
     //Add some representation of waves/level

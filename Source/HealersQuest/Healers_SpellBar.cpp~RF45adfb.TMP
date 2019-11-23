@@ -4,11 +4,14 @@
 
 #include "Healers_SpellBar.h"
 
+#include "Healers_Spell.h"
+#include "Healers_CharacterSheet.h"
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 AHealers_SpellBar::AHealers_SpellBar() :
-    Caster(nullptr)
-    //SelectedSpell(nullptr)
+    Caster(nullptr),
+    SelectedSpell(nullptr)
 {
 }
 
@@ -16,24 +19,26 @@ AHealers_SpellBar::AHealers_SpellBar() :
 
 bool AHealers_SpellBar::SelectSpell(int32 Index)
 {
-    //AHealers_Spell* CasterSpell;
-
-    //if (SpellBar.Num() > Index)
+    if (SpellBar.Num() > Index)
     {
-        //AHealers_Spell* CurrentSpell = SpellBar[Index];
+        AHealers_Spell* CurrentSpell = SpellBar[Index];
 
-        //if (spell->CanCastSpell(CasterSpell))
+        if (CurrentSpell->CanCastSpell(Caster))
         {
             // TODO : If TargetComponent == SingleTarget || MultiTargetComponent
-            // TODO else if AutoTarget, SelfTarget, GlobalTarget... Try to Cast
+            if (CurrentSpell->TargetComponent)
             {
-                //SelectedSpell = spell;
+            }
+            // TODO else if AutoTarget, SelfTarget, GlobalTarget... Try to Cast
+            else
+            {
+                SelectedSpell = CurrentSpell;
 
-                //const TArray<AHealers_CharacterSheet*> Targets = TArray<AHealers_CharacterSheet*>();
-                //SelectedSpell->CastSpell(nullptr, Targets);
+                const TArray<AHealers_CharacterSheet*> Targets = TArray<AHealers_CharacterSheet*>();
+                SelectedSpell->CastSpell(nullptr, Targets);
             }
         }
     }
 
-    return false;
+    return SelectedSpell;
 }
