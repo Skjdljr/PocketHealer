@@ -12,9 +12,11 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Forward declarations
 
+class AHealers_Character;
 class AHealers_CharacterSheet;
 class AHealers_GameMode;
 class UDataTable;
+class UUserWidget;
 class AHealers_PartySheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +58,10 @@ public:
     // Get the PlayerController's CharacterSheet
     UFUNCTION(BlueprintPure, Category = "Healers|Character|Sheet") 
     static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
+
+    // Get a Widget's Owning Character (if any)
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "GetHealersCharacter"), Category = "Healers|Character")
+    static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
 
     // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")

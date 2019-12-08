@@ -4,10 +4,12 @@
 
 #include "Healers_FunctionLibrary.h"
 
+#include "Blueprint/UserWidget.h"
 #include "Engine/DataTable.h"
 #include "Engine/World.h"
 #include "GameFramework/GameStateBase.h"
 
+#include "Healers_Character.h"
 #include "Healers_CharacterAttributes.h"
 #include "Healers_CharacterSheet.h"
 #include "Healers_GameMode.h"
@@ -168,4 +170,22 @@ AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlay
         }
     }
     return CharacterSheet;
+}
+
+AHealers_Character* UHealers_FunctionLibrary::GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget)
+{
+    AHealers_Character* OutCharacter{};
+    
+    if (InWidget)
+    {
+        if (const auto OwningPC = InWidget->GetOwningPlayer())
+        {
+            if (const auto Character = OwningPC->GetCharacter())
+            {
+                OutCharacter = Cast<AHealers_Character>(Character);
+            }
+        }
+    }
+
+    return OutCharacter;
 }
