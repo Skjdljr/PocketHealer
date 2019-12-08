@@ -16,18 +16,18 @@
 UCLASS()
 class HEALERSQUEST_API UHealers_AbilitySystemComponent : public UAbilitySystemComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	// Constructors and overrides
-	UHealers_AbilitySystemComponent();
+    // Constructors and overrides
+    UHealers_AbilitySystemComponent();
 
-	/** Returns a list of currently active ability instances that match the tags */
-	void GetActiveAbilitiesWithTags(const FGameplayTagContainer& GameplayTagContainer, TArray<UGameplayAbility*>& ActiveAbilities);
+    /** Returns a list of currently active ability instances that match the tags */
+    void GetActiveAbilitiesWithTags(const FGameplayTagContainer& GameplayTagContainer, TArray<UGameplayAbility*>& ActiveAbilities);
 
-	/** Returns the default level used for ability activations, derived from the character */
-	int32 GetDefaultAbilityLevel() const;
+    /** Returns the default level used for ability activations, derived from the character */
+    int32 GetDefaultAbilityLevel() const;
 
-	/** Version of function in AbilitySystemGlobals that returns correct type */
-	static UHealers_AbilitySystemComponent* GetAbilitySystemComponentFromActor(const AActor* Actor, bool LookForComponent = false);
+    /** Version of function in AbilitySystemGlobals that returns correct type */
+    static UHealers_AbilitySystemComponent* GetAbilitySystemComponentFromActor(const AActor* Actor, bool LookForComponent = false);
 };
