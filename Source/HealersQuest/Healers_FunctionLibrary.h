@@ -60,7 +60,7 @@ public:
     static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
 
     // Get a Widget's Owning Character (if any)
-    UFUNCTION(BlueprintPure, meta = (DisplayName = "GetHealersCharacter"), Category = "Healers|Character")
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Healers Character"), Category = "Healers|Character")
     static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
 
     // Get Enum as String - For printing
