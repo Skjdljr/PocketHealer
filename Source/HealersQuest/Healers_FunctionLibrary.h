@@ -63,6 +63,9 @@ public:
     UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Healers Character"), Category = "Healers|Character")
     static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
 
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Dev Flag"), Category = "Healers|Dev")
+    static FString GetDevFlag() { return FString("dev"); }
+
     // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
     FORCEINLINE FString GetEnumAsString_ECharacterProfession(const ECharacterProfession Value)
