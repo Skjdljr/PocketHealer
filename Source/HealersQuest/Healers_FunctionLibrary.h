@@ -47,6 +47,13 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
     static UDataTable* GetProfessionDataTableFromLibrary(const UObject* WorldContextObject, ECharacterProfession InProfession);
 
+    
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
+    static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
+
+    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
+    static FString GetDevFlag(){return FString("dev");}
+
     // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
     FORCEINLINE FString GetEnumAsString_ECharacterProfession(const ECharacterProfession Value)
