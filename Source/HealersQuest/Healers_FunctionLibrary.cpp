@@ -10,12 +10,9 @@
 #include "GameFramework/GameStateBase.h"
 
 #include "Healers_Character.h"
-#include "Healers_CharacterAttributes.h"
-#include "Healers_CharacterSheet.h"
 #include "Healers_GameMode.h"
 #include "Healers_PlayerController.h"
 #include "Healers_PlayerState.h"
-#include "Healers_PartySheet.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,16 +71,16 @@ UDataTable* UHealers_FunctionLibrary::GetRaceDataTableFromLibrary(const UObject*
             for (auto& CurrentRowName : RaceRowNames)
             {
                 FString OutErrorMessage;
-                if (const auto CurrentRow = RaceLibrary->FindRow<FCharacterRaceLibrary>(CurrentRowName, OutErrorMessage))
+                //if (const auto CurrentRow = RaceLibrary->FindRow<FCharacterRaceLibrary>(CurrentRowName, OutErrorMessage))
                 {
                     // If our Race Enums Match
-                    if (InRace == CurrentRow->Race)
+                    //if (InRace == CurrentRow->Race)
                     {
-                        RaceTable = CurrentRow->DataTable;
+                        //RaceTable = CurrentRow->DataTable;
                         break;
                     }
                 }
-                else
+                //else
                 {
                     // Log - OutErrorMessage
                 }
@@ -111,16 +108,16 @@ UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UO
             for (auto& CurrentRowName : RaceRowNames)
             {
                 FString OutErrorMessage;
-                if (const auto CurrentRow = ProfessionLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
+                //if (const auto CurrentRow = ProfessionLibrary->FindRow<FCharacterProfessionLibrary>(CurrentRowName, OutErrorMessage))
                 {
                     // If our Race Enums Match
-                    if (InProfession == CurrentRow->Profession)
+                    //if (InProfession == CurrentRow->Profession)
                     {
-                        ProfessionTable = CurrentRow->DataTable;
+                        //ProfessionTable = CurrentRow->DataTable;
                         break;
                     }
                 }
-                else
+                //else
                 {
                     // Error - OutErrorMessage
                 }
@@ -134,42 +131,6 @@ UDataTable* UHealers_FunctionLibrary::GetProfessionDataTableFromLibrary(const UO
     }
 
     return ProfessionTable;
-}
-
-AHealers_PartySheet* UHealers_FunctionLibrary::GetPartySheet(APlayerController* PlayerController)
-{
-    AHealers_PartySheet* PartySheet = nullptr;
-    if (PlayerController)
-    {
-        if (const auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
-        {
-            PartySheet = PlayerState->PartySheet;
-        }
-    }
-    return PartySheet;
-}
-
-AHealers_CharacterSheet* UHealers_FunctionLibrary::GetPlayerCharacterSheet(APlayerController* PlayerController)
-{
-    AHealers_CharacterSheet* CharacterSheet = nullptr;
-    if (PlayerController)
-    {
-        if (auto PlayerState = Cast<AHealers_PlayerState>(PlayerController->PlayerState))
-        {
-            if (const auto PartySheet = PlayerState->PartySheet)
-            {
-                if (PartySheet->PartyMembers.Num() > 0)
-                {
-                    CharacterSheet = PlayerState->PartySheet->PartyMembers[0];
-                }
-                else if (const auto Pawn = PlayerController->GetPawn())
-                {
-                    CharacterSheet = AHealers_CharacterSheet::GetCharacterSheet(Pawn);
-                }
-            }
-        }
-    }
-    return CharacterSheet;
 }
 
 AHealers_Character* UHealers_FunctionLibrary::GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget)

@@ -12,7 +12,6 @@
 // Forward Declarations
 
 class UDataTable;
-class AHealers_BattleCoordinator;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,7 +60,4 @@ public:
 
     UPROPERTY(Config = Game, BlueprintReadWrite, EditDefaultsOnly, Category = "GameMode")
     int32 DefaultStartingReputation;
-    
-    UPROPERTY(BlueprintReadWrite, Category = "GameMode")
-    AHealers_BattleCoordinator* BattleCoordinator;
 };

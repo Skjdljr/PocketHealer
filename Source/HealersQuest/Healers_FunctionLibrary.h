@@ -12,12 +12,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Forward declarations
 
-class AHealers_Character;
-class AHealers_CharacterSheet;
 class AHealers_GameMode;
 class UDataTable;
-class UUserWidget;
-class AHealers_PartySheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -50,21 +46,6 @@ public:
     // Get a DataTable associated with a Profession enum
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
     static UDataTable* GetProfessionDataTableFromLibrary(const UObject* WorldContextObject, ECharacterProfession InProfession);
-
-    // Get the PlayerController's PartySheet
-    UFUNCTION(BlueprintPure, Category = "Healers|Party") //Keywords = "PartySheet", 
-    static AHealers_PartySheet* GetPartySheet(APlayerController* PlayerController);
-
-    // Get the PlayerController's CharacterSheet
-    UFUNCTION(BlueprintPure, Category = "Healers|Character|Sheet") 
-    static AHealers_CharacterSheet* GetPlayerCharacterSheet(APlayerController* PlayerController);
-
-    // Get a Widget's Owning Character (if any)
-    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Healers Character"), Category = "Healers|Character")
-    static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
-
-    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Dev Flag"), Category = "Healers|Dev")
-    static FString GetDevFlag() { return FString("dev"); }
 
     // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")

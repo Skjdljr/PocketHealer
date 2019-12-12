@@ -16,9 +16,7 @@
 
 #include "Components/AudioComponent.h"
 
-#include "Healers_CharacterSheet.h"
 #include "Healers_GameInstance.h"
-#include "Healers_Spell.h"
 #include "Healers_SpellBar.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,7 +153,8 @@ void AHealers_PlayerController::CombatAction(int32 Index)
 
     if (SpellBar && IsCombatActionAllowed())
     {
-        SpellBar->SelectSpell(Index);
+        //todo::FixSpellBar
+        //SpellBar->SelectSpell(Index);
     }
 }
 

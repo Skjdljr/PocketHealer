@@ -24,8 +24,7 @@
 AHealers_GameMode::AHealers_GameMode() :
     CharacterRaceLibrary(nullptr),
     DefaultStartingGold(0),
-    DefaultStartingReputation(0),
-    BattleCoordinator(nullptr)
+    DefaultStartingReputation(0)
 {
     // Set to true via MainMenu to start the game
     bDelayedStart = true;

@@ -7,6 +7,7 @@
 #include "CoreMinimal.h"
 
 #include "GameFramework/Actor.h"
+#include "HealersQuest/Healers_Character.h"
 
 #include "Healers_SpellBar.generated.h"
 
@@ -14,7 +15,6 @@
 // Forward Declaration
 
 class AHealers_Spell;
-class AHealers_CharacterSheet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,13 +31,13 @@ class HEALERSQUEST_API AHealers_SpellBar : public AActor
 public:
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|SpellBar")
-    AHealers_CharacterSheet* Caster;
+    AHealers_Character* Caster;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|SpellBar")
-    AHealers_Spell* SelectedSpell;
+    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|SpellBar")
+    //AHealers_Spell* SelectedSpell;
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|SpellBar")
-    TArray<AHealers_Spell*> SpellBar;
+    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Healers|SpellBar")
+    //TArray<AHealers_Spell*> SpellBar;
 
     UFUNCTION(BlueprintCallable, Category = "Healers|SpellBar")
     bool SelectSpell(int32 Index);
