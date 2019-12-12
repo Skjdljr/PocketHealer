@@ -47,12 +47,13 @@ public:
     UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
     static UDataTable* GetProfessionDataTableFromLibrary(const UObject* WorldContextObject, ECharacterProfession InProfession);
 
-    
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
+    /** Get a Widget's Owning Character (if any) */
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Healers Character"), Category = "Healers|Character")
     static AHealers_Character* GetWidgetOwnerHealersCharacter(const UUserWidget* InWidget);
 
-    UFUNCTION(BlueprintPure, BlueprintCallable, Category = "Healers|Library")
-    static FString GetDevFlag(){return FString("dev");}
+    /** Get the Dev Flag String */
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Dev Flag"), Category = "Healers|Dev")
+    static FString GetDevFlag() { return FString("dev"); }
 
     // Get Enum as String - For printing
     UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString"), Category = "Healers|Enum")
