@@ -1,0 +1,59 @@
+
+Sage's Orison
+- Heal single allied target
+- Short CD, Low Mana cost
+
+Blessing of Purity
+- Remove 1 hex or condition
+- Restore Health based on number of hexes or conditions remaining
+
+Chant of Vigor
+- Channel Spell, affects full party
+- Increase healing factor (Heal/tick) based on time maintained. Mana drain also increases.
+
+Healer's Aura
+- Restore X health to adjacent allies when casting a healing spell.
+
+Holy Symbol
+- Holy Mark on single target
+- Marked allies gain X shield when affected by healing spells
+- Marked enemies become primary target. Dispels buffs on enemies.
+
+Soul Tie
+- Mark a ally when they would take dmg you take % of their dmg instead
+- Med cooldown to switch targets - like a buff
+
+Whispers of Madness
+- % chance for target to become confused and their next ability/spell/action fails
+- Medium CD
+
+Curse of Impure thoughts
+- Minus willpower/focus % chance of dealing dmg to party members
+- Medium CD 
+
+Shifting Shadows - I just like this name, maybe a boss ability?
+-
+
+Shield of Orison 
+- Shield ally for % dmg
+- Short cd / low mana cost
+
+Timewarp
+- Reset last abilitys cooldown
+- Long CD
+
+MultiCast
+- Next ability used fires twice with a % chance to fire 3 times
+- Medium CD
+
+Bloom 
+- Causes any HOT on ally to burst with energy healing for the remaining amount + some %
+
+Regeneration
+- Heal over time
+- Low CD, Low Mana 
+
+Resteration
+- Direct heal with a heal over time after
+- Low CD, Medium mana
+

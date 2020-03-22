@@ -1,6 +1,15 @@
-X Create To-Do Document
-X Create GameInstance Class
-X Create GameMode Class
-X Create GameState Class
-X Create PlayerController Class
-X Create PlayerState Class
+
+Get menus working again with GAS
+Create 3d version of (Character ui)
+Create a spell
+
+Get Spell bar working 
+Get the cast bar working 
+Cast a spell
+
+Get the targeting working based on (gameplay-tags of spells?)
+
+
+Create a party of characters
+Position (w/ preset location) for characters/parties
+

@@ -19,10 +19,9 @@ void UHealers_AbilitySystemComponent::GetActiveAbilitiesWithTags(const FGameplay
     // Iterate the list of all ability specs
     for (FGameplayAbilitySpec* Spec : AbilitiesToActivate)
     {
-        // Iterate all instances on this ability spec
-        TArray<UGameplayAbility*> AbilityInstances = Spec->GetAbilityInstances();
+        // Iterate all instances on this ability spec TArray<UGameplayAbility*>
 
-        for (UGameplayAbility* ActiveAbility : AbilityInstances)
+        for (UGameplayAbility* ActiveAbility : Spec->GetAbilityInstances())
         {
             ActiveAbilities.Add(Cast<UGameplayAbility>(ActiveAbility));
         }
