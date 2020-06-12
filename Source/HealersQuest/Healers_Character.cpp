@@ -87,7 +87,7 @@ void AHealers_Character::AddStartupGameplayAbilities()
 {
     check(AbilitySystemComponent);
 
-    if (Role == ROLE_Authority && !bAbilitiesInitialized)
+    if (GetLocalRole() == ROLE_Authority && !bAbilitiesInitialized)
     {
         // Grant abilities, but only on the server	
         for (TSubclassOf<UHealers_GameplayAbility>& StartupAbility : GameplayAbilities)
@@ -118,7 +118,7 @@ void AHealers_Character::RemoveStartupGameplayAbilities()
 {
     check(AbilitySystemComponent);
 
-    if (Role == ROLE_Authority && bAbilitiesInitialized)
+    if (GetLocalRole() == ROLE_Authority && bAbilitiesInitialized)
     {
         // Remove any abilities added from a previous call
         TArray<FGameplayAbilitySpecHandle> AbilitiesToRemove;

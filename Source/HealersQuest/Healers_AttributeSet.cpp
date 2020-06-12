@@ -203,9 +203,9 @@ void UHealers_AttributeSet::OnRep_SkillPointsMax()
 {
 }
 
-void UHealers_AttributeSet::OnRep_Health()
+void UHealers_AttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UHealers_AttributeSet, Health);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UHealers_AttributeSet, Health, OldHealth);
 }
 
 void UHealers_AttributeSet::OnRep_HealthMax()

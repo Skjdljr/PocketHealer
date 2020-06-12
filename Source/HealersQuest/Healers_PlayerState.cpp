@@ -23,7 +23,7 @@ void AHealers_PlayerState::BeginPlay()
         {
             FActorSpawnParameters SpawnParameters;
             SpawnParameters.Owner = this;
-            SpawnParameters.Instigator = Instigator;
+            SpawnParameters.Instigator = GetInstigator();
 
             //PartySheet = World->SpawnActor<AHealers_PartySheet>(SpawnParameters);
         }

@@ -134,7 +134,7 @@ protected:
     virtual void OnRep_SkillPointsMax();
 
     UFUNCTION()
-    virtual void OnRep_Health();
+    virtual void OnRep_Health(const FGameplayAttributeData& OldHealth);
 
     UFUNCTION()
     virtual void OnRep_HealthMax();
