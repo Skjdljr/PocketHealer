@@ -30,7 +30,7 @@ void UHealers_AbilitySystemComponent::GetActiveAbilitiesWithTags(const FGameplay
 
 int32 UHealers_AbilitySystemComponent::GetDefaultAbilityLevel() const
 {
-    AHealers_Character* OwningCharacter = Cast<AHealers_Character>(OwnerActor);
+    AHealers_Character* OwningCharacter = Cast<AHealers_Character>(GetOwnerActor());
 
     if (OwningCharacter)
     {
