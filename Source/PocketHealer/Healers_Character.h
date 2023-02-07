@@ -23,7 +23,7 @@ class UHealers_GameplayAbility;
 
 /** Struct representing a slot for an item, shown in the UI */
 USTRUCT(BlueprintType)
-struct HEALERSQUEST_API FRPGItemSlot
+struct POCKETHEALER_API FRPGItemSlot
 {
     GENERATED_BODY()
 
@@ -75,7 +75,7 @@ struct HEALERSQUEST_API FRPGItemSlot
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 UCLASS()
-class HEALERSQUEST_API AHealers_Character : public ACharacter,
+class POCKETHEALER_API AHealers_Character : public ACharacter,
     public IAbilitySystemInterface
 {
     GENERATED_BODY()

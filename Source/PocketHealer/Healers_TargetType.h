@@ -25,7 +25,7 @@ struct FGameplayEventData;
  * If your targeting is more complicated you may need to instance into the world once or as a pooled actor
  */
 UCLASS(Blueprintable, meta = (ShowWorldContextPin))
-class HEALERSQUEST_API UHealers_TargetType : public UObject
+class POCKETHEALER_API UHealers_TargetType : public UObject
 {
     GENERATED_BODY()
 
@@ -40,7 +40,7 @@ public:
 
 /** Trivial target type that uses the owner */
 UCLASS(NotBlueprintable)
-class HEALERSQUEST_API UHealers_TargetType_UseOwner : public UHealers_TargetType
+class POCKETHEALER_API UHealers_TargetType_UseOwner : public UHealers_TargetType
 {
     GENERATED_BODY()
 
@@ -54,7 +54,7 @@ public:
 
 /** Trivial target type that pulls the target out of the event data */
 UCLASS(NotBlueprintable)
-class HEALERSQUEST_API UHealers_TargetType_UseEventData : public UHealers_TargetType
+class POCKETHEALER_API UHealers_TargetType_UseEventData : public UHealers_TargetType
 {
     GENERATED_BODY()
 

@@ -21,7 +21,7 @@ class UDataTable;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_FunctionLibrary : public UBlueprintFunctionLibrary
+class POCKETHEALER_API UHealers_FunctionLibrary : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
 

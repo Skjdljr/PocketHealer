@@ -14,7 +14,7 @@
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_SceneMenu : public UUserWidget
+class POCKETHEALER_API UHealers_SceneMenu : public UUserWidget
 {
     GENERATED_BODY()
     

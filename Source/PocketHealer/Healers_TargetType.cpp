@@ -23,6 +23,6 @@ void UHealers_TargetType_UseEventData::GetTargets_Implementation(AHealers_Charac
 	}
 	else if (EventData.Target)
 	{
-		OutActors.Add(const_cast<AActor*>(EventData.Target));
+		OutActors.Add(Cast<AActor>(EventData.Target));
 	}
 }

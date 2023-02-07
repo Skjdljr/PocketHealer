@@ -14,7 +14,7 @@
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_CheatManager : public UCheatManager
+class POCKETHEALER_API UHealers_CheatManager : public UCheatManager
 {
 	GENERATED_BODY()
 

@@ -14,7 +14,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnAttributeChanged, FGameplayAtt
  * Useful to use in UI.
  */
 UCLASS()
-class HEALERSQUEST_API UAsyncTaskAttributeChanged : public UBlueprintAsyncActionBase
+class POCKETHEALER_API UAsyncTaskAttributeChanged : public UBlueprintAsyncActionBase
 {
 	GENERATED_BODY()
 	

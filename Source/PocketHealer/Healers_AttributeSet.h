@@ -25,7 +25,7 @@
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_AttributeSet : public UAttributeSet
+class POCKETHEALER_API UHealers_AttributeSet : public UAttributeSet
 {
     GENERATED_BODY()
     

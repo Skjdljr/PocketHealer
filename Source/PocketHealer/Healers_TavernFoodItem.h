@@ -22,7 +22,7 @@
  * FTavernFoodItem : Structure defining FoodItem.
  */
 USTRUCT(Blueprintable)
-struct HEALERSQUEST_API FTavernFoodItem : public FTableRowBase
+struct POCKETHEALER_API FTavernFoodItem : public FTableRowBase
 {
     GENERATED_BODY()
     
@@ -54,7 +54,7 @@ public:
 *
 */
 UCLASS(Blueprintable, BlueprintType, NotPlaceable)
-class HEALERSQUEST_API AHealers_TavernFoodItem : public AInfo
+class POCKETHEALER_API AHealers_TavernFoodItem : public AInfo
 {
     GENERATED_BODY()
 

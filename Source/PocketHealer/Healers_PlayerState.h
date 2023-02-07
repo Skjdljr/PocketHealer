@@ -23,7 +23,7 @@ struct FHealers_QuestContract;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_PlayerState : public APlayerState
+class POCKETHEALER_API AHealers_PlayerState : public APlayerState
 {
     GENERATED_BODY()
     

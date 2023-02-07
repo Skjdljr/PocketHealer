@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(BlueprintType, Blueprintable)
-struct HEALERSQUEST_API FAdventureBattle
+struct POCKETHEALER_API FAdventureBattle
 {
     GENERATED_BODY();
 
@@ -48,7 +48,7 @@ struct HEALERSQUEST_API FAdventureBattle
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
-struct HEALERSQUEST_API FAdventureStep
+struct POCKETHEALER_API FAdventureStep
 {
     GENERATED_BODY()
 
@@ -69,7 +69,7 @@ struct HEALERSQUEST_API FAdventureStep
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
-struct HEALERSQUEST_API FQuestContractPrerequisite : public FTableRowBase
+struct POCKETHEALER_API FQuestContractPrerequisite : public FTableRowBase
 {
     GENERATED_BODY()
 
@@ -87,7 +87,7 @@ struct HEALERSQUEST_API FQuestContractPrerequisite : public FTableRowBase
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 USTRUCT(Blueprintable)
-struct HEALERSQUEST_API FQuestContractReward
+struct POCKETHEALER_API FQuestContractReward
 {
     GENERATED_BODY()
 
@@ -112,7 +112,7 @@ struct HEALERSQUEST_API FQuestContractReward
  * 
  */
 USTRUCT(Blueprintable)
-struct HEALERSQUEST_API FQuestContract : public FTableRowBase
+struct POCKETHEALER_API FQuestContract : public FTableRowBase
 {
     GENERATED_BODY()
     
@@ -164,7 +164,7 @@ public:
 *
 */
 UCLASS(Blueprintable, BlueprintType, NotPlaceable)
-class HEALERSQUEST_API AHealers_QuestContract : public AInfo
+class POCKETHEALER_API AHealers_QuestContract : public AInfo
 {
     GENERATED_BODY()
 

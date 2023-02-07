@@ -14,7 +14,7 @@
  * Game-specific subclass to provide utility functions
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_AbilitySystemComponent : public UAbilitySystemComponent
+class POCKETHEALER_API UHealers_AbilitySystemComponent : public UAbilitySystemComponent
 {
     GENERATED_BODY()
 

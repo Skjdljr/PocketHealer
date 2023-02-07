@@ -20,7 +20,7 @@ class UUserWidget;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_GameInstance : public UGameInstance
+class POCKETHEALER_API UHealers_GameInstance : public UGameInstance
 {
     GENERATED_BODY()
     

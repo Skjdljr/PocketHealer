@@ -20,7 +20,7 @@ class UHealers_SceneMenu;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_HUD : public AHUD
+class POCKETHEALER_API AHealers_HUD : public AHUD
 {
     GENERATED_BODY()
 

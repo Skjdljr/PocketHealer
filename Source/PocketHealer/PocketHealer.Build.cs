@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class HealersQuest : ModuleRules
+public class PocketHealer : ModuleRules
 {
-	public HealersQuest(ReadOnlyTargetRules Target) : base(Target)
+	public PocketHealer(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	

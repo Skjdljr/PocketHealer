@@ -9,7 +9,7 @@
 // ----------------------------------------------------------------------------------------------------------------
 
 #include "GameplayEffectTypes.h"
-#include "GameplayAbilityTargetTypes.h"
+#include "Abilities/GameplayAbilityTargetTypes.h"
 
 #include "Healers_AbilityTypes.generated.h"
 

@@ -14,7 +14,7 @@
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_GameSession : public AGameSession
+class POCKETHEALER_API AHealers_GameSession : public AGameSession
 {
 	GENERATED_BODY()
 	

@@ -7,7 +7,7 @@
 #include "CoreMinimal.h"
 
 #include "GameFramework/Actor.h"
-#include "HealersQuest/Healers_Character.h"
+#include "Healers_Character.h"
 
 #include "Healers_SpellBar.generated.h"
 
@@ -22,7 +22,7 @@ class AHealers_Spell;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_SpellBar : public AActor
+class POCKETHEALER_API AHealers_SpellBar : public AActor
 {
     GENERATED_BODY()
 

@@ -4,7 +4,7 @@
 
 #include "Healers_GameplayModMagnitude_EffectLevelCalculation.h"
 
-#include "HealersQuest.h"
+#include "../HealersQuest.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 

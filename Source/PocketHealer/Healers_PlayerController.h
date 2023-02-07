@@ -20,7 +20,7 @@ class AHealers_SpellBar;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_PlayerController : public APlayerController
+class POCKETHEALER_API AHealers_PlayerController : public APlayerController
 {
     GENERATED_BODY()
 

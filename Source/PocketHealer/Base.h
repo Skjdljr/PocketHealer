@@ -7,7 +7,7 @@
 /**
  * 
  */
-class HEALERSQUEST_API Base
+class POCKETHEALER_API Base
 {
 public:
 	Base();

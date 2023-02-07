@@ -12,7 +12,7 @@
  * 
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_GameplayModMagnitude_EffectLevelCalculation : public UGameplayModMagnitudeCalculation
+class POCKETHEALER_API UHealers_GameplayModMagnitude_EffectLevelCalculation : public UGameplayModMagnitudeCalculation
 {
     GENERATED_BODY()
     

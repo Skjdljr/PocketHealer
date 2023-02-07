@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "GameplayAbility.h"
+#include "Abilities/GameplayAbility.h"
 #include "GameplayTagContainer.h"
 
 #include "Healers_AbilityTypes.h"
@@ -33,7 +33,7 @@ struct FHealers_GameplayAbilityData
  * Most games will need to implement a subclass to support their game-specific code
  */
 UCLASS()
-class HEALERSQUEST_API UHealers_GameplayAbility : public UGameplayAbility
+class POCKETHEALER_API UHealers_GameplayAbility : public UGameplayAbility
 {
     GENERATED_BODY()
 

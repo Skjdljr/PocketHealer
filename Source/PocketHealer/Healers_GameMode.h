@@ -19,7 +19,7 @@ class UDataTable;
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_GameMode : public AGameMode
+class POCKETHEALER_API AHealers_GameMode : public AGameMode
 {
     GENERATED_BODY()
 

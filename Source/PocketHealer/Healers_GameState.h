@@ -35,7 +35,7 @@ enum EAdventureState
  * 
  */
 UCLASS()
-class HEALERSQUEST_API AHealers_GameState : public AGameState
+class POCKETHEALER_API AHealers_GameState : public AGameState
 {
     GENERATED_BODY()
 
