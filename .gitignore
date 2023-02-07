@@ -55,7 +55,11 @@ Intermediate/
 Build/
 Source/Cache
 .vs/
+.vsconfig
 HealersQuest\.sln
+PocketHealer\.sln
+Source/Graveyard/
+.idea/
 
 # Packs
 AncientTreasures.png
